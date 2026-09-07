@@ -1,0 +1,11 @@
+---
+interface Props {
+  variant?: 'pain' | 'build';
+}
+const { variant = 'pain' } = Astro.props;
+---
+<p class:list={['kicker', variant === 'build' && 'kicker-build']}><slot /></p>
+<style>
+  .kicker-build { color: var(--build); }
+  .shell-dark .kicker-build { color: var(--build-on-dark); }
+</style>

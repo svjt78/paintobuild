@@ -1,0 +1,28 @@
+---
+interface Props {
+  heading: string;
+  body: string;
+  ctaHref: string;
+  ctaLabel: string;
+}
+const { heading, body, ctaHref, ctaLabel } = Astro.props;
+---
+<section class="cta-band shell-dark">
+  <div class="wrap cta-inner">
+    <h2>{heading}</h2>
+    <p>{body}</p>
+    <a class="btn btn-primary btn-dark" href={ctaHref}>{ctaLabel}</a>
+  </div>
+</section>
+<style>
+  .cta-band { padding-block: var(--s9); }
+  .cta-inner { max-width: 640px; margin-inline: auto; text-align: center; }
+  .cta-inner p { color: var(--on-dark-muted); margin: var(--s4) 0 var(--s6); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px; padding: 0 var(--s5); border-radius: var(--r-pill);
+    font-weight: 700; font-size: var(--t-body-s); text-decoration: none;
+  }
+  .btn-primary.btn-dark { background: var(--build-on-dark); color: var(--ink); }
+  .btn-primary.btn-dark:hover { background: #5BD6BB; }
+</style>

@@ -1,0 +1,92 @@
+---
+const today = new Date().toISOString().slice(0, 10);
+---
+<footer class="site-footer shell-dark">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3 class="col-title">Sections</h3>
+        <ul>
+          <li><a href="/methodology/">Methodology</a></li>
+          <li><a href="/evidence/">Evidence</a></li>
+          <li><a href="/diagnostics/signups-no-core-feature-use/">Diagnostics</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="col-title">Products</h3>
+        <ul>
+          <li><a href="/tools/evidence-ledger-template/">Evidence ledger template</a></li>
+          <li><a href="/brief/">The Validation Brief</a></li>
+          <li><a href="/analysis/">Focused Analysis</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="col-title">About &amp; contact</h3>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="col-title">Legal</h3>
+        <ul>
+          <li><a href="/privacy/">Privacy</a></li>
+          <li><a href="/terms/">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sign-off">
+      <svg width="40" height="40" viewBox="0 0 1024 1024" aria-hidden="true" class="sign-off-mark">
+        <defs>
+          <mask id="arrow-cut-footer" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+            <rect width="1024" height="1024" fill="white"/>
+            <path d="M432 520h88v-42l98 97-98 97v-42h-88z" fill="black"/>
+          </mask>
+        </defs>
+        <g fill="#FFFFFF" stroke="#FFFFFF" mask="url(#arrow-cut-footer)">
+          <rect x="168" y="295" width="116" height="545" rx="12" stroke="none"/>
+          <circle cx="358" cy="575" r="190" fill="none" stroke-width="116"/>
+          <rect x="476" y="295" width="116" height="280" rx="12" stroke="none"/>
+          <circle cx="666" cy="575" r="190" fill="none" stroke-width="116"/>
+        </g>
+        <circle cx="226" cy="220" r="46" fill="#FFFFFF"/>
+        <rect x="490" y="174" width="92" height="92" rx="14" fill="#FFFFFF"/>
+      </svg>
+      <p>PainToBuild — evidence-based product validation research</p>
+      <p class="reviewed">Site last reviewed {today}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--surface-dark-deep); padding-block: var(--s8) var(--s6); }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s6);
+  }
+  @media (min-width: 768px) {
+    .cols { grid-template-columns: repeat(4, 1fr); }
+  }
+  .col-title {
+    font-size: var(--t-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--on-dark-quiet);
+    margin: 0 0 var(--s3);
+  }
+  .cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); }
+  .cols a { color: var(--on-dark-muted); text-decoration: none; font-size: var(--t-body-s); }
+  .cols a:hover { color: var(--on-dark); }
+
+  .sign-off {
+    margin-top: var(--s8);
+    padding-top: var(--s6);
+    border-top: 1px solid var(--hairline-dark);
+    text-align: center;
+  }
+  .sign-off-mark { opacity: 0.5; margin-bottom: var(--s3); }
+  .sign-off p { margin: 0; color: var(--on-dark-quiet); font-size: var(--t-caption); }
+  .reviewed { margin-top: var(--s1) !important; }
+</style>

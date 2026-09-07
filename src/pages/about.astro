@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+
+const title = 'About | PainToBuild';
+const description = 'What PainToBuild is, the evidence-based research system behind it, and why the operator writes under a pseudonym.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  about: { '@type': 'Organization', name: 'PainToBuild', url: 'https://paintobuild.com' },
+};
+---
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="wrap section prose">
+    <Kicker>About</Kicker>
+    <h1>About PainToBuild</h1>
+
+    <!--
+      Placeholder page for Phase 0 (site-live gate only).
+      Full copy — the research-system description and the pseudonymity
+      explanation per §8.10 of the design doc — is written in Phase 1,
+      once content decisions are finalized. Do not treat the paragraph
+      below as final.
+    -->
+    <p class="draft-note">This page is a placeholder while the site is being built. Full content — what PainToBuild is, how the evidence process works, and why it's written under a pseudonym — is coming in the next phase.</p>
+
+    <p><a href="/contact/">Contact</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s8); }
+  .draft-note {
+    background: var(--surface-sunken);
+    border-radius: var(--r-card);
+    padding: var(--s5);
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,126 @@
+---
+const nav = [
+  { href: '/evidence/', label: 'Evidence' },
+  { href: '/methodology/', label: 'Methodology' },
+  { href: '/brief/', label: 'The Brief' },
+  { href: '/analysis/', label: 'Analysis' },
+];
+---
+<header class="site-header shell-dark">
+  <div class="wrap bar">
+    <a href="/" class="wordmark">
+      <img
+        src="/brand/wordmark-for-dark.png"
+        alt="paintobuild"
+        width="220"
+        height="73"
+        class="wordmark-img"
+      />
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      <ul>
+        {nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <a class="btn btn-primary nav-cta" href="/tools/evidence-ledger-template/">Get the template</a>
+
+    <details class="nav-mobile">
+      <summary aria-label="Menu">Menu</summary>
+      <ul>
+        {nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+        <li><a href="/tools/evidence-ledger-template/">Get the template</a></li>
+      </ul>
+    </details>
+  </div>
+</header>
+
+<style>
+  .site-header { position: relative; z-index: 10; }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: var(--s5);
+    height: 64px;
+  }
+  @media (min-width: 768px) { .bar { height: 72px; } }
+
+  .wordmark { display: block; line-height: 0; flex-shrink: 0; }
+  .wordmark-img { height: 24px; width: auto; }
+  @media (max-width: 480px) {
+    .wordmark-img { height: 36px; width: 36px; object-fit: cover; object-position: left; }
+  }
+
+  .nav-desktop { display: none; margin-left: var(--s6); flex: 1; }
+  .nav-desktop ul { display: flex; gap: var(--s6); list-style: none; margin: 0; padding: 0; }
+  .nav-desktop a {
+    color: var(--on-dark-muted);
+    text-decoration: none;
+    font-size: var(--t-body-s);
+    font-weight: 600;
+  }
+  .nav-desktop a:hover { color: var(--on-dark); }
+
+  .nav-cta { display: none; margin-left: auto; }
+
+  @media (min-width: 768px) {
+    .nav-desktop { display: block; }
+    .nav-cta { display: inline-flex; }
+    .nav-mobile { display: none; }
+  }
+
+  .nav-mobile { margin-left: auto; }
+  .nav-mobile summary {
+    list-style: none;
+    cursor: pointer;
+    color: var(--on-dark);
+    font-weight: 700;
+    padding: var(--s2) var(--s3);
+  }
+  .nav-mobile summary::-webkit-details-marker { display: none; }
+  .nav-mobile[open] summary { color: var(--pain-on-dark); }
+  .nav-mobile ul {
+    position: absolute;
+    right: var(--gutter);
+    top: 100%;
+    background: var(--surface-dark-raised);
+    border: 1px solid var(--hairline-dark);
+    border-radius: var(--r-card);
+    list-style: none;
+    margin: var(--s2) 0 0;
+    padding: var(--s3);
+    min-width: 200px;
+  }
+  .nav-mobile a {
+    display: block;
+    padding: var(--s2) var(--s2);
+    color: var(--on-dark-muted);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .nav-mobile a:hover { color: var(--on-dark); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 var(--s5);
+    border-radius: var(--r-pill);
+    font-weight: 700;
+    font-size: var(--t-body-s);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--build-on-dark);
+    color: var(--ink);
+  }
+  .btn-primary:hover { background: #5BD6BB; color: var(--ink); }
+</style>

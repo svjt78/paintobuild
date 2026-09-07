@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="t d">
+  <title id="t">Paintobuild monogram</title>
+  <desc id="d">A lowercase p and b connected by a right-facing negative-space arrow, with an orange signal circle and mint build square.</desc>
+  <defs>
+    <mask id="arrow-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+      <rect width="1024" height="1024" fill="white"/>
+      <path d="M432 520h88v-42l98 97-98 97v-42h-88z" fill="black"/>
+    </mask>
+  </defs>
+  <rect width="1024" height="1024" rx="184" fill="#101827"/>
+  <g fill="#F7F5EF" stroke="#F7F5EF" mask="url(#arrow-cut)">
+    <rect x="168" y="295" width="116" height="545" rx="12" stroke="none"/>
+    <circle cx="358" cy="575" r="190" fill="none" stroke-width="116"/>
+    <rect x="476" y="295" width="116" height="280" rx="12" stroke="none"/>
+    <circle cx="666" cy="575" r="190" fill="none" stroke-width="116"/>
+  </g>
+  <circle cx="226" cy="220" r="46" fill="#FF8A3D"/>
+  <rect x="490" y="174" width="92" height="92" rx="14" fill="#31C7A5"/>
+</svg>

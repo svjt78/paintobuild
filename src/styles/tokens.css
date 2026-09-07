@@ -1,0 +1,73 @@
+/* PainToBuild design tokens — Design & Build Specification v1.1, §5 */
+
+:root {
+  /* --- Light surface (reading environment), §5.1 --- */
+  --surface:            #F7F5EF;
+  --surface-raised:     #FFFFFF;
+  --surface-sunken:     #EFEDE4;
+
+  --ink:                #101827;
+  --ink-soft:           #262F42;
+  --muted:              #616875;
+  --hairline:           #DCD8CC;
+
+  --pain:               #E76823;
+  --pain-strong:        #BC4F15;
+  --build:              #157F69;
+  --build-bright:       #31C7A5;
+  --danger:             #9B1C1C;
+  --tint-pale:          #E4E2D8;
+
+  /* --- Dark surface (shell), §5.1 --- */
+  --surface-dark:        #101827;
+  --surface-dark-deep:   #0C1220;
+  --surface-dark-raised: #17233A;
+  --shell-gradient: linear-gradient(160deg, #0C1220 0%, #101827 55%, #17233A 100%);
+
+  --on-dark:             #F7F5EF;
+  --on-dark-muted:       #C7CBD6;
+  --on-dark-quiet:       #9AA0AE;
+  --hairline-dark:       #2A3550;
+
+  --pain-on-dark:        #FF8A3D;
+  --build-on-dark:       #31C7A5;
+  --danger-on-dark:      #F87171;
+
+  /* --- Typography, §5.2 --- */
+  --font-sans:  "Figtree Variable", "Figtree", "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "Source Serif 4 Variable", "Source Serif 4", "Nimbus Roman", Georgia, "Times New Roman", serif;
+  --font-mono:  ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --t-display: clamp(2.5rem, 1.6rem + 3.6vw, 4rem);
+  --t-h1:      clamp(2rem, 1.4rem + 2.2vw, 3rem);
+  --t-h2:      clamp(1.5rem, 1.2rem + 1.1vw, 2rem);
+  --t-h3:      1.25rem;
+  --t-kicker:  0.8125rem;
+  --t-lede:    1.1875rem;
+  --t-body:    1.0625rem;
+  --t-body-s:  0.9375rem;
+  --t-caption: 0.8125rem;
+  --t-quote:   1.125rem;
+
+  /* --- Space, grid, shape, §5.3 --- */
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px; --s5: 24px;
+  --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px; --s10: 128px;
+
+  --w-prose: 68ch;
+  --w-wide:  900px;
+  --w-shell: 1200px;
+  --gutter:  clamp(1rem, 4vw, 2.5rem);
+
+  --r-chip: 4px; --r-card: 8px; --r-panel: 14px; --r-pill: 999px;
+
+  --shadow-card: 0 1px 2px rgb(16 24 39 / .06), 0 8px 24px rgb(16 24 39 / .06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

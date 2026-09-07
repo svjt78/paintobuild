@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+import CtaBand from '../components/convert/CtaBand.astro';
+
+const title = 'PainToBuild — Evidence-Based Validation Research for Founders';
+const description = 'Evidence-based validation research for early-stage founders: recurring customer pain, reachable buyers, and practical tests before you build.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      name: 'PainToBuild',
+      url: 'https://paintobuild.com',
+      logo: 'https://paintobuild.com/brand/paintobuild-mark-black-1024.png',
+    },
+    {
+      '@type': 'WebSite',
+      name: 'PainToBuild',
+      url: 'https://paintobuild.com',
+    },
+  ],
+};
+---
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="hero shell-dark">
+    <div class="wrap hero-inner">
+      <Kicker>Evidence-based validation research</Kicker>
+      <h1>Find stronger evidence before you commit to building.</h1>
+      <p class="lede">
+        PainToBuild helps early-stage founders investigate recurring customer pain,
+        identify reachable users and design practical validation tests.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-dark" href="/tools/evidence-ledger-template/"
+           data-event="cta_click" data-event-page="/" data-event-cta-id="hero-template">
+          Get the evidence ledger template
+        </a>
+        <a class="btn-link" href="/methodology/">See the methodology</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="three-col">
+      <div class="col">
+        <h3>Is this problem worth pursuing?</h3>
+        <p class="muted">Recurring pain, verified across independent sources.</p>
+        <a href="/evidence/">Read the evidence hub →</a>
+      </div>
+      <div class="col">
+        <h3>Where are the buyers?</h3>
+        <p class="muted">Community access isn't buyer access.</p>
+        <a href="/evidence/community-access-is-not-buyer-access/">Read the analysis →</a>
+      </div>
+      <div class="col">
+        <h3>Why isn't launch turning into use?</h3>
+        <p class="muted">Signups without activation, diagnosed.</p>
+        <a href="/diagnostics/signups-no-core-feature-use/">Read the diagnostic →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section how-it-works">
+    <Kicker>How the evidence works</Kicker>
+    <h2>Four steps, every time</h2>
+    <ol class="steps">
+      <li>Observe public conversations</li>
+      <li>Log signals with independence rules</li>
+      <li>Publish a bounded analysis</li>
+      <li>State what it does not prove</li>
+    </ol>
+    <p><a href="/methodology/">Read the full methodology →</a></p>
+  </section>
+
+  <section class="wrap section">
+    <Kicker>Latest analyses</Kicker>
+    <h2>Coming soon</h2>
+    <p class="muted prose">
+      The first evidence analyses are in progress and will publish here. In the meantime,
+      the methodology behind them is already documented.
+    </p>
+  </section>
+
+  <section class="wrap section not-list">
+    <h2>What this is not</h2>
+    <ul>
+      <li>Not an idea generator.</li>
+      <li>Not a community.</li>
+      <li>Not an AI tool that scores your idea.</li>
+      <li>Not proof anyone will pay.</li>
+    </ul>
+  </section>
+
+  <section class="wrap section products">
+    <div class="product-card">
+      <h3>Free evidence ledger template</h3>
+      <p class="muted">The column structure behind every analysis on this site.</p>
+      <a href="/tools/evidence-ledger-template/">Get the template →</a>
+    </div>
+    <div class="product-card">
+      <h3>The Builder Validation Brief — $19</h3>
+      <p class="muted">Four worked evidence entries, more added quarterly.</p>
+      <a href="/brief/">Learn more →</a>
+    </div>
+  </section>
+  <p class="wrap quiet-line"><a href="/analysis/">Need a hands-on read on your specific situation? See Focused Analysis.</a></p>
+
+  <CtaBand
+    heading="Start with the free template"
+    body="The same evidence-ledger structure behind every analysis on this site."
+    ctaHref="/tools/evidence-ledger-template/"
+    ctaLabel="Get the evidence ledger template"
+  />
+</BaseLayout>
+
+<style>
+  .hero { padding-block: var(--s9); }
+  .hero-inner { max-width: 720px; }
+  .hero h1 { font-size: var(--t-display); margin-block: var(--s4); }
+  .lede { font-size: var(--t-lede); color: var(--on-dark-muted); margin: 0 0 var(--s6); }
+  .hero-actions { display: flex; gap: var(--s5); align-items: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px; padding: 0 var(--s5); border-radius: var(--r-pill);
+    font-weight: 700; font-size: var(--t-body-s); text-decoration: none;
+  }
+  .btn-primary.btn-dark { background: var(--build-on-dark); color: var(--ink); }
+  .btn-primary.btn-dark:hover { background: #5BD6BB; }
+  .btn-link { color: var(--on-dark-muted); font-weight: 600; text-decoration: underline; }
+  .btn-link:hover { color: var(--on-dark); }
+
+  .section { padding-block: var(--s8); }
+  .three-col { display: grid; gap: var(--s6); grid-template-columns: 1fr; }
+  @media (min-width: 768px) { .three-col { grid-template-columns: repeat(3, 1fr); } }
+  .col h3 { margin-bottom: var(--s2); }
+  .muted { color: var(--muted); }
+
+  .steps { padding-left: var(--s5); display: grid; gap: var(--s3); max-width: var(--w-prose); }
+
+  .not-list ul { list-style: none; padding: 0; display: grid; gap: var(--s2); max-width: var(--w-prose); }
+  .not-list li { padding-left: var(--s5); position: relative; }
+  .not-list li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+
+  .products { display: grid; gap: var(--s5); grid-template-columns: 1fr; }
+  @media (min-width: 768px) { .products { grid-template-columns: 1fr 1fr; } }
+  .product-card {
+    background: var(--surface-raised);
+    border-radius: var(--r-card);
+    box-shadow: var(--shadow-card);
+    padding: var(--s6);
+  }
+  .quiet-line { color: var(--muted); font-size: var(--t-body-s); }
+</style>
