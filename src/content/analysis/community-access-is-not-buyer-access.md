@@ -1,9 +1,9 @@
 ---
 title: "Community Access Is Not Buyer Access"
 question: "How do I know whether a community contains actual buyers, rather than other founders?"
-shortAnswer: "A community where you can post is not the same as a community that contains people who will pay you. Across 17 confirmed cross-platform signals, the pattern is builders who already have a working product and an active posting habit — a community, by most definitions — who still describe reaching zero buyers, because the room is full of other builders, not customers. The fix isn't posting more; it's checking who is actually in the channel before you treat access to it as distribution."
-forYouIf: "This page is for after you've picked a channel and it isn't converting. If you're still deciding whether the underlying idea is worth building at all, read the pre-build validation page first."
-description: "A community where you can post is not the same as one with buyers in it. Real evidence from 17 signals on why builder-heavy spaces don't convert."
+shortAnswer: "A community you can post in can be full of people who will never buy from you. Across 17 confirmed cross-platform signals, builders who already ship a product and post regularly still report reaching zero buyers, because the room is mostly other builders. Check who is actually in a channel before you treat access to it as distribution."
+forYouIf: "This page is for after you've picked a channel and it isn't converting. If you're still deciding whether to build the underlying idea at all, read the pre-build validation page first."
+description: "Why builder-heavy communities so often fail to convert, worked through 17 first-person signals from founders who had already shipped a product."
 section: "evidence"
 cluster: "customer-access"
 confidence: "pain-validated"
@@ -37,9 +37,9 @@ sources:
     platform: "reddit"
     verifiedOn: 2026-07-30
 notProven:
-  - "That any specific subreddit or community is worthless. Some plainly do contain buyers for some products — this evidence doesn't audit any single channel."
-  - "That posting itself is the wrong tactic. One signal in this set reports real sales ($159 from 21 customers) after switching from broadcasting to replying inside threads where the actual audience was already gathered — the fix looks like targeting, not silence."
-  - "That distribution is solved once you find the 'right' room — only that a community and a buyer channel are not automatically the same thing."
+  - "That any specific subreddit or community is worthless. Some plainly do contain buyers for some products; this evidence doesn't audit any single channel."
+  - "That posting itself is the wrong tactic. One signal in this set reports real sales ($159 from 21 customers) after switching from broadcasting to replying inside threads where the audience had already gathered. The fix there looked like sharper targeting."
+  - "That distribution is solved once you find the 'right' room. The evidence shows only that a community and a buyer channel can be two entirely separate things."
 nextTest: "Find three live threads where someone unprompted describes your exact problem, and reply usefully there before posting anything of your own."
 relatedSlugs: ["reddit-product-validation"]
 noindex: false
@@ -47,7 +47,7 @@ noindex: false
 
 ## What this conclusion is based on
 
-Seventeen confirmed independent signals across five discovery runs between July and September 2026, drawn from Reddit, Hacker News and IndieHackers — all first-person accounts from people who already had a shipped, working product.
+Seventeen confirmed independent signals across five discovery runs between July and September 2026, drawn from Reddit, Hacker News and IndieHackers. Every one is a first-person account from someone who already had a shipped, working product.
 
 ## What the evidence shows
 
@@ -65,12 +65,12 @@ Seventeen confirmed independent signals across five discovery runs between July 
 
 ## What it probably means
 
-The recurring pattern isn't lack of effort, and it isn't a missing "community" to post in — most of these builders were already posting somewhere. It's that founder-focused spaces (build-in-public subreddits, IndieHackers itself) are disproportionately populated by other builders, not by the specific buyers a given product needs, so activity there doesn't convert the way activity in a genuine buyer channel would.
+Most of these builders were already posting somewhere, so effort isn't the problem. The spaces they post in, like build-in-public subreddits or IndieHackers itself, are dominated by other builders. The buyers a given product actually needs are mostly not in the room, so the activity doesn't convert the way it would in a genuine buyer channel.
 
 ## Decision criteria
 
-| Question to ask about a channel | If the honest answer is no |
+| Question to ask about a channel | If the answer is no |
 |---|---|
-| Are the people here your buyer, or people building the same kind of thing you are? | Treat it as a builder-support space, not a distribution channel |
+| Are the people here your buyer, or people building the same kind of thing you are? | Use it for builder feedback and look elsewhere for distribution |
 | Has anyone in it described paying for something like your product? | Weak evidence that it converts |
 | Are you replying inside existing buyer conversations, or broadcasting to the room? | Broadcasting to a builder-heavy room reliably underperforms |

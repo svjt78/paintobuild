@@ -1,9 +1,9 @@
 ---
 title: "Reddit Validation: How Much Evidence Is Enough"
 question: "Are three Reddit posts enough evidence to validate a product idea?"
-shortAnswer: "No — three posts show that people are saying the words \"validate my idea,\" not that your idea is validated. The real bar is independent first-person accounts, deduplicated across cross-posts and platforms, that also show people already trying and failing at a workaround, or naming a price they would pay. On that bar, the pre-build validation problem clears easily — 20 clean signals across five discovery runs and three platforms. But the same evidence run also found a crowded market of free AI idea-validators, so the honest next step isn't another opinion tool, it's a sourced, inspectable dossier."
+shortAnswer: "No. Three posts tell you that people type the words \"validate my idea,\" and nothing more. The real bar is independent first-person accounts, deduplicated across cross-posts and platforms, that also show someone already failing at a workaround or naming a price they would pay. On that bar the pre-build validation problem clears easily: 20 clean signals across five discovery runs and three platforms. The same evidence run also turned up a crowded market of free AI idea-validators, which is why the useful next step is a sourced, inspectable dossier rather than one more opinion tool."
 forYouIf: "This page is for before you build: you have an idea and want to know if the demand is real. If you already shipped something and signups aren't converting to use, the diagnostic on activation is the one to read instead."
-description: "Three Reddit posts are not proof of demand. The real evidence bar for validating an idea, worked through 20 real signals and a crowded validator market."
+description: "How much forum evidence it actually takes to validate demand for an idea, worked through 20 real signals and a crowded market of AI validators."
 section: "evidence"
 cluster: "validation"
 confidence: "pain-validated"
@@ -41,9 +41,9 @@ sources:
     platform: "web"
     verifiedOn: 2026-09-02
 notProven:
-  - "That any of the people quoted here will pay for a validation product — none of these quotes state willingness to pay for outside help, only difficulty doing it themselves."
+  - "That any of the people quoted here will pay for a validation product. None of these quotes state willingness to pay for outside help, only difficulty doing it themselves."
   - "That the market for idea-validation products is unmet. It is not: at least three funded AI-validator products (ValidatorAI, DimeADozen, IdeaBuddy) now serve exactly this audience for free or near-free."
-  - "That an evidence-based dossier outperforms an AI opinion for these specific people — no head-to-head comparison has been run."
+  - "That an evidence-based dossier outperforms an AI opinion for these specific people. No head-to-head comparison has been run."
 nextTest: "Pre-sell five niche-specific evidence dossiers at a fixed price before building anything generic."
 relatedSlugs: ["community-access-is-not-buyer-access"]
 noindex: false
@@ -67,17 +67,17 @@ Five discovery runs between July 9 and September 2, 2026, reading first-person R
 >
 > — r/apps, cross-posted to five other subreddits, August 2026
 
-Twenty clean signals like these span agency services, consumer study apps, dating apps for niche communities, and blockchain projects — very different products, the same missing step.
+Twenty clean signals like these span agency services, consumer study apps, dating apps for niche communities, and blockchain projects. Different products, the same missing step.
 
 ## What it probably means
 
-People building toward a first product consistently lack a concrete, audience-independent way to test demand before investing months in building. The pain recurs across incompatible product categories, which argues this is a generic go/no-build decision problem rather than something specific to one niche — and generic problems attract generic competition fast.
+People building toward a first product consistently lack a concrete, audience-independent way to test demand before spending months on it. The pain recurs across product categories that have nothing else in common, which points to a general go/no-build problem rather than a niche-specific one. General problems attract competition fast.
 
 ## Decision criteria
 
 | Signal in your own evidence | What it suggests |
 |---|---|
-| 3+ independent first-person accounts, no advisor or meta commentary | Worth investigating further |
+| 3+ independent first-person accounts, no advisor or meta commentary | Investigate further |
 | People already trying and abandoning a workaround | Stronger case |
 | A named price someone would pay, even a small one | Stronger case still |
-| The same pain recurring across unrelated product categories | Generic pain — expect crowded competition |
+| The same pain recurring across unrelated product categories | General pain, so expect crowded competition |

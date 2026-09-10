@@ -6,7 +6,7 @@ import ConfidenceTag from '../components/content/ConfidenceTag.astro';
 import CtaBand from '../components/convert/CtaBand.astro';
 
 const title = 'The Evidence Library | PainToBuild';
-const description = 'What public problem signals on Reddit, Hacker News and IndieHackers can and cannot establish about a founder decision, and every PainToBuild analysis built from them.';
+const description = 'What public problem signals on Reddit, Hacker News and IndieHackers establish about a founder decision, what they cannot, and every analysis built from them.';
 
 const entries = (await getCollection('analysis', ({ data }) => data.section === 'evidence'))
   .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
@@ -32,17 +32,17 @@ const jsonLd = {
     <Kicker>Evidence</Kicker>
     <h1>The evidence library</h1>
     <p class="lede">
-      Everything below starts from public posts and comments — people describing a real problem
-      in their own words, on Reddit, Hacker News and IndieHackers. That's a real signal. It is
-      also a limited one, and the limits matter as much as the pattern.
+      Everything below starts from public posts and comments: people describing a real problem
+      in their own words, on Reddit, Hacker News and IndieHackers. That's a real signal, and a
+      limited one. The limits matter as much as the pattern.
     </p>
 
     <h2>What a public signal can establish</h2>
     <p>
       That a specific, recurring pain is real, that more than one independent person describes it
-      the same way, and — when someone names a price or a workaround they already tried or paid
-      for — that there's some willingness to act on it. Every entry here requires at least three
-      independent, deduplicated, first-person accounts before it's treated as validated; advisor
+      the same way, and, when someone names a price or a workaround they already tried or paid
+      for, that there's some willingness to act on it. Every entry here requires at least three
+      independent, deduplicated, first-person accounts before it's treated as validated. Advisor
       comments, meta commentary about other people's pain, and cross-posts of the same account
       are all excluded from that count.
     </p>
@@ -51,14 +51,14 @@ const jsonLd = {
     <p>
       That anyone will pay <em>you</em> specifically, that a market isn't already crowded, or that
       the people complaining are reachable at a cost that makes a business work. Recurring
-      first-person pain is evidence worth investigating — it is not proof of demand for a product
-      that doesn't exist yet. Every analysis below states plainly what it does not prove, not just
-      what it found.
+      first-person pain is evidence to investigate. It is not proof of demand for a product
+      that doesn't exist yet. Every analysis below sets out what it does not prove alongside what
+      it found.
     </p>
 
     <p>
-      The full method — independence rules, confidence tiers, and the decision criteria applied
-      to every candidate — is on the <a href="/methodology/">methodology page</a>.
+      Independence rules, confidence tiers, and the decision criteria applied to every candidate
+      are all on the <a href="/methodology/">methodology page</a>.
     </p>
   </section>
 
@@ -82,7 +82,7 @@ const jsonLd = {
           <span class="entry-date">Post-launch</span>
         </div>
         <h3>Seventy people signed up, but only one used the core feature. What should I investigate?</h3>
-        <p class="entry-answer">The after-launch counterpart to the pages above — for when signups exist but usage doesn't.</p>
+        <p class="entry-answer">The after-launch counterpart to the pages above, for when signups exist but usage doesn't.</p>
         <span class="entry-link">Read the diagnostic →</span>
       </a>
     </div>

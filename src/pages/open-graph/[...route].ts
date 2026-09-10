@@ -6,14 +6,14 @@ import { OGImageRoute } from 'astro-og-canvas';
 export const { getStaticPaths, GET } = await OGImageRoute({
   pages: {
     index: {
-      title: 'PainToBuild — Evidence-Based Research for Builders and Everyday Life',
+      title: 'PainToBuild — Evidence Before You Build',
       description:
-        'Two evidence-based research tracks: validation research for early-stage founders, and default audits testing whether everyday productivity, communication and consumer advice actually holds up.',
+        'PainToBuild helps early-stage founders check an idea for recurring pain, reachable buyers and real demand before writing a line of code.',
     },
     about: {
       title: 'About | PainToBuild',
       description:
-        "What PainToBuild is, the evidence-based research system behind it, and why the operator writes under a pseudonym.",
+        'What PainToBuild is, the weekly evidence system behind it, and why the operator writes under a pseudonym instead of a named byline.',
     },
     brief: {
       title: 'The Builder Validation Brief — $19 | PainToBuild',

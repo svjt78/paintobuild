@@ -5,3 +5,5 @@ dist/
 .env
 .DS_Store
 CLAUDE.md
+paintobuild-human-voice-spec.md
+paintobuild-human-voice-observations.md

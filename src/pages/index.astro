@@ -9,7 +9,7 @@ const latestAnalyses = (await getCollection('analysis', ({ data }) => data.secti
   .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
 
 const title = 'PainToBuild — Evidence Before You Build';
-const description = 'PainToBuild tests your startup idea against real evidence — recurring pain, reachable buyers, actual demand — before you write a line of code.';
+const description = 'For early-stage founders weighing whether to build, PainToBuild checks an idea for recurring pain, reachable buyers and real demand before code gets written.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -36,8 +36,8 @@ const jsonLd = {
       <Kicker>For early-stage founders</Kicker>
       <h1>You're about to spend months building something nobody wants.</h1>
       <p class="lede">
-        PainToBuild tests your idea against real evidence — recurring pain, reachable
-        buyers, actual demand — before you write a line of code.
+        Before you write a line of code, PainToBuild tests your idea against real
+        evidence: recurring pain, reachable buyers, actual demand.
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary btn-dark" href="/tools/evidence-ledger-template/"
@@ -117,7 +117,7 @@ const jsonLd = {
         <Button href="/tools/evidence-ledger-template/" variant="primary">Get the template →</Button>
       </div>
       <div class="product-card">
-        <h3>The Builder Validation Brief — $19</h3>
+        <h3>The Builder Validation Brief · $19</h3>
         <p class="muted">Four worked evidence entries, more added quarterly.</p>
         <Button href="/brief/" variant="secondary">Learn more →</Button>
       </div>
