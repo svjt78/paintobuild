@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Kicker from '../components/content/Kicker.astro';
+import CtaBand from '../components/convert/CtaBand.astro';
 
 const title = 'About | PainToBuild';
-const description = 'What PainToBuild is, the evidence-based research system behind it, and why the operator writes under a pseudonym.';
+const description = 'What PainToBuild is, the weekly evidence system behind it, and why the operator writes under a pseudonym instead of a named byline.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -11,32 +12,74 @@ const jsonLd = {
   about: { '@type': 'Organization', name: 'PainToBuild', url: 'https://paintobuild.com' },
 };
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImagePath="/open-graph/about.png">
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <section class="wrap section prose">
     <Kicker>About</Kicker>
     <h1>About PainToBuild</h1>
 
-    <!--
-      Placeholder page for Phase 0 (site-live gate only).
-      Full copy — the research-system description and the pseudonymity
-      explanation per §8.10 of the design doc — is written in Phase 1,
-      once content decisions are finalized. Do not treat the paragraph
-      below as final.
-    -->
-    <p class="draft-note">This page is a placeholder while the site is being built. Full content — what PainToBuild is, how the evidence process works, and why it's written under a pseudonym — is coming in the next phase.</p>
+    <p class="lede">
+      I run a small, weekly research system that reads public founder conversations for
+      recurring, evidence-backed pain — and I write it up plainly, including the parts that
+      don't prove what people want them to prove.
+    </p>
 
-    <p><a href="/contact/">Contact</a></p>
+    <h2>What this is</h2>
+    <p>
+      Every week, the system reads new Reddit, Hacker News and IndieHackers activity for people
+      describing a real, recurring problem in their own words. Candidates that reach at least
+      three independent, first-person signals move into deeper validation: repetition across
+      threads and platforms, evidence of money already moving nearby, and an honest read on how
+      crowded the space already is. Everything that clears that bar gets logged, dated, and
+      sourced in an evidence file before it becomes a page here or an entry in the $19 Validation
+      Brief. Nothing gets published that isn't already evidenced in that file — see the
+      <a href="/methodology/">methodology</a> for the full rules.
+    </p>
+
+    <h2>Two research tracks</h2>
+    <p>
+      <strong>Founder Solutions</strong> is the original track: validation research for
+      early-stage founders and solopreneurs — recurring customer pain, reachable buyers, and the
+      practical tests that separate a real opportunity from a well-written idea. <strong>Everyday
+      Default Audits</strong> is a newer, second track applying the same evidence standard outside
+      of building a company: the productivity systems, communication habits and consumer "best
+      practices" that get repeated as default advice but haven't been tested against real
+      evidence. It's still early — see <a href="/everyday/">what's coming</a>.
+    </p>
+
+    <h2>What this deliberately isn't</h2>
+    <ul>
+      <li>Not an idea generator, and not a community.</li>
+      <li>Not an AI tool that scores your idea in thirty seconds.</li>
+      <li>Not proof that anyone will pay for anything — recurring pain and willingness to pay are
+        different questions, and this site never lets one stand in for the other.</li>
+      <li>Not built from posting or engaging on Reddit — the discovery process is read-only
+        listening, not participation dressed up as research.</li>
+    </ul>
+
+    <h2>Why no name</h2>
+    <p>
+      This work is deliberately separated from my unrelated day-job professional identity. That's
+      not a marketing device and it isn't meant to manufacture mystery — it's a boundary I keep on
+      purpose, the same way plenty of people keep a side project separate from their employer.
+      What should earn your trust isn't a byline; it's whether the methodology is transparent
+      enough to check, whether the evidence is dated and sourced, and whether the site is honest
+      about what it hasn't proven. Judge PainToBuild on those, not on a name.
+    </p>
+
+    <p><a href="/contact/">Get in touch</a> if you have a question, a correction, or a signal worth investigating.</p>
   </section>
+
+  <CtaBand
+    heading="See the evidence standard"
+    body="The independence rules, confidence tiers and decision criteria behind every page on this site."
+    ctaHref="/methodology/"
+    ctaLabel="Read the methodology"
+  />
 </BaseLayout>
 
 <style>
-  .section { padding-block: var(--s8); }
-  .draft-note {
-    background: var(--surface-sunken);
-    border-radius: var(--r-card);
-    padding: var(--s5);
-    color: var(--muted);
-  }
+  .section { padding-block: var(--s7) var(--s8); }
+  .lede { font-size: var(--t-lede); color: var(--ink-soft); }
 </style>

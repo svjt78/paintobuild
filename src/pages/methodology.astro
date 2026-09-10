@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+import CtaBand from '../components/convert/CtaBand.astro';
+
+const title = 'The PainToBuild Validation Methodology';
+const description = 'How PainToBuild counts an independent signal, separates pain from willingness to pay, and decides build, change, watch or stop — worked through one real example.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  author: { '@type': 'Organization', name: 'PainToBuild' },
+};
+---
+<BaseLayout title={`${title} | PainToBuild`} description={description} ogImagePath="/open-graph/methodology.png">
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="wrap section prose">
+    <Kicker>Methodology</Kicker>
+    <h1>{title}</h1>
+    <p class="lede">
+      Every analysis on this site is built the same way, from the same rules. This page is that
+      method, in full — not a summary — so any claim elsewhere on the site can be checked against
+      the standard that produced it.
+    </p>
+
+    <h2 id="evidence-categories">What counts as evidence</h2>
+    <p>
+      A first-person account of a real problem, in the person's own words, from a public forum:
+      Reddit posts and comments, Hacker News threads, or IndieHackers posts. Nothing here is
+      survey data or a controlled study — it's public conversation, read carefully and counted
+      strictly.
+    </p>
+
+    <h2 id="independence">What makes a signal independent</h2>
+    <p>
+      An independent signal is the same problem described by a <strong>different person</strong>,
+      in their own first-person words — not a different comment, not a different repost. Specifically:
+    </p>
+    <ul>
+      <li>The same person posting more than once, anywhere, still counts as one.</li>
+      <li>A cross-post of the same thread to another subreddit is deduplicated to one.</li>
+      <li>An <strong>advisor</strong> answering in someone else's thread doesn't count — only the
+        original poster's own words do, and only if recovered and genuine.</li>
+      <li>A <strong>meta observation</strong> ("I keep seeing people ask this") counts as
+        corroboration, never as an independent signal on its own.</li>
+      <li>A <strong>promotional post</strong> using the pain as a pitch hook for the poster's own
+        product doesn't count as evidence of demand.</li>
+    </ul>
+    <p>
+      <strong>Threshold:</strong> below three independent signals, a candidate stays parked — no
+      page gets built on it. At three or more, deeper validation starts.
+    </p>
+
+    <h2 id="strength-levels">Clean signals vs. weak signals</h2>
+    <p>
+      A <strong>clean</strong> signal is a confirmed, first-person, non-casual account of recurring
+      pain. A <strong>weak</strong> signal is real but thinner — a shorter post, a single cross-post
+      chain, or language that reads closer to curiosity than desperation. Every analysis states
+      both counts separately rather than folding weak signals into the headline number.
+    </p>
+
+    <h2 id="confidence-tiers">Confidence tiers</h2>
+    <p>
+      Every published analysis carries one of two tags:
+    </p>
+    <ul>
+      <li><strong>Pain Validated</strong> — three or more independent, clean, first-person signals
+        confirming a recurring problem.</li>
+      <li><strong>Early Signal</strong> — real evidence exists but hasn't yet cleared the
+        independent-signal bar.</li>
+    </ul>
+    <p>
+      Neither tag means "proven demand." <strong>Pain Validated means the pain is real and
+      recurring — it does not mean anyone will pay to have it solved.</strong> That's a separate
+      question, addressed below.
+    </p>
+
+    <h2 id="contradictions">Contradictions and counter-evidence</h2>
+    <p>
+      Evidence that cuts against a candidate is logged with the same rigor as evidence for it —
+      most often as a saturation signal: a competing product, a free tool, or a market observation
+      that narrows the gap. A candidate can be pain-validated and still be a weak opportunity if
+      counter-evidence shows the space is already well served.
+    </p>
+
+    <h2 id="external-validation">External / money-moving validation</h2>
+    <p>
+      Where possible, each analysis also checks for money already moving nearby: existing paid
+      products, a stated price someone would pay, or a workaround someone paid for. Money-moving
+      evidence is stronger than stated pain alone, because it shows behavior, not just words.
+    </p>
+
+    <h2 id="exclusions">What gets excluded</h2>
+    <p>
+      Advisor comments, meta commentary, self-promotional posts, and anything that can't be traced
+      to a specific first-person sufferer are excluded from every signal count — logged, if
+      relevant, but never counted toward validation.
+    </p>
+
+    <h2 id="problem-vs-payment">Recurring pain is not proof of payment</h2>
+    <p>
+      This is the single most important distinction in the whole method. Someone describing a
+      problem, even desperately, is not the same as someone who has paid — or would pay — to have
+      it solved. Every analysis on this site keeps those two claims separate and never lets one
+      stand in for the other.
+    </p>
+
+    <h2 id="limitations">Limitations</h2>
+    <ul>
+      <li>The sample is whoever posts publicly on Reddit, Hacker News and IndieHackers — not a
+        representative survey of founders or of any wider population.</li>
+      <li>This is one operator's reading of public text, not a peer-reviewed study.</li>
+      <li>Evidence windows are dated and can go stale; each analysis states the window it covers.</li>
+    </ul>
+
+    <h2 id="privacy">Privacy</h2>
+    <p>
+      No platform username is ever printed on this site. Every quote is attributed by platform and
+      date only. This is a standing rule, not a style choice — a violation of it is treated as a
+      launch blocker for any page.
+    </p>
+
+    <h2 id="decision-criteria">Decision criteria</h2>
+    <p>
+      Once a candidate clears the independent-signal gate, it's scored across twelve dimensions
+      (1–5 each) — pain intensity, frequency, urgency, failed alternatives, willingness to pay,
+      specificity, reachable audience, evidence strength, saturation gap, risk (reverse-scored,
+      5 = safe), fast-cash feasibility, and long-term revenue potential. The composite score is
+      the plain, unweighted mean of those twelve numbers — no hidden weighting, no ad-hoc
+      adjustment. Every score on this site is recomputable from its own inputs.
+    </p>
+    <table>
+      <thead><tr><th>Composite range</th><th>What it means here</th></tr></thead>
+      <tbody>
+        <tr><td>Below the 3-signal gate</td><td>Parked — not scored yet</td></tr>
+        <tr><td>Scored, saturation or risk drags it down</td><td>Validate more / Park</td></tr>
+        <tr><td>Strong opportunity</td><td>Clears the gate, scores well, real gap exists</td></tr>
+        <tr><td>Build first experiment</td><td>The final call once evidence, saturation and risk all clear</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Worked example</h2>
+    <p>
+      One real signal, scored the way every analysis on this site is scored:
+    </p>
+    <blockquote>
+      "I sat there staring at my analytics dashboard — zero conversions, zero traffic, zero
+      everything."
+      <p>— IndieHackers, August 2026</p>
+    </blockquote>
+    <p>
+      The account describes four months building in isolation (90% coding, 10% customer
+      discovery), a launch with zero traffic, and a recovery only after switching to
+      intent-based outreach in threads where buyers already gathered. <strong>Classification:</strong>
+      desperate recurring problem, not casual curiosity — it names a specific failure, a duration,
+      and a concrete before/after. <strong>Independence:</strong> one first-person sufferer, one
+      account, no advisor or meta framing — counts as one signal toward the zero-audience
+      distribution candidate, which reached 17 confirmed signals across five discovery runs before
+      publication. <strong>What it does not prove on its own:</strong> that this one account's fix
+      (targeted outreach over broadcasting) generalizes to every zero-audience founder — that
+      claim rests on the pattern across all 17 signals, not this one. See the full analysis on
+      <a href="/evidence/community-access-is-not-buyer-access/">community access vs. buyer access</a>.
+    </p>
+  </section>
+
+  <CtaBand
+    heading="See it applied"
+    body="Read a full analysis built with this exact method, sources included."
+    ctaHref="/evidence/reddit-product-validation/"
+    ctaLabel="See a worked analysis"
+  />
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s7) var(--s8); }
+  .lede { font-size: var(--t-lede); color: var(--ink-soft); }
+  table { width: 100%; border-collapse: collapse; font-size: var(--t-body-s); margin: var(--s5) 0; }
+  th, td { text-align: left; padding: var(--s3); border: 1px solid var(--hairline); }
+  th { background: var(--surface-sunken); }
+  blockquote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--t-quote);
+    color: var(--ink-soft);
+    border-left: 3px solid var(--hairline);
+    padding-left: var(--s5);
+    margin: var(--s6) 0;
+  }
+  blockquote p { font-family: var(--font-sans); font-style: normal; font-size: var(--t-caption); color: var(--muted); margin: var(--s2) 0 0; }
+</style>

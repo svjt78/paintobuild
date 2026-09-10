@@ -1,10 +1,15 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Kicker from '../components/content/Kicker.astro';
-import CtaBand from '../components/convert/CtaBand.astro';
+import Button from '../components/convert/Button.astro';
+import ConfidenceTag from '../components/content/ConfidenceTag.astro';
 
-const title = 'PainToBuild — Evidence-Based Validation Research for Founders';
-const description = 'Evidence-based validation research for early-stage founders: recurring customer pain, reachable buyers, and practical tests before you build.';
+const latestAnalyses = (await getCollection('analysis', ({ data }) => data.section === 'evidence'))
+  .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
+
+const title = 'PainToBuild — Evidence Before You Build';
+const description = 'PainToBuild tests your startup idea against real evidence — recurring pain, reachable buyers, actual demand — before you write a line of code.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -23,28 +28,29 @@ const jsonLd = {
   ],
 };
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImagePath="/open-graph/index.png">
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <section class="hero shell-dark">
     <div class="wrap hero-inner">
-      <Kicker>Evidence-based validation research</Kicker>
-      <h1>Find stronger evidence before you commit to building.</h1>
+      <Kicker>For early-stage founders</Kicker>
+      <h1>You're about to spend months building something nobody wants.</h1>
       <p class="lede">
-        PainToBuild helps early-stage founders investigate recurring customer pain,
-        identify reachable users and design practical validation tests.
+        PainToBuild tests your idea against real evidence — recurring pain, reachable
+        buyers, actual demand — before you write a line of code.
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary btn-dark" href="/tools/evidence-ledger-template/"
            data-event="cta_click" data-event-page="/" data-event-cta-id="hero-template">
-          Get the evidence ledger template
+          Get the free evidence ledger template
         </a>
-        <a class="btn-link" href="/methodology/">See the methodology</a>
+        <a class="btn-link" href="/methodology/">See how the evidence works →</a>
       </div>
     </div>
   </section>
 
   <section class="wrap section">
+    <Kicker>Sound familiar?</Kicker>
     <div class="three-col">
       <div class="col">
         <h3>Is this problem worth pursuing?</h3>
@@ -78,11 +84,17 @@ const jsonLd = {
 
   <section class="wrap section">
     <Kicker>Latest analyses</Kicker>
-    <h2>Coming soon</h2>
-    <p class="muted prose">
-      The first evidence analyses are in progress and will publish here. In the meantime,
-      the methodology behind them is already documented.
-    </p>
+    <h2>Read the evidence</h2>
+    <div class="latest-grid">
+      {latestAnalyses.map((entry) => (
+        <a class="latest-card" href={`/evidence/${entry.id}/`}>
+          <ConfidenceTag confidence={entry.data.confidence} signalCount={entry.data.signalCount} weakSignalCount={entry.data.weakSignalCount} />
+          <h3>{entry.data.question}</h3>
+          <p class="muted">{entry.data.shortAnswer.split('. ')[0]}.</p>
+          <span class="latest-date">Updated {entry.data.updated.toISOString().slice(0, 10)}</span>
+        </a>
+      ))}
+    </div>
   </section>
 
   <section class="wrap section not-list">
@@ -95,26 +107,30 @@ const jsonLd = {
     </ul>
   </section>
 
-  <section class="wrap section products">
-    <div class="product-card">
-      <h3>Free evidence ledger template</h3>
-      <p class="muted">The column structure behind every analysis on this site.</p>
-      <a href="/tools/evidence-ledger-template/">Get the template →</a>
+  <section class="wrap section get-started">
+    <Kicker>Get started</Kicker>
+    <h2>Two ways to get the evidence</h2>
+    <div class="products">
+      <div class="product-card product-primary">
+        <h3>Free evidence ledger template <span class="badge">Start here</span></h3>
+        <p class="muted">The column structure behind every analysis on this site.</p>
+        <Button href="/tools/evidence-ledger-template/" variant="primary">Get the template →</Button>
+      </div>
+      <div class="product-card">
+        <h3>The Builder Validation Brief — $19</h3>
+        <p class="muted">Four worked evidence entries, more added quarterly.</p>
+        <Button href="/brief/" variant="secondary">Learn more →</Button>
+      </div>
     </div>
-    <div class="product-card">
-      <h3>The Builder Validation Brief — $19</h3>
-      <p class="muted">Four worked evidence entries, more added quarterly.</p>
-      <a href="/brief/">Learn more →</a>
-    </div>
+    <p class="quiet-line">
+      <a href="/analysis/">Need a hands-on read on your specific situation? See Focused Analysis.</a>
+      &nbsp;·&nbsp;
+      <a href="https://paintobuild.gumroad.com" target="_blank" rel="noopener noreferrer"
+         data-event="cta_click" data-event-page="/" data-event-cta-id="footer-line-shop">
+        See everything for sale on Gumroad ↗
+      </a>
+    </p>
   </section>
-  <p class="wrap quiet-line"><a href="/analysis/">Need a hands-on read on your specific situation? See Focused Analysis.</a></p>
-
-  <CtaBand
-    heading="Start with the free template"
-    body="The same evidence-ledger structure behind every analysis on this site."
-    ctaHref="/tools/evidence-ledger-template/"
-    ctaLabel="Get the evidence ledger template"
-  />
 </BaseLayout>
 
 <style>
@@ -134,7 +150,7 @@ const jsonLd = {
   .btn-link:hover { color: var(--on-dark); }
 
   .section { padding-block: var(--s8); }
-  .three-col { display: grid; gap: var(--s6); grid-template-columns: 1fr; }
+  .three-col { display: grid; gap: var(--s6); grid-template-columns: 1fr; margin-top: var(--s5); }
   @media (min-width: 768px) { .three-col { grid-template-columns: repeat(3, 1fr); } }
   .col h3 { margin-bottom: var(--s2); }
   .muted { color: var(--muted); }
@@ -145,7 +161,7 @@ const jsonLd = {
   .not-list li { padding-left: var(--s5); position: relative; }
   .not-list li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
 
-  .products { display: grid; gap: var(--s5); grid-template-columns: 1fr; }
+  .products { display: grid; gap: var(--s5); grid-template-columns: 1fr; margin-top: var(--s5); }
   @media (min-width: 768px) { .products { grid-template-columns: 1fr 1fr; } }
   .product-card {
     background: var(--surface-raised);
@@ -153,5 +169,31 @@ const jsonLd = {
     box-shadow: var(--shadow-card);
     padding: var(--s6);
   }
-  .quiet-line { color: var(--muted); font-size: var(--t-body-s); }
+  .product-card.product-primary { border: 1.5px solid var(--build); }
+  .product-card h3 { display: flex; align-items: center; gap: var(--s3); flex-wrap: wrap; margin-bottom: var(--s2); }
+  .badge {
+    font-size: var(--t-caption);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--pain-strong);
+    background: var(--tint-pale);
+    border-radius: var(--r-chip);
+    padding: 2px var(--s2);
+  }
+  .quiet-line { color: var(--muted); font-size: var(--t-body-s); margin-top: var(--s5); }
+
+  .latest-grid { display: grid; gap: var(--s5); grid-template-columns: 1fr; margin-top: var(--s5); }
+  @media (min-width: 768px) { .latest-grid { grid-template-columns: repeat(3, 1fr); } }
+  .latest-card {
+    display: block;
+    background: var(--surface-raised);
+    border-radius: var(--r-card);
+    box-shadow: var(--shadow-card);
+    padding: var(--s5);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .latest-card h3 { font-size: var(--t-h3); margin: var(--s3) 0 var(--s2); }
+  .latest-date { display: block; margin-top: var(--s3); font-size: var(--t-caption); color: var(--muted); }
 </style>

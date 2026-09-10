@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+
+const title = 'Contact | PainToBuild';
+const description = 'How to reach PainToBuild by email — corrections, evidence tips, or questions about the Brief or Focused Analysis.';
+---
+<BaseLayout title={title} description={description}>
+  <section class="wrap section prose">
+    <Kicker>Contact</Kicker>
+    <h1>Contact</h1>
+    <p class="lede">
+      Email is the only contact route — no social DMs, no chat widget.
+    </p>
+    <p>
+      <a href="mailto:hello@paintobuild.com">hello@paintobuild.com</a>
+    </p>
+    <p class="note">
+      Expect a reply within 2–3 business days. That's a real commitment, not a placeholder — if
+      it stops being true, this line gets updated.
+    </p>
+    <h2>What to write in about</h2>
+    <ul>
+      <li>A correction to something published — sources, dates, or a claim that overstates the evidence.</li>
+      <li>A signal or thread worth investigating for a future analysis.</li>
+      <li>Questions about the $19 Brief, the free template, or Focused Analysis.</li>
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s7) var(--s8); }
+  .lede { font-size: var(--t-lede); color: var(--ink-soft); }
+  .note { background: var(--surface-sunken); border-radius: var(--r-card); padding: var(--s5); color: var(--muted); }
+</style>

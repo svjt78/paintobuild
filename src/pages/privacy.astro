@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+
+const title = 'Privacy Policy | PainToBuild';
+const description = 'What PainToBuild collects — email via MailerLite, cookie-free analytics via Cloudflare — and how to have your data deleted.';
+const lastReviewed = new Date().toISOString().slice(0, 10);
+---
+<BaseLayout title={title} description={description}>
+  <section class="wrap section prose">
+    <Kicker>Legal</Kicker>
+    <h1>Privacy Policy</h1>
+    <p class="lede">This site collects as little as it can get away with. Here is everything it does collect.</p>
+
+    <h2>Email, if you give it to us</h2>
+    <p>
+      If you request the free evidence ledger template, your email address is stored with
+      MailerLite to deliver the template and, if you don't unsubscribe, occasional emails about
+      new analyses. You can unsubscribe from any email, or write to
+      <a href="mailto:hello@paintobuild.com">hello@paintobuild.com</a> to have your address
+      deleted outright.
+    </p>
+
+    <h2>Site analytics</h2>
+    <p>
+      Traffic is measured with Cloudflare Web Analytics, which does not use cookies and does not
+      track you individually across sites. It tells us which pages get read and roughly where
+      traffic comes from — nothing that identifies you personally.
+    </p>
+
+    <h2>Purchases</h2>
+    <p>
+      The $19 Validation Brief and Focused Analysis are both sold through Gumroad, which handles
+      payment and any billing data directly. This site never sees or stores your card details.
+    </p>
+
+    <h2>What this site does not do</h2>
+    <ul>
+      <li>No third-party ad trackers.</li>
+      <li>No sale of any data to anyone, ever.</li>
+      <li>No tracking cookies beyond what your browser needs to load the page.</li>
+    </ul>
+
+    <h2>Deletion</h2>
+    <p>
+      Email <a href="mailto:hello@paintobuild.com">hello@paintobuild.com</a> and any stored email
+      address or record tied to you is deleted within a reasonable time.
+    </p>
+
+    <p class="note">Last reviewed {lastReviewed}.</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s7) var(--s8); }
+  .lede { font-size: var(--t-lede); color: var(--ink-soft); }
+  .note { color: var(--muted); font-size: var(--t-caption); }
+</style>

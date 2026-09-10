@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Kicker from '../../components/content/Kicker.astro';
+import EmailCapture from '../../components/convert/EmailCapture.astro';
+
+const title = 'The Evidence Ledger Template | PainToBuild';
+const description = 'The free column structure PainToBuild uses to log evidence, sources and independence before publishing any analysis — with one filled example row.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'The Evidence Ledger Template',
+  description,
+  author: { '@type': 'Organization', name: 'PainToBuild' },
+};
+---
+<BaseLayout title={title} description={description} ogImagePath="/open-graph/tools-evidence-ledger-template.png">
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="wrap section prose">
+    <Kicker>Free template</Kicker>
+    <h1>The evidence ledger template</h1>
+    <p class="lede">
+      This is the exact row structure behind every analysis on this site — the same one used to
+      decide whether a candidate has three independent signals before anything gets published.
+    </p>
+
+    <h2>What an evidence ledger is</h2>
+    <p>
+      A flat log, one row per piece of evidence, that forces three questions before you count
+      anything toward validation: is this a distinct person, is it their own first-person words,
+      and can you point at the source. Most idea-validation failures aren't a bad idea — they're
+      mistaking three loud comments in one thread for three independent buyers.
+    </p>
+
+    <h2>The column structure</h2>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Evidence ID</th><th>Candidate ID</th><th>Source platform</th><th>Distinct user?</th>
+            <th>Date</th><th>Snippet / quote</th><th>Counts as independent?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>E-001</td>
+            <td>C-001</td>
+            <td>Reddit, r/indiehackers</td>
+            <td>Yes</td>
+            <td>2026-07-16</td>
+            <td>"…shutting the product down; every attempt felt like posting into the void"</td>
+            <td>Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">
+      That's a real, published row — see the full writeup in
+      <a href="/evidence/community-access-is-not-buyer-access/">community access vs. buyer access</a>.
+      The "distinct user?" and "counts as independent?" columns are what actually gate a candidate:
+      a repost, an advisor comment, or a promotional post gets logged but marked "No," and doesn't
+      count toward the three-signal threshold. Full rules on the
+      <a href="/methodology/">methodology page</a>.
+    </p>
+
+    <h2>Get the template</h2>
+    <p>Enter your email and the full template — with the complete column set and instructions — is sent to you directly.</p>
+    <EmailCapture pagePath="/tools/evidence-ledger-template/" />
+  </section>
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s7) var(--s8); }
+  .lede { font-size: var(--t-lede); color: var(--ink-soft); }
+  .table-scroll { overflow-x: auto; margin: var(--s5) 0; }
+  table { width: 100%; border-collapse: collapse; font-size: var(--t-body-s); min-width: 640px; }
+  th, td { text-align: left; padding: var(--s3); border: 1px solid var(--hairline); vertical-align: top; }
+  th { background: var(--surface-sunken); white-space: nowrap; }
+  .note { color: var(--muted); font-size: var(--t-body-s); background: var(--surface-sunken); border-radius: var(--r-card); padding: var(--s5); }
+</style>

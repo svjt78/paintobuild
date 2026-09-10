@@ -1,5 +1,8 @@
 {
   "name": "paintobuild",
   "compatibility_date": "2026-08-24",
-  "assets": { "directory": "./dist" }
+  "assets": { "directory": "./dist" },
+  "routes": [
+    { "pattern": "paintobuild.com", "custom_domain": true }
+  ]
 }

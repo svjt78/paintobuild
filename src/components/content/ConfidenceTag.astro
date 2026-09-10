@@ -1,0 +1,29 @@
+---
+interface Props {
+  confidence: 'pain-validated' | 'early-signal';
+  signalCount: number;
+  weakSignalCount?: number;
+}
+const { confidence, signalCount, weakSignalCount = 0 } = Astro.props;
+const label = confidence === 'pain-validated' ? 'Pain Validated' : 'Early Signal';
+---
+<span class:list={['tag', confidence]}>
+  {label} · {signalCount} clean signal{signalCount === 1 ? '' : 's'}{weakSignalCount > 0 && ` (+${weakSignalCount} weak)`}
+</span>
+<style>
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+    font-size: var(--t-caption);
+    font-weight: 700;
+    padding: var(--s1) var(--s3);
+    border-radius: var(--r-pill);
+    white-space: normal;
+  }
+  .tag::before { content: ''; width: 7px; height: 7px; border-radius: 50%; }
+  .pain-validated { background: #E6F3EF; color: var(--build); }
+  .pain-validated::before { background: var(--build); }
+  .early-signal { background: #FBEADD; color: var(--pain-strong); }
+  .early-signal::before { background: var(--pain); }
+</style>

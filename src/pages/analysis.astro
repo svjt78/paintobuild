@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+
+const title = 'Focused Analysis — $349 | PainToBuild';
+const description = 'A fixed-scope written evidence analysis of your specific product, audience or channel, applying the same methodology as every page on this site.';
+const gumroadHref = 'https://paintobuild.gumroad.com/l/focused-analysis';
+
+// Manual capacity flag — there is no backend behind this page. Update by
+// hand each month: 'open' shows the request CTA, 'closed' swaps in the
+// waitlist message. Two engagements/month per the design doc's O2
+// recommendation (confirm this still fits your actual COO hours).
+const capacityStatus: 'open' | 'closed' = 'open';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Focused Analysis',
+  provider: { '@type': 'Organization', name: 'PainToBuild' },
+  description,
+  offers: {
+    '@type': 'Offer',
+    price: '349',
+    priceCurrency: 'USD',
+    availability: capacityStatus === 'open' ? 'https://schema.org/InStock' : 'https://schema.org/SoldOut',
+    url: gumroadHref,
+  },
+};
+---
+<BaseLayout title={title} description={description} ogImagePath="/open-graph/analysis.png">
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="wrap section prose">
+    <Kicker>Service · Founder Solutions</Kicker>
+    <h1>Focused Analysis</h1>
+    <p class="price">$349 · one fixed-scope engagement</p>
+
+    <h2>Who it's for</h2>
+    <p>
+      Founders who've read the free evidence pages and the $19 Brief and want the same method
+      applied to their own product, audience or channel specifically — not a generic template
+      applied to someone else's problem.
+    </p>
+
+    <h2>The decision it resolves</h2>
+    <p>
+      Whether your specific evidence — the threads, the reviews, the signups, the channel you've
+      picked — actually clears the same bar this site holds every published analysis to, and if
+      not, what's missing.
+    </p>
+
+    <h2>What you receive</h2>
+    <ul>
+      <li>A written evidence review of your product, audience or channel, scored on the same
+        independence rules and decision criteria used across this site.</li>
+      <li>An explicit build / change / watch / stop recommendation, with the reasoning shown.</li>
+      <li>One recommended next test, sized to what you can actually run.</li>
+    </ul>
+
+    <h2>What it does not prove</h2>
+    <p>
+      A Focused Analysis evaluates the evidence you bring against a consistent standard — it is
+      not a guarantee that your idea will work, and it isn't a substitute for talking to your own
+      customers. Research opinion, not a promise.
+    </p>
+
+    <h2>What I need from you</h2>
+    <p>
+      The specific threads, reviews, signup or usage data, or channel details you want evaluated,
+      plus the decision you're actually trying to make. Vaguer input produces a vaguer analysis —
+      this works best with something concrete already in hand.
+    </p>
+
+    <h2>Process and timeline</h2>
+    <p>
+      Reserve below, then reply to the confirmation email with your material. Delivery is written,
+      by email, typically within 5 business days of receiving what's needed to start.
+    </p>
+
+    <h2>Price and capacity</h2>
+    <p class="capacity-line">
+      $349 per engagement. Capacity is capped at <strong>two engagements per month</strong>, on
+      purpose — this runs alongside the weekly research cycle that produces everything else on
+      this site, not instead of it.
+    </p>
+
+    {capacityStatus === 'open' ? (
+      <div class="status-box status-open">
+        <p class="status-label">Status: open</p>
+        <p>Slots are available this month.</p>
+      </div>
+    ) : (
+      <div class="status-box status-closed">
+        <p class="status-label">Status: full for this month</p>
+        <p>Both slots are booked. Reserving below joins the waitlist for next month instead of an immediate engagement.</p>
+      </div>
+    )}
+
+    <p class="honest-note">
+      One thing worth saying plainly: no Focused Analysis engagement has been delivered yet, so
+      there's no anonymized sample to show. Rather than fabricate one, this section stays empty
+      until there's a real engagement to (anonymously) point to.
+    </p>
+
+    <a
+      class="btn btn-primary"
+      href={gumroadHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-event="brief_checkout_click"
+      data-event-page="/analysis/"
+      data-event-cta-id="analysis-reserve"
+    >
+      Reserve on Gumroad — $349
+    </a>
+    <p class="alt-line">
+      Not sure yet? <a href="/methodology/">Read the methodology</a> this analysis is built on, or
+      start with the free <a href="/tools/evidence-ledger-template/">evidence ledger template</a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s7) var(--s8); }
+  .price { font-weight: 700; color: var(--build); margin: 0 0 var(--s5); font-size: var(--t-lede); }
+  .capacity-line { background: var(--surface-sunken); border-radius: var(--r-card); padding: var(--s5); }
+  .status-box { border-radius: var(--r-card); padding: var(--s5); margin: var(--s5) 0; }
+  .status-label { font-weight: 700; margin: 0 0 var(--s2); text-transform: uppercase; font-size: var(--t-caption); letter-spacing: 0.06em; }
+  .status-open { background: #E6F3EF; color: var(--build); }
+  .status-open p:last-child { color: var(--ink-soft); margin: 0; }
+  .status-closed { background: #FBEADD; color: var(--pain-strong); }
+  .status-closed p:last-child { color: var(--ink-soft); margin: 0; }
+  .honest-note { color: var(--muted); font-size: var(--t-body-s); font-style: italic; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px; padding: 0 var(--s5); border-radius: var(--r-pill);
+    font-weight: 700; font-size: var(--t-body-s); text-decoration: none; margin: var(--s5) 0;
+  }
+  .btn-primary { background: var(--build); color: #FFFFFF; }
+  .btn-primary:hover { background: #12735F; color: #FFFFFF; }
+  .alt-line { color: var(--muted); font-size: var(--t-body-s); }
+</style>

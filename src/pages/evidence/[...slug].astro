@@ -1,0 +1,63 @@
+---
+import { getCollection, render } from 'astro:content';
+import AnalysisLayout from '../../layouts/AnalysisLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('analysis', ({ data }) => data.section === 'evidence');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const pagePath = `/evidence/${entry.id}/`;
+
+// CTA matching, §7.3 — each evidence entry has its own primary/secondary pairing.
+const ctaMap: Record<string, { heading: string; body: string; ctaHref: string; ctaLabel: string }> = {
+  'reddit-product-validation': {
+    heading: 'Get the evidence ledger template',
+    body: 'The same column structure and independence rules used to build this analysis, free.',
+    ctaHref: '/tools/evidence-ledger-template/',
+    ctaLabel: 'Get the free template',
+  },
+  'community-access-is-not-buyer-access': {
+    heading: 'Need a second pair of eyes on your own channel?',
+    body: 'Focused Analysis applies this same evidence standard to your specific product and audience.',
+    ctaHref: '/analysis/',
+    ctaLabel: 'See Focused Analysis',
+  },
+};
+const cta = ctaMap[entry.id] ?? ctaMap['reddit-product-validation'];
+
+// Related decision/diagnostic page, per the AIO SEO strategy's internal-linking
+// rule (§ Internal linking): each entry links to one related decision or
+// diagnostic page. Mirrors what each entry's own `forYouIf` copy already
+// points readers to.
+const relatedMap: Record<string, { href: string; label: string }> = {
+  'reddit-product-validation': {
+    href: '/diagnostics/signups-no-core-feature-use/',
+    label: 'the diagnostic on activation',
+  },
+  'community-access-is-not-buyer-access': {
+    href: '/evidence/reddit-product-validation/',
+    label: 'the pre-build validation page',
+  },
+};
+const related = relatedMap[entry.id];
+---
+<AnalysisLayout
+  data={entry.data}
+  Content={Content}
+  pagePath={pagePath}
+  breadcrumbLabel="Evidence"
+  breadcrumbHref="/evidence/"
+  relatedHref={related?.href}
+  relatedLabel={related?.label}
+  ogImagePath={`/open-graph/evidence-${entry.id}.png`}
+  ctaHeading={cta.heading}
+  ctaBody={cta.body}
+  ctaHref={cta.ctaHref}
+  ctaLabel={cta.ctaLabel}
+/>

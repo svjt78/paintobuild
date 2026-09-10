@@ -1,0 +1,22 @@
+---
+import { getEntry, render } from 'astro:content';
+import AnalysisLayout from '../../layouts/AnalysisLayout.astro';
+
+const entry = await getEntry('analysis', 'signups-no-core-feature-use');
+if (!entry) throw new Error('Missing analysis entry: signups-no-core-feature-use');
+const { Content } = await render(entry);
+---
+<AnalysisLayout
+  data={entry.data}
+  Content={Content}
+  pagePath="/diagnostics/signups-no-core-feature-use/"
+  breadcrumbLabel="Evidence"
+  breadcrumbHref="/evidence/"
+  relatedHref="/evidence/reddit-product-validation/"
+  relatedLabel="the pre-build validation page"
+  ogImagePath="/open-graph/diagnostics-signups-no-core-feature-use.png"
+  ctaHeading="Request a traction analysis"
+  ctaBody="If this is your product, a Focused Analysis walks your specific signup and usage data against these same decision criteria."
+  ctaHref="/analysis/"
+  ctaLabel="See Focused Analysis"
+/>

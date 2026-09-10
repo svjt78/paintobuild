@@ -1,0 +1,46 @@
+---
+interface Source {
+  label: string;
+  url: string;
+  platform: 'reddit' | 'hn' | 'indiehackers' | 'web';
+  verifiedOn: Date;
+}
+interface Props {
+  sources: Source[];
+  pagePath: string;
+}
+const { sources, pagePath } = Astro.props;
+const platformLabel: Record<string, string> = {
+  reddit: 'Reddit',
+  hn: 'Hacker News',
+  indiehackers: 'IndieHackers',
+  web: 'Web',
+};
+const fmt = (d: Date) => new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+<ul class="source-list">
+  {sources.map((s) => (
+    <li>
+      <p class="src-label">{s.label}</p>
+      <p class="src-meta">
+        <span class="platform">{platformLabel[s.platform] ?? s.platform}</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span>verified {fmt(s.verifiedOn)}</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <a href={s.url} target="_blank" rel="noopener noreferrer nofollow"
+           data-event="source_link_click" data-event-page={pagePath} data-event-platform={s.platform}>
+          View original ↗
+        </a>
+      </p>
+    </li>
+  ))}
+</ul>
+<style>
+  .source-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s4); }
+  .source-list li { padding-bottom: var(--s4); border-bottom: 1px solid var(--hairline); }
+  .source-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .src-label { margin: 0 0 var(--s1); color: var(--ink-soft); }
+  .src-meta { margin: 0; font-size: var(--t-caption); color: var(--muted); display: flex; gap: var(--s2); flex-wrap: wrap; }
+  .platform { font-weight: 700; color: var(--muted); }
+  .dot { opacity: 0.6; }
+</style>

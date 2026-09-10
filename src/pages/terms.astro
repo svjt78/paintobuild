@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+
+const title = 'Terms | PainToBuild';
+const description = 'Sales terms, refund policy, and the limits of what a PainToBuild analysis or Focused Analysis engagement can promise.';
+const lastReviewed = new Date().toISOString().slice(0, 10);
+---
+<BaseLayout title={title} description={description}>
+  <section class="wrap section prose">
+    <Kicker>Legal</Kicker>
+    <h1>Terms</h1>
+
+    <h2>What's sold here</h2>
+    <p>
+      Two things: the $19 Builder Validation Brief, a digital file, and Focused Analysis, a
+      written service engagement. Both are sold and processed through Gumroad, which is the
+      merchant of record for every transaction on this site — PainToBuild does not invoice or
+      process payment directly for anything.
+    </p>
+
+    <h2>Refunds</h2>
+    <p>
+      The Brief is a digital product delivered instantly on purchase; as with most instant-download
+      files, sales are final and not refundable except where required by law or at Gumroad's own
+      buyer-protection discretion. Focused Analysis follows the same no-refund policy once work has
+      started on your specific material; if you cancel before any work begins, you'll be refunded
+      in full.
+    </p>
+
+    <h2>What an analysis is — and isn't</h2>
+    <p>
+      Every page on this site, and every Focused Analysis engagement, is research opinion applied
+      consistently through a published methodology — not a guarantee of any outcome. Recurring
+      pain in the evidence is not proof that a product will sell, and a build/change/watch/stop
+      recommendation is a read on the evidence available at the time, not a promise about what
+      will happen if you follow it.
+    </p>
+
+    <h2>Accuracy</h2>
+    <p>
+      Sources are verified and dated at the time each page is published. Public conversations get
+      deleted, edited, or go stale; if you spot something that's changed or was mis-cited,
+      <a href="/contact/">tell us</a> and it will be corrected.
+    </p>
+
+    <h2>Who you're dealing with</h2>
+    <p>
+      PainToBuild is operated under a pseudonym, deliberately kept separate from the operator's
+      unrelated professional work — see <a href="/about/">About</a> for why. Because Gumroad is
+      the merchant of record for every purchase on this site, no separate legal identity needs to
+      appear here for you to have a real seller of record, buyer protections, and a receipt.
+    </p>
+
+    <p class="note">Last reviewed {lastReviewed}.</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s7) var(--s8); }
+  .note { color: var(--muted); font-size: var(--t-caption); }
+</style>

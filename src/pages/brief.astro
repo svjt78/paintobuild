@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+
+const title = 'The Builder Validation Brief — $19 | PainToBuild';
+const description = 'Four worked evidence entries showing how the PainToBuild evidence ledger tests a real founder problem before you build. More entries added quarterly.';
+const gumroadHref = 'https://paintobuild.gumroad.com/l/the-builder-validation-brief';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'The Builder Validation Brief',
+  description,
+  brand: { '@type': 'Brand', name: 'PainToBuild' },
+  offers: {
+    '@type': 'Offer',
+    price: '19',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: gumroadHref,
+  },
+};
+---
+<BaseLayout title={title} description={description} ogImagePath="/open-graph/brief.png">
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="wrap section prose">
+    <Kicker>Product · Founder Solutions</Kicker>
+    <h1>The Builder Validation Brief</h1>
+    <p class="price">$19 · on Gumroad</p>
+    <p>
+      Four worked evidence entries showing exactly how the PainToBuild evidence ledger is used
+      to test a real founder problem before you commit to building: recurring pain, reachable
+      buyers, and the practical test that would prove or kill it.
+    </p>
+
+    <h2>What's inside</h2>
+    <ul>
+      <li>Four complete evidence-ledger entries, worked end to end</li>
+      <li>The independence rules used to avoid mistaking noise for real demand</li>
+      <li>The build / change / stop decision criteria applied to each case</li>
+    </ul>
+
+    <p class="scope-note">
+      Honest scope: four entries today, more added quarterly. This is not a course, a
+      community, or a guarantee anyone will pay for your idea — see
+      <a href="/methodology/">the methodology</a> for what the evidence process does and
+      doesn't prove.
+    </p>
+
+    <a
+      class="btn btn-primary"
+      href={gumroadHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-event="brief_checkout_click"
+      data-event-page="/brief/"
+      data-event-cta-id="brief-buy"
+    >
+      Buy on Gumroad — $19
+    </a>
+
+    <p class="alt-line">
+      Not ready to buy? <a href="/tools/evidence-ledger-template/">Get the free evidence ledger template</a>
+      or <a href="https://paintobuild.gumroad.com" target="_blank" rel="noopener noreferrer"
+             data-event="cta_click" data-event-page="/brief/" data-event-cta-id="brief-storefront">
+        see everything on the storefront ↗
+      </a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s8); }
+  .price { font-weight: 700; color: var(--build); margin: 0 0 var(--s4); }
+  .scope-note {
+    background: var(--surface-sunken);
+    border-radius: var(--r-card);
+    padding: var(--s5);
+    color: var(--muted);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 var(--s5);
+    border-radius: var(--r-pill);
+    font-weight: 700;
+    font-size: var(--t-body-s);
+    text-decoration: none;
+    margin: var(--s5) 0;
+  }
+  .btn-primary { background: var(--build); color: #FFFFFF; }
+  .btn-primary:hover { background: #12735F; color: #FFFFFF; }
+  .alt-line { color: var(--muted); font-size: var(--t-body-s); }
+</style>

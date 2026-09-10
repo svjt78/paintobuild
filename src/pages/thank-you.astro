@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+
+const title = 'Check your email | PainToBuild';
+const description = 'One more step to get the evidence ledger template.';
+---
+<BaseLayout title={title} description={description} noindex={true}>
+  <section class="wrap section prose">
+    <Kicker>One more step</Kicker>
+    <h1>Check your inbox</h1>
+    <p class="lede">
+      We just sent a confirmation email. Click the link in it and the evidence ledger template
+      lands in your inbox right after — no extra steps.
+    </p>
+    <p class="note">
+      Don't see it in a minute or two? Check spam/promotions, or email
+      <a href="mailto:hello@paintobuild.com">hello@paintobuild.com</a> and we'll sort it out.
+    </p>
+    <p><a href="/">Back to the homepage</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s8); }
+  .lede { font-size: var(--t-lede); color: var(--ink-soft); }
+  .note { background: var(--surface-sunken); border-radius: var(--r-card); padding: var(--s5); color: var(--muted); }
+</style>

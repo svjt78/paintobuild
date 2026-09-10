@@ -1,0 +1,35 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+
+// Shared shell for nav/footer targets that exist as real links today but
+// don't have real content yet. Ships a real 200 page (so no dead links)
+// that is honest about being unfinished and stays out of search via
+// noindex + the sitemap's INDEXABLE_PATHS allowlist in astro.config.mjs.
+interface Props {
+  title: string;
+  description: string;
+  kicker: string;
+  heading: string;
+  note: string;
+}
+const { title, description, kicker, heading, note } = Astro.props;
+---
+<BaseLayout title={title} description={description} noindex={true}>
+  <section class="wrap section prose">
+    <Kicker>{kicker}</Kicker>
+    <h1>{heading}</h1>
+    <p class="draft-note">{note}</p>
+    <p><a href="/">Back to the homepage</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s8); }
+  .draft-note {
+    background: var(--surface-sunken);
+    border-radius: var(--r-card);
+    padding: var(--s5);
+    color: var(--muted);
+  }
+</style>

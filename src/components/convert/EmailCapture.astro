@@ -1,0 +1,111 @@
+---
+// Wired to a real MailerLite embedded form (account 2500604, form id
+// 197975669753251054, "Website Evidence Ledger Signup"), created and
+// configured 2026-09-07. It feeds the existing "Lead Magnet - Pain
+// Phrases" group, which already has an active automation
+// ("Lead Magnet Delivery") that emails the template on join.
+//
+// Double opt-in is ON for this MailerLite account: submitting this form
+// sends a confirmation email first. The subscriber joins the group (and
+// the delivery automation fires) only after they click that confirmation
+// link -- not immediately on submit. /thank-you/ reflects that.
+//
+// This is a native HTML form (real fields, real POST) rather than
+// MailerLite's branded JS embed widget/tracking snippet, per the design
+// doc. One thing confirmed by testing the live endpoint directly rather
+// than assumed: a bare POST to it returns plain JSON ({"success":true}),
+// not an HTTP redirect, so there's no server-side way to land visitors on
+// our own /thank-you/ page. This ships a small first-party script (not
+// MailerLite's) that intercepts submit, posts the same fields via fetch,
+// and only then navigates to /thank-you/ -- confirmed working end-to-end
+// (subscriber lands in the group, response reads {"success":true}) against
+// the live endpoint before shipping. With JS disabled the form still
+// submits natively; the visitor lands on MailerLite's raw JSON response
+// in that fallback case.
+interface Props {
+  action?: string;
+  pagePath: string;
+}
+const {
+  action = 'https://assets.mailerlite.com/jsonp/2500604/forms/197975669753251054/subscribe',
+  pagePath,
+} = Astro.props;
+---
+<form class="email-capture" method="post" action={action} data-ml-redirect="/thank-you/">
+  <label for="ec-email">Email address</label>
+  <div class="row">
+    <input id="ec-email" name="fields[email]" type="email" required placeholder="you@example.com" autocomplete="email" />
+    <input type="hidden" name="ml-submit" value="1" />
+    <input type="hidden" name="anticsrf" value="true" />
+    <button type="submit" data-event="email_submit_success" data-event-page={pagePath} data-event-source="evidence-ledger-template">
+      Send me the template
+    </button>
+  </div>
+  <p class="fine-print">One confirmation email, then the download link. No spam, unsubscribe anytime.</p>
+  <p class="form-error" hidden>
+    Something went wrong submitting the form. Please email
+    <a href="mailto:hello@paintobuild.com">hello@paintobuild.com</a> directly and we'll send the template.
+  </p>
+</form>
+<script>
+  // Progressive enhancement only -- see comment above. With JS disabled,
+  // the form still submits (native POST to MailerLite), it just lands
+  // on MailerLite's raw JSON response instead of /thank-you/.
+  document.querySelectorAll('form.email-capture[data-ml-redirect]').forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const redirectTo = form.getAttribute('data-ml-redirect');
+      const errorEl = form.querySelector('.form-error');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+      try {
+        const resp = await fetch(form.getAttribute('action'), {
+          method: 'POST',
+          mode: 'cors',
+          body: new FormData(form),
+        });
+        const data = await resp.json().catch(() => null);
+        if (resp.ok && data && data.success) {
+          window.location.assign(redirectTo);
+          return;
+        }
+        throw new Error('Unexpected response');
+      } catch (err) {
+        if (errorEl) errorEl.hidden = false;
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+  });
+</script>
+<style>
+  .email-capture { max-width: 480px; }
+  label { display: block; font-size: var(--t-caption); font-weight: 700; color: var(--muted); margin-bottom: var(--s2); }
+  .row { display: flex; gap: var(--s3); flex-wrap: wrap; }
+  input {
+    flex: 1 1 220px;
+    min-height: 44px;
+    padding: 0 var(--s4);
+    border: 1.5px solid var(--hairline);
+    border-radius: var(--r-chip);
+    font-size: var(--t-body);
+    font-family: var(--font-sans);
+    color: var(--ink);
+    background: var(--surface-raised);
+  }
+  input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  button {
+    min-height: 44px;
+    padding: 0 var(--s5);
+    border-radius: var(--r-pill);
+    border: none;
+    background: var(--build);
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: var(--t-body-s);
+    cursor: pointer;
+  }
+  button:hover { background: #12735F; }
+  button:disabled { opacity: 0.6; cursor: default; }
+  .fine-print { margin: var(--s2) 0 0; font-size: var(--t-caption); color: var(--muted); }
+  .form-error { margin: var(--s3) 0 0; font-size: var(--t-body-s); color: var(--ink); background: var(--surface-sunken); border-radius: var(--r-chip); padding: var(--s3) var(--s4); }
+</style>

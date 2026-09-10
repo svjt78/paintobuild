@@ -3,8 +3,12 @@ const nav = [
   { href: '/evidence/', label: 'Evidence' },
   { href: '/methodology/', label: 'Methodology' },
   { href: '/brief/', label: 'The Brief' },
+  { href: '/everyday/', label: 'Everyday Audits' },
   { href: '/analysis/', label: 'Analysis' },
 ];
+
+const gumroadHref = 'https://paintobuild.gumroad.com';
+const pagePath = Astro.url.pathname;
 ---
 <header class="site-header shell-dark">
   <div class="wrap bar">
@@ -26,7 +30,20 @@ const nav = [
       </ul>
     </nav>
 
-    <a class="btn btn-primary nav-cta" href="/tools/evidence-ledger-template/">Get the template</a>
+    <div class="nav-cta">
+      <a class="btn btn-secondary" href="/tools/evidence-ledger-template/">Get the template</a>
+      <a
+        class="btn btn-primary"
+        href={gumroadHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-event="cta_click"
+        data-event-page={pagePath}
+        data-event-cta-id="header-shop"
+      >
+        Shop on Gumroad
+      </a>
+    </div>
 
     <details class="nav-mobile">
       <summary aria-label="Menu">Menu</summary>
@@ -35,6 +52,19 @@ const nav = [
           <li><a href={item.href}>{item.label}</a></li>
         ))}
         <li><a href="/tools/evidence-ledger-template/">Get the template</a></li>
+        <li>
+          <a
+            class="shop-mobile"
+            href={gumroadHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-event="cta_click"
+            data-event-page={pagePath}
+            data-event-cta-id="header-shop-mobile"
+          >
+            Shop on Gumroad ↗
+          </a>
+        </li>
       </ul>
     </details>
   </div>
@@ -63,14 +93,20 @@ const nav = [
     text-decoration: none;
     font-size: var(--t-body-s);
     font-weight: 600;
+    white-space: nowrap;
   }
   .nav-desktop a:hover { color: var(--on-dark); }
 
-  .nav-cta { display: none; margin-left: auto; }
+  .nav-cta { display: none; margin-left: auto; align-items: center; gap: var(--s3); }
 
-  @media (min-width: 768px) {
+  /* The full desktop nav (5 links + 2 CTA buttons) needs ~1060px of natural
+     width. Below that it overflows -- verified via a live-site audit that found
+     horizontal overflow at 768px and 1024px (iPad portrait/landscape, and any
+     narrower laptop window). The hamburger menu covers everything under 1100px
+     instead, so there's no gap where neither treatment fits. */
+  @media (min-width: 1100px) {
     .nav-desktop { display: block; }
-    .nav-cta { display: inline-flex; }
+    .nav-cta { display: flex; }
     .nav-mobile { display: none; }
   }
 
@@ -94,7 +130,7 @@ const nav = [
     list-style: none;
     margin: var(--s2) 0 0;
     padding: var(--s3);
-    min-width: 200px;
+    min-width: 220px;
   }
   .nav-mobile a {
     display: block;
@@ -104,6 +140,8 @@ const nav = [
     font-weight: 600;
   }
   .nav-mobile a:hover { color: var(--on-dark); }
+  .nav-mobile .shop-mobile { color: var(--build-on-dark); font-weight: 700; }
+  .nav-mobile .shop-mobile:hover { color: #5BD6BB; }
 
   .btn {
     display: inline-flex;
@@ -115,7 +153,8 @@ const nav = [
     font-weight: 700;
     font-size: var(--t-body-s);
     text-decoration: none;
-    border: none;
+    border: 1.5px solid transparent;
+    white-space: nowrap;
     cursor: pointer;
   }
   .btn-primary {
@@ -123,4 +162,10 @@ const nav = [
     color: var(--ink);
   }
   .btn-primary:hover { background: #5BD6BB; color: var(--ink); }
+  .btn-secondary {
+    border-color: var(--hairline-dark);
+    color: var(--on-dark-muted);
+    background: transparent;
+  }
+  .btn-secondary:hover { color: var(--on-dark); border-color: var(--on-dark-muted); }
 </style>
