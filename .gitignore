@@ -7,3 +7,5 @@ dist/
 CLAUDE.md
 paintobuild-human-voice-spec.md
 paintobuild-human-voice-observations.md
+.claude/
+AGENTS.md
