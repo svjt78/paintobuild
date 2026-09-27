@@ -1,15 +1,46 @@
 ---
-import { getCollection } from 'astro:content';
+// Home. Copy: advisory_based_specs/02_Replacement_Copy.md §1.
+import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Kicker from '../components/content/Kicker.astro';
-import Button from '../components/convert/Button.astro';
-import ConfidenceTag from '../components/content/ConfidenceTag.astro';
+import CtaBand from '../components/convert/CtaBand.astro';
+import { articlePath, MAIN_CTA } from '../lib/routes';
 
-const latestAnalyses = (await getCollection('analysis', ({ data }) => data.section === 'evidence'))
-  .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
+const title = 'Help with your product and business decisions | PainToBuild';
+const description = 'I help founders choose problems to work on, think through product ideas and find out why a product is struggling. Start with the decision you need help with.';
 
-const title = 'PainToBuild — Evidence Before You Build';
-const description = 'For early-stage founders weighing whether to build, PainToBuild checks an idea for recurring pain, reachable buyers and real demand before code gets written.';
+// Home wording for each article differs slightly from the article titles,
+// as written in the approved copy. Paths come from the collection.
+const researchItems = await Promise.all([
+  { slug: 'reddit-product-validation', stage: 'Before you build', text: 'What can Reddit posts tell you about an idea?' },
+  { slug: 'community-access-is-not-buyer-access', stage: 'Finding customers', text: 'Are the people in your chosen community likely to need your product?' },
+  { slug: 'signups-no-core-feature-use', stage: 'After launch', text: 'Why do people sign up but not use your product?' },
+].map(async (item) => {
+  const entry = await getEntry('analysis', item.slug);
+  if (!entry) throw new Error(`Missing article ${item.slug}`);
+  return { ...item, href: articlePath(entry) };
+}));
+
+const helpAreas = [
+  {
+    heading: 'Finding a problem to work on',
+    body: 'I help you look into who has the problem, how they deal with it and why a better solution might matter. Research can suggest where to start. Talking to possible customers helps you find out more.',
+    href: '/advisory/#find-a-problem',
+    link: 'Get help choosing a problem',
+  },
+  {
+    heading: 'Deciding what to build',
+    body: 'I help you compare ideas and look at what people already use. You can then decide what your product should do and which parts to test first.',
+    href: '/advisory/#decide-what-to-build',
+    link: 'Get help with your product idea',
+  },
+  {
+    heading: 'Working out what to try next',
+    body: 'You may have a product but few customers. Perhaps people sign up and then stop using it. I help you look into the possible reasons and choose a small test.',
+    href: '/advisory/#decide-what-to-try-next',
+    link: 'Get help with an existing product',
+  },
+];
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -19,6 +50,7 @@ const jsonLd = {
       name: 'PainToBuild',
       url: 'https://paintobuild.com',
       logo: 'https://paintobuild.com/brand/paintobuild-mark-black-1024.png',
+      description: 'Help for founders choosing what to build and what to try next.',
     },
     {
       '@type': 'WebSite',
@@ -32,168 +64,128 @@ const jsonLd = {
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <section class="hero shell-dark">
-    <div class="wrap hero-inner">
-      <Kicker>For early-stage founders</Kicker>
-      <h1>You're about to spend months building something nobody wants.</h1>
+    <div class="wrap"><div class="hero-inner">
+      <Kicker>Help for founders</Kicker>
+      <h1>Get help deciding what to build or what to try next</h1>
       <p class="lede">
-        Before you write a line of code, PainToBuild tests your idea against real
-        evidence: recurring pain, reachable buyers, actual demand.
+        You may be choosing an idea, planning a product or trying to find customers. I help you
+        look at what you know, work through your options and decide what to test next.
       </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary btn-dark" href="/tools/evidence-ledger-template/"
-           data-event="cta_click" data-event-page="/" data-event-cta-id="hero-template">
-          Get the free evidence ledger template
+      <div class="actions">
+        <a class="btn btn-primary" href={MAIN_CTA.href}
+           data-event="advisory_cta_click" data-event-page="/" data-event-cta-id="hero-main">
+          {MAIN_CTA.label}
         </a>
-        <a class="btn-link" href="/methodology/">See how the evidence works →</a>
+        <a class="hero-link" href="/advisory/">See how I can help</a>
       </div>
+    </div>
     </div>
   </section>
 
-  <section class="wrap section">
-    <Kicker>Sound familiar?</Kicker>
+  <section class="wrap section" aria-labelledby="help-heading">
+    <h2 id="help-heading">What do you need help with?</h2>
     <div class="three-col">
-      <div class="col">
-        <h3>Is this problem worth pursuing?</h3>
-        <p class="muted">Recurring pain, verified across independent sources.</p>
-        <a href="/evidence/">Read the evidence hub →</a>
-      </div>
-      <div class="col">
-        <h3>Where are the buyers?</h3>
-        <p class="muted">Community access isn't buyer access.</p>
-        <a href="/evidence/community-access-is-not-buyer-access/">Read the analysis →</a>
-      </div>
-      <div class="col">
-        <h3>Why isn't launch turning into use?</h3>
-        <p class="muted">Signups without activation, diagnosed.</p>
-        <a href="/diagnostics/signups-no-core-feature-use/">Read the diagnostic →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap section how-it-works">
-    <Kicker>How the evidence works</Kicker>
-    <h2>Four steps, every time</h2>
-    <ol class="steps">
-      <li>Observe public conversations</li>
-      <li>Log signals with independence rules</li>
-      <li>Publish a bounded analysis</li>
-      <li>State what it does not prove</li>
-    </ol>
-    <p><a href="/methodology/">Read the full methodology →</a></p>
-  </section>
-
-  <section class="wrap section">
-    <Kicker>Latest analyses</Kicker>
-    <h2>Read the evidence</h2>
-    <div class="latest-grid">
-      {latestAnalyses.map((entry) => (
-        <a class="latest-card" href={`/evidence/${entry.id}/`}>
-          <ConfidenceTag confidence={entry.data.confidence} signalCount={entry.data.signalCount} weakSignalCount={entry.data.weakSignalCount} />
-          <h3>{entry.data.question}</h3>
-          <p class="muted">{entry.data.shortAnswer.split('. ')[0]}.</p>
-          <span class="latest-date">Updated {entry.data.updated.toISOString().slice(0, 10)}</span>
-        </a>
+      {helpAreas.map((area) => (
+        <div class="card">
+          <h3>{area.heading}</h3>
+          <p>{area.body}</p>
+          <a href={area.href} data-event="advisory_cta_click" data-event-page="/" data-event-cta-id={`home-area-${area.href.split('#')[1]}`}>{area.link}</a>
+        </div>
       ))}
     </div>
   </section>
 
-  <section class="wrap section not-list">
-    <h2>What this is not</h2>
-    <ul>
-      <li>Not an idea generator.</li>
-      <li>Not a community.</li>
-      <li>Not an AI tool that scores your idea.</li>
-      <li>Not proof anyone will pay.</li>
-    </ul>
+  <section class="band" aria-labelledby="review-heading">
+    <div class="wrap section-tight narrow">
+      <h2 id="review-heading">Start with one decision</h2>
+      <p>
+        The Founder Decision Review covers one product or idea and one decision. I write a review
+        of what you have tried, what the information suggests and what I recommend testing next.
+      </p>
+      <p>After you run the test, I review the results once and explain what I think they mean for your next step.</p>
+      <p>You and I agree on the work, price and timing before I start.</p>
+      <ul class="link-list">
+        <li><a href="/advisory/#founder-decision-review">See what the review includes</a></li>
+        <li><a href="/example-review/">Read an example</a></li>
+      </ul>
+    </div>
   </section>
 
-  <section class="wrap section get-started">
-    <Kicker>Get started</Kicker>
-    <h2>Two ways to get the evidence</h2>
-    <div class="products">
-      <div class="product-card product-primary">
-        <h3>Free evidence ledger template <span class="badge">Start here</span></h3>
-        <p class="muted">The column structure behind every analysis on this site.</p>
-        <Button href="/tools/evidence-ledger-template/" variant="primary">Get the template →</Button>
-      </div>
-      <div class="product-card">
-        <h3>The Builder Validation Brief · $19</h3>
-        <p class="muted">Four worked evidence entries, more added quarterly.</p>
-        <Button href="/brief/" variant="secondary">Learn more →</Button>
-      </div>
-    </div>
-    <p class="quiet-line">
-      <a href="/analysis/">Need a hands-on read on your specific situation? See Focused Analysis.</a>
-      &nbsp;·&nbsp;
-      <a href="https://paintobuild.gumroad.com" target="_blank" rel="noopener noreferrer"
-         data-event="cta_click" data-event-page="/" data-event-cta-id="footer-line-shop">
-        See everything for sale on Gumroad ↗
-      </a>
-    </p>
+  <section class="wrap section narrow" aria-labelledby="how-heading">
+    <h2 id="how-heading">How it works</h2>
+    <ol class="steps">
+      <li>You tell me what you are deciding and what you have tried.</li>
+      <li>I review the product and information you share, along with any research agreed in advance.</li>
+      <li>I explain the options and recommend a test.</li>
+      <li>You run the test. I review what happened and update my advice.</li>
+    </ol>
+    <p><a href="/methodology/">Read about the process</a></p>
   </section>
+
+  <section class="wrap section narrow" aria-labelledby="research-heading">
+    <h2 id="research-heading">Research you can use</h2>
+    <p>
+      These articles look at problems founders discuss in public. They can help you think of
+      questions to ask about your own business.
+    </p>
+    <ul class="research-list">
+      {researchItems.map((item) => (
+        <li><strong>{item.stage}:</strong> <a href={item.href}>{item.text}</a></li>
+      ))}
+    </ul>
+    <p><a href="/evidence/">Read the research</a></p>
+  </section>
+
+  <section class="wrap section narrow diy" aria-labelledby="diy-heading">
+    <h2 id="diy-heading">Want to do the research yourself?</h2>
+    <p>
+      Start with the free research template. The Builder Validation Brief and Challenge Mining Kit
+      offer examples and instructions for doing more of the work yourself.
+    </p>
+    <p>You do not need to buy a guide before asking me for help.</p>
+    <p><a href="/resources/">Compare the guides and tools</a></p>
+  </section>
+
+  <CtaBand
+    heading="Tell me where you are stuck"
+    body="Send a short description of your idea or product and the decision you need to make. I will let you know whether I can help."
+    pagePath="/"
+    ctaId="home-end"
+  />
 </BaseLayout>
 
 <style>
   .hero { padding-block: var(--s9); }
-  .hero-inner { max-width: 720px; }
+  .hero-inner { max-width: 760px; }
   .hero h1 { font-size: var(--t-display); margin-block: var(--s4); }
-  .lede { font-size: var(--t-lede); color: var(--on-dark-muted); margin: 0 0 var(--s6); }
-  .hero-actions { display: flex; gap: var(--s5); align-items: center; flex-wrap: wrap; }
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    min-height: 44px; padding: 0 var(--s5); border-radius: var(--r-pill);
-    font-weight: 700; font-size: var(--t-body-s); text-decoration: none;
-  }
-  .btn-primary.btn-dark { background: var(--build-on-dark); color: var(--ink); }
-  .btn-primary.btn-dark:hover { background: #5BD6BB; }
-  .btn-link { color: var(--on-dark-muted); font-weight: 600; text-decoration: underline; }
-  .btn-link:hover { color: var(--on-dark); }
+  .hero .lede { margin: 0 0 var(--s6); }
+  .hero-link { color: var(--on-dark-muted); font-weight: 600; }
+  .hero-link:hover { color: var(--on-dark); }
 
   .section { padding-block: var(--s8); }
-  .three-col { display: grid; gap: var(--s6); grid-template-columns: 1fr; margin-top: var(--s5); }
-  @media (min-width: 768px) { .three-col { grid-template-columns: repeat(3, 1fr); } }
-  .col h3 { margin-bottom: var(--s2); }
-  .muted { color: var(--muted); }
+  .section-tight { padding-block: var(--s8); }
+  .narrow > * { max-width: var(--w-prose); }
+  .narrow p { margin: 0 0 var(--s4); }
+  .narrow h2 { margin-bottom: var(--s4); }
 
-  .steps { padding-left: var(--s5); display: grid; gap: var(--s3); max-width: var(--w-prose); }
-
-  .not-list ul { list-style: none; padding: 0; display: grid; gap: var(--s2); max-width: var(--w-prose); }
-  .not-list li { padding-left: var(--s5); position: relative; }
-  .not-list li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
-
-  .products { display: grid; gap: var(--s5); grid-template-columns: 1fr; margin-top: var(--s5); }
-  @media (min-width: 768px) { .products { grid-template-columns: 1fr 1fr; } }
-  .product-card {
-    background: var(--surface-raised);
-    border-radius: var(--r-card);
-    box-shadow: var(--shadow-card);
-    padding: var(--s6);
-  }
-  .product-card.product-primary { border: 1.5px solid var(--build); }
-  .product-card h3 { display: flex; align-items: center; gap: var(--s3); flex-wrap: wrap; margin-bottom: var(--s2); }
-  .badge {
-    font-size: var(--t-caption);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--pain-strong);
-    background: var(--tint-pale);
-    border-radius: var(--r-chip);
-    padding: 2px var(--s2);
-  }
-  .quiet-line { color: var(--muted); font-size: var(--t-body-s); margin-top: var(--s5); }
-
-  .latest-grid { display: grid; gap: var(--s5); grid-template-columns: 1fr; margin-top: var(--s5); }
-  @media (min-width: 768px) { .latest-grid { grid-template-columns: repeat(3, 1fr); } }
-  .latest-card {
-    display: block;
+  .three-col { display: grid; gap: var(--s5); grid-template-columns: 1fr; margin-top: var(--s6); }
+  @media (min-width: 900px) { .three-col { grid-template-columns: repeat(3, 1fr); } }
+  .card {
     background: var(--surface-raised);
     border-radius: var(--r-card);
     box-shadow: var(--shadow-card);
     padding: var(--s5);
-    text-decoration: none;
-    color: var(--ink);
+    display: flex;
+    flex-direction: column;
   }
-  .latest-card h3 { font-size: var(--t-h3); margin: var(--s3) 0 var(--s2); }
-  .latest-date { display: block; margin-top: var(--s3); font-size: var(--t-caption); color: var(--muted); }
+  .card h3 { margin-bottom: var(--s3); }
+  .card p { color: var(--ink-soft); margin: 0 0 var(--s4); flex: 1; }
+  .card a { font-weight: 700; }
+
+  .band { background: var(--surface-sunken); }
+
+  .steps { padding-left: var(--s5); display: grid; gap: var(--s3); margin: 0 0 var(--s5); }
+
+  .research-list { padding-left: var(--s5); display: grid; gap: var(--s3); margin: 0 0 var(--s5); }
+  .research-list strong { color: var(--ink-soft); }
 </style>

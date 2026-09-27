@@ -1,28 +1,47 @@
 ---
+// Dark call to action band at the end of a page. The primary action is
+// usually the inquiry route (/contact/); the optional secondary link is a
+// quieter way to read more first.
+import { MAIN_CTA } from '../../lib/routes';
+
 interface Props {
   heading: string;
-  body: string;
-  ctaHref: string;
-  ctaLabel: string;
+  body?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+  /** Page path for data-event-page. */
+  pagePath: string;
+  ctaId?: string;
 }
-const { heading, body, ctaHref, ctaLabel } = Astro.props;
+const {
+  heading, body,
+  ctaHref = MAIN_CTA.href, ctaLabel = MAIN_CTA.label,
+  secondaryHref, secondaryLabel, pagePath, ctaId = 'cta-band',
+} = Astro.props;
 ---
-<section class="cta-band shell-dark">
+<section class="cta-band shell-dark" aria-labelledby={`${ctaId}-heading`}>
   <div class="wrap cta-inner">
-    <h2>{heading}</h2>
-    <p>{body}</p>
-    <a class="btn btn-primary btn-dark" href={ctaHref}>{ctaLabel}</a>
+    <h2 id={`${ctaId}-heading`}>{heading}</h2>
+    {body && <p>{body}</p>}
+    <div class="cta-actions">
+      <a class="btn btn-primary" href={ctaHref}
+         data-event="advisory_cta_click" data-event-page={pagePath} data-event-cta-id={ctaId}>{ctaLabel}</a>
+      {secondaryHref && secondaryLabel && (
+        <a class="secondary" href={secondaryHref}>{secondaryLabel}</a>
+      )}
+    </div>
   </div>
 </section>
 <style>
   .cta-band { padding-block: var(--s9); }
   .cta-inner { max-width: 640px; margin-inline: auto; text-align: center; }
-  .cta-inner p { color: var(--on-dark-muted); margin: var(--s4) 0 var(--s6); }
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    min-height: 44px; padding: 0 var(--s5); border-radius: var(--r-pill);
-    font-weight: 700; font-size: var(--t-body-s); text-decoration: none;
+  .cta-inner p { color: var(--on-dark-muted); margin: var(--s4) 0 0; }
+  .cta-actions {
+    display: flex; flex-direction: column; align-items: center; gap: var(--s4);
+    margin-top: var(--s6);
   }
-  .btn-primary.btn-dark { background: var(--build-on-dark); color: var(--ink); }
-  .btn-primary.btn-dark:hover { background: #5BD6BB; }
+  .secondary { color: var(--on-dark-muted); font-weight: 600; }
+  .secondary:hover { color: var(--on-dark); }
 </style>

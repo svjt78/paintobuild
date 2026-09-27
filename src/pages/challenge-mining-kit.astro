@@ -1,0 +1,82 @@
+---
+// Challenge Mining Kit. Copy: advisory_based_specs/02_Replacement_Copy.md §11.
+// Details were checked against the public Gumroad listing on 2026-09-27
+// ($39; 30 page guide, 11 page Starter Pack, 10 tab workbook; same four
+// examples as the Brief plus one that was dropped; "Vol. 1, 2026 Q3"). The
+// files themselves were not inspected.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+import Button from '../components/convert/Button.astro';
+import { KIT_URL } from '../lib/routes';
+
+const title = 'Challenge Mining Kit | A guide to problem research';
+const description = 'Learn how to find reports of problems, compare what you find and keep your research in a workbook. The guide and supporting files cost $39.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'The Challenge Mining Kit',
+  description,
+  brand: { '@type': 'Brand', name: 'PainToBuild' },
+  offers: { '@type': 'Offer', price: '39', priceCurrency: 'USD', url: KIT_URL },
+};
+---
+<BaseLayout title={title} description={description} ogImagePath="/open-graph/challenge-mining-kit.png">
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="wrap section prose">
+    <Kicker>Guides and tools</Kicker>
+    <h1>The Challenge Mining Kit</h1>
+    <p class="facts">$39 <span aria-hidden="true">|</span> Guide, Starter Pack and workbook <span aria-hidden="true">|</span> Volume 1, July to September 2026</p>
+    <p class="lede">
+      This kit explains how to find problems people describe, record the sources and choose what
+      to investigate further. You do the research yourself, using the instructions and workbook.
+    </p>
+
+    <h2>What you receive</h2>
+    <ul>
+      <li>A guide with 30 pages. It covers where to look, how to compare findings and how to organize the work each week.</li>
+      <li>An Excel workbook with ten tabs. It includes example entries and a summary of the research you add.</li>
+      <li>A Starter Pack with 11 pages. It includes search phrases, places to look, instructions for setting up alerts and prompts you can copy.</li>
+    </ul>
+    <p>
+      The guide compares findings across twelve areas. It works through the same four examples as
+      the Brief and one example that was not worth taking further.
+    </p>
+
+    <h2>What it helps you do</h2>
+    <p>
+      The kit helps you keep track of what you find and why a problem might deserve more attention.
+      The scores organize your judgment. They do not prove that people will buy a product or that
+      it will make money.
+    </p>
+    <p>The kit does not watch the internet for you. Its source lists and examples belong to this edition and may need updating.</p>
+
+    <h2>What your purchase includes</h2>
+    <p>
+      You receive the files listed for this edition. Future volumes are separate purchases.
+      Personal advice about your business is a separate service.
+    </p>
+    <div class="buy">
+      <Button href={KIT_URL} external srNote="(opens Gumroad in a new tab)"
+              dataEvent="resource_checkout_click" dataEventPage="/challenge-mining-kit/" dataEventCtaId="kit-buy">
+        Buy the Kit for $39
+      </Button>
+      <p class="button-note">Opens Gumroad.</p>
+    </div>
+
+    <ul class="link-list">
+      <li><a href="/resources/">Compare all guides and tools</a></li>
+      <li><a href="/brief/">Read about the Brief</a></li>
+      <li><a href="/advisory/">See how I can help</a></li>
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s7) var(--s8); }
+  .facts { font-weight: 700; color: var(--build); margin: var(--s3) 0 var(--s4) !important; }
+  .facts span { color: var(--muted); font-weight: 400; margin-inline: var(--s1); }
+  .buy { margin: var(--s5) 0 var(--s6); }
+  .button-note { font-size: var(--t-caption); color: var(--muted); margin: var(--s2) 0 0 !important; }
+</style>

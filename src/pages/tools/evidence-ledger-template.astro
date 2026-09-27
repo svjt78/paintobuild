@@ -1,17 +1,20 @@
 ---
+// Free template. Copy: advisory_based_specs/02_Replacement_Copy.md §12.
+// The table explains the seven fields in the existing download in simpler
+// words. It does not promise extra fields. The example row is made up.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Kicker from '../../components/content/Kicker.astro';
 import EmailCapture from '../../components/convert/EmailCapture.astro';
 
-const title = 'The Evidence Ledger Template | PainToBuild';
-const description = 'The free column structure PainToBuild uses to log evidence, sources and independence before publishing any analysis, with one filled example row.';
+const title = 'Free template for your problem research | PainToBuild';
+const description = 'Keep track of problem reports, their sources and repeated accounts with a free research template. Confirm your email address to receive the download.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'The Evidence Ledger Template',
+  '@type': 'WebPage',
+  name: 'Free template for your problem research',
   description,
-  author: { '@type': 'Organization', name: 'PainToBuild' },
+  publisher: { '@type': 'Organization', name: 'PainToBuild' },
 };
 ---
 <BaseLayout title={title} description={description} ogImagePath="/open-graph/tools-evidence-ledger-template.png">
@@ -19,63 +22,61 @@ const jsonLd = {
 
   <section class="wrap section prose">
     <Kicker>Free template</Kicker>
-    <h1>The evidence ledger template</h1>
+    <h1>Keep your problem research in one place</h1>
     <p class="lede">
-      This is the exact row structure behind every analysis on this site, the same one used to
-      decide whether a candidate has three independent signals before anything gets published.
+      The free evidence ledger is a template for recording what people say about a problem and
+      where you found it. It helps you avoid counting the same person's account more than once.
     </p>
 
-    <h2>What an evidence ledger is</h2>
+    <h2>What to record</h2>
     <p>
-      A flat log, one row per piece of evidence, that forces three questions before you count
-      anything toward validation: is this a distinct person, is it their own first-person words,
-      and can you point at the source. Most idea-validation failures come from mistaking three
-      loud comments in one thread for three independent buyers.
+      Note the source, the date and what the person describes. Record whether it is a separate
+      person's experience and how it relates to the problem you are studying.
     </p>
-
-    <h2>The column structure</h2>
-    <div class="table-scroll">
-      <table>
+    <div class="table-scroll" role="region" aria-labelledby="ledger-caption" tabindex="0">
+      <table class="data-table ledger">
+        <caption id="ledger-caption">This made up example shows how to organize a row. It is not a research finding.</caption>
         <thead>
           <tr>
-            <th>Evidence ID</th><th>Candidate ID</th><th>Source platform</th><th>Distinct user?</th>
-            <th>Date</th><th>Snippet / quote</th><th>Counts as independent?</th>
+            <th scope="col">Record</th><th scope="col">Problem</th><th scope="col">Source</th>
+            <th scope="col">Different person?</th><th scope="col">Date</th>
+            <th scope="col">What was reported?</th><th scope="col">Count it?</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>E-001</td>
-            <td>C-001</td>
-            <td>Reddit, r/indiehackers</td>
-            <td>Yes</td>
-            <td>2026-07-16</td>
-            <td>"…shutting the product down; every attempt felt like posting into the void"</td>
-            <td>Yes</td>
+            <td>Example 1</td>
+            <td>Example A</td>
+            <td>Made up example</td>
+            <td>Not checked</td>
+            <td>Not applicable</td>
+            <td>A founder describes difficulty finding possible customers</td>
+            <td>No, this is only an example</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="note">
-      That's a real, published row. See the full writeup in
-      <a href="/evidence/community-access-is-not-buyer-access/">community access vs. buyer access</a>.
-      The "distinct user?" and "counts as independent?" columns are what actually gate a candidate:
-      a repost, an advisor comment, or a promotional post gets logged but marked "No," and doesn't
-      count toward the three-signal threshold. Full rules on the
-      <a href="/methodology/">methodology page</a>.
-    </p>
 
-    <h2>Get the template</h2>
-    <p>Enter your email and the full template, with the complete column set and instructions, is sent to you directly.</p>
+    <h2 id="get-the-template">Get the template</h2>
+    <p>
+      Enter your email address. You will receive an email asking you to confirm it. After you
+      confirm, the download will be sent to you.
+    </p>
+    <p>You will also receive occasional PainToBuild updates. You can unsubscribe at any time.</p>
     <EmailCapture pagePath="/tools/evidence-ledger-template/" />
+
+    <ul class="link-list end-links">
+      <li><a href="/privacy/">Privacy</a></li>
+      <li><a href="/methodology/">How I use research</a></li>
+      <li><a href="/resources/">Guides and tools</a></li>
+      <li><a href="/advisory/">Need help with your own product?</a></li>
+    </ul>
   </section>
 </BaseLayout>
 
 <style>
   .section { padding-block: var(--s7) var(--s8); }
-  .lede { font-size: var(--t-lede); color: var(--ink-soft); }
-  .table-scroll { overflow-x: auto; margin: var(--s5) 0; }
-  table { width: 100%; border-collapse: collapse; font-size: var(--t-body-s); min-width: 640px; }
-  th, td { text-align: left; padding: var(--s3); border: 1px solid var(--hairline); vertical-align: top; }
-  th { background: var(--surface-sunken); white-space: nowrap; }
-  .note { color: var(--muted); font-size: var(--t-body-s); background: var(--surface-sunken); border-radius: var(--r-card); padding: var(--s5); }
+  .ledger { min-width: 720px; }
+  .ledger th { white-space: nowrap; }
+  .end-links { margin-top: var(--s7); padding-top: var(--s5); border-top: 1px solid var(--hairline); }
 </style>

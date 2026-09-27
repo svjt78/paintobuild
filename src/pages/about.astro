@@ -1,85 +1,61 @@
 ---
+// About. Copy: advisory_based_specs/02_Replacement_Copy.md §8.
+// No biography, credentials or client results are claimed. Add them only
+// when they can be supported.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Kicker from '../components/content/Kicker.astro';
 import CtaBand from '../components/convert/CtaBand.astro';
 
-const title = 'About | PainToBuild';
-const description = 'What PainToBuild is, the weekly evidence system behind it, and why the operator writes under a pseudonym instead of a named byline.';
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  about: { '@type': 'Organization', name: 'PainToBuild', url: 'https://paintobuild.com' },
-};
+const title = 'About PainToBuild | Help for founders';
+const description = 'I help founders think through product and business decisions. Learn how I use questions, research and small tests, and see an example of the work.';
 ---
 <BaseLayout title={title} description={description} ogImagePath="/open-graph/about.png">
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
   <section class="wrap section prose">
     <Kicker>About</Kicker>
     <h1>About PainToBuild</h1>
-
-    <p class="lede">
-      I run a small, weekly research system that reads public founder conversations for
-      recurring, evidence-backed pain. I write up what it finds, including the parts that
-      don't prove what people want them to prove.
-    </p>
-
-    <h2>What this is</h2>
+    <p class="lede">I help founders choose what to work on and decide what to try when a product is struggling.</p>
     <p>
-      Every week, the system reads new Reddit, Hacker News and IndieHackers activity for people
-      describing a real, recurring problem in their own words. Candidates that reach at least
-      three independent, first-person signals move into deeper validation: repetition across
-      threads and platforms, evidence of money already moving nearby, and a read on how
-      crowded the space already is. Everything that clears that bar gets logged, dated, and
-      sourced in an evidence file before it becomes a page here or an entry in the $19 Validation
-      Brief. Nothing gets published that isn't already evidenced in that file. See the
-      <a href="/methodology/">methodology</a> for the full rules.
+      The starting point is your situation. I want to understand the product, the people it is
+      meant to help and what you have already tried.
     </p>
 
-    <h2>Two research tracks</h2>
+    <h2>How I work</h2>
     <p>
-      <strong>Founder Solutions</strong> is the original track: validation research for
-      early-stage founders and solopreneurs, covering recurring customer pain, buyers who can
-      actually be reached, and a handful of practical tests before anyone builds anything.
-      <strong>Everyday Default Audits</strong> is a newer, second track applying the same evidence
-      standard outside of building a company: the productivity systems, communication habits and
-      consumer "best practices" that get repeated as default advice but haven't been tested
-      against real evidence. It's still early. See <a href="/everyday/">what's coming</a>.
+      I ask questions, look at the information available and compare the options. I explain why I
+      recommend a step and what could change that recommendation.
+    </p>
+    <p>
+      Research is part of the work. Public discussions can suggest problems to look into. Your
+      product, customer conversations and results help me understand what applies to you.
     </p>
 
-    <h2>What this deliberately isn't</h2>
-    <ul>
-      <li>Not an idea generator, and not a community.</li>
-      <li>Not an AI tool that scores your idea in thirty seconds.</li>
-      <li>Not proof that anyone will pay for anything. Recurring pain and willingness to pay are
-        different questions, and this site keeps them separate.</li>
-      <li>Not built from posting or engaging on Reddit. The discovery process is read-only
-        listening.</li>
+    <h2>See the work before asking for help</h2>
+    <p>
+      The service page explains what a review includes. The example page shows the kind of written
+      review you would receive.
+    </p>
+    <p>The example is made up to show the format. It is not a client result.</p>
+    <ul class="link-list">
+      <li><a href="/advisory/">What the service includes</a></li>
+      <li><a href="/methodology/">How it works</a></li>
+      <li><a href="/example-review/">Example review</a></li>
     </ul>
 
-    <h2>Why no name</h2>
+    <h2>About my professional identity</h2>
     <p>
-      This work is deliberately separated from my unrelated day-job professional identity. That's
-      not a marketing device, and it isn't meant to manufacture mystery. It's a boundary I keep on
-      purpose, the same way plenty of people keep a side project separate from their employer.
-      What earns trust here is whether the methodology is transparent enough to check, whether the
-      evidence is dated and sourced, and whether the site is clear about what it hasn't proven.
-      Judge PainToBuild on those, not on a name.
+      I keep PainToBuild separate from my unrelated professional work. Before taking on a review, I
+      agree with you on the work, communication and handling of your information.
     </p>
-
-    <p><a href="/contact/">Get in touch</a> if you have a question, a correction, or a signal to look into.</p>
   </section>
 
   <CtaBand
-    heading="See the evidence standard"
-    body="The independence rules, confidence tiers and decision criteria behind every page on this site."
-    ctaHref="/methodology/"
-    ctaLabel="Read the methodology"
+    heading="Tell me what you are working on"
+    body="Send a short message about your idea or product and where you need help."
+    pagePath="/about/"
+    ctaId="about-end"
   />
 </BaseLayout>
 
 <style>
   .section { padding-block: var(--s7) var(--s8); }
-  .lede { font-size: var(--t-lede); color: var(--ink-soft); }
 </style>

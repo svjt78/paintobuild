@@ -1,125 +1,87 @@
 ---
+// Research library. Copy: advisory_based_specs/02_Replacement_Copy.md §4.
+// The URL stays /evidence/ for old links; the visible name is "Research".
+// Articles are grouped by stage from the content collection. No signal
+// counts are shown, because they have not been checked against the full
+// records.
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Kicker from '../components/content/Kicker.astro';
-import ConfidenceTag from '../components/content/ConfidenceTag.astro';
-import CtaBand from '../components/convert/CtaBand.astro';
+import { articlePath, stageLabel, stageOrder } from '../lib/routes';
 
-const title = 'The Evidence Library | PainToBuild';
-const description = 'What public problem signals on Reddit, Hacker News and IndieHackers establish about a founder decision, what they cannot, and every analysis built from them.';
+const title = 'Research on common founder questions | PainToBuild';
+const description = 'Read about checking product ideas, finding possible customers and understanding why people stop using a product. See what still needs to be tested.';
 
-const entries = (await getCollection('analysis', ({ data }) => data.section === 'evidence'))
-  .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
+const entries = await getCollection('analysis', ({ data }) => !data.noindex);
+const groups = stageOrder
+  .map((stage) => ({ stage, items: entries.filter((e) => e.data.stage === stage) }))
+  .filter((g) => g.items.length > 0);
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@graph': [
-    { '@type': 'CollectionPage', name: title, url: 'https://paintobuild.com/evidence/' },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://paintobuild.com/' },
-        { '@type': 'ListItem', position: 2, name: 'Evidence', item: 'https://paintobuild.com/evidence/' },
-      ],
-    },
-  ],
+  '@type': 'CollectionPage',
+  name: 'Research on common founder questions',
+  description,
+  hasPart: entries.map((e) => ({
+    '@type': 'Article',
+    headline: e.data.title,
+    url: new URL(articlePath(e), 'https://paintobuild.com').toString(),
+  })),
 };
 ---
 <BaseLayout title={title} description={description} ogImagePath="/open-graph/evidence.png">
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <section class="wrap section prose">
-    <Kicker>Evidence</Kicker>
-    <h1>The evidence library</h1>
+    <Kicker>Research</Kicker>
+    <h1>Research on common founder questions</h1>
     <p class="lede">
-      Everything below starts from public posts and comments: people describing a real problem
-      in their own words, on Reddit, Hacker News and IndieHackers. That's a real signal, and a
-      limited one. The limits matter as much as the pattern.
+      These articles draw on problems people discuss in public. They can help you decide what to
+      look into. They do not tell you what is causing a problem in your own business.
     </p>
 
-    <h2>What a public signal can establish</h2>
-    <p>
-      That a specific, recurring pain is real, that more than one independent person describes it
-      the same way, and, when someone names a price or a workaround they already tried or paid
-      for, that there's some willingness to act on it. Every entry here requires at least three
-      independent, deduplicated, first-person accounts before it's treated as validated. Advisor
-      comments, meta commentary about other people's pain, and cross-posts of the same account
-      are all excluded from that count.
-    </p>
-
-    <h2>What it cannot establish</h2>
-    <p>
-      That anyone will pay <em>you</em> specifically, that a market isn't already crowded, or that
-      the people complaining are reachable at a cost that makes a business work. Recurring
-      first-person pain is evidence to investigate. It is not proof of demand for a product
-      that doesn't exist yet. Every analysis below sets out what it does not prove alongside what
-      it found.
-    </p>
-
-    <p>
-      Independence rules, confidence tiers, and the decision criteria applied to every candidate
-      are all on the <a href="/methodology/">methodology page</a>.
-    </p>
-  </section>
-
-  <section class="wrap section entries">
-    <h2>Analyses</h2>
-    <div class="entry-list">
-      {entries.map((entry) => (
-        <a class="entry-card" href={`/evidence/${entry.id}/`}>
-          <div class="entry-top">
-            <ConfidenceTag confidence={entry.data.confidence} signalCount={entry.data.signalCount} weakSignalCount={entry.data.weakSignalCount} />
-            <span class="entry-date">Updated {entry.data.updated.toISOString().slice(0, 10)}</span>
+    {groups.map((group) => (
+      <section class="group" aria-labelledby={`stage-${group.stage}`}>
+        <h2 id={`stage-${group.stage}`}>{stageLabel[group.stage]}</h2>
+        {group.items.map((entry) => (
+          <div class="article-card">
+            <h3>{entry.data.question}</h3>
+            <p>{entry.data.cardSummary}</p>
+            <a href={articlePath(entry)}>Read the article<span class="visually-hidden">: {entry.data.question}</span></a>
           </div>
-          <h3>{entry.data.question}</h3>
-          <p class="entry-answer">{entry.data.shortAnswer.split('. ')[0]}.</p>
-          <span class="entry-link">Read the analysis →</span>
-        </a>
-      ))}
-      <a class="entry-card" href="/diagnostics/signups-no-core-feature-use/">
-        <div class="entry-top">
-          <span class="tag diagnostic-tag">Diagnostic</span>
-          <span class="entry-date">Post-launch</span>
-        </div>
-        <h3>Seventy people signed up, but only one used the core feature. What should I investigate?</h3>
-        <p class="entry-answer">The after-launch counterpart to the pages above, for when signups exist but usage doesn't.</p>
-        <span class="entry-link">Read the diagnostic →</span>
-      </a>
-    </div>
-  </section>
+        ))}
+      </section>
+    ))}
 
-  <CtaBand
-    heading="Start with the free template"
-    body="The same evidence-ledger structure behind every analysis on this site."
-    ctaHref="/tools/evidence-ledger-template/"
-    ctaLabel="Get the template"
-  />
+    <section class="help panel" aria-labelledby="help-heading">
+      <h2 id="help-heading">Need help with your own situation?</h2>
+      <p>I can review what you are working on and suggest what to test next.</p>
+      <p>
+        <a class="btn btn-primary" href="/advisory/"
+           data-event="advisory_cta_click" data-event-page="/evidence/" data-event-cta-id="research-end">
+          See how I can help
+        </a>
+      </p>
+      <ul class="link-list">
+        <li><a href="/resources/">Guides and tools</a></li>
+        <li><a href="/methodology/">How I use research</a></li>
+      </ul>
+    </section>
+  </section>
 </BaseLayout>
 
 <style>
   .section { padding-block: var(--s7) var(--s8); }
-  .lede { font-size: var(--t-lede); color: var(--ink-soft); }
-  .entries { padding-top: 0; }
-  .entry-list { display: grid; gap: var(--s5); }
-  .entry-card {
-    display: block;
+  .group h2 { margin-top: var(--s7); }
+  .article-card {
     background: var(--surface-raised);
-    border: 1px solid var(--hairline);
-    border-radius: var(--r-panel);
+    border-radius: var(--r-card);
+    box-shadow: var(--shadow-card);
     padding: var(--s5);
-    text-decoration: none;
-    color: var(--ink);
-    transition: border-color 150ms ease-out;
   }
-  .entry-card:hover { border-color: var(--build); color: var(--ink); }
-  .entry-top { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); flex-wrap: wrap; margin-bottom: var(--s3); }
-  .entry-date { font-size: var(--t-caption); color: var(--muted); }
-  .entry-card h3 { font-size: var(--t-h3); margin-bottom: var(--s2); }
-  .entry-answer { color: var(--muted); margin: 0 0 var(--s3); }
-  .entry-link { color: var(--build); font-weight: 700; font-size: var(--t-body-s); }
-  .tag.diagnostic-tag {
-    display: inline-flex; align-items: center; gap: var(--s2);
-    font-size: var(--t-caption); font-weight: 700; padding: var(--s1) var(--s3);
-    border-radius: var(--r-pill); background: var(--surface-sunken); color: var(--ink-soft);
-  }
+  .article-card h3 { margin: 0 0 var(--s2); }
+  .article-card p { color: var(--ink-soft); margin: 0 0 var(--s3); }
+  .article-card a { font-weight: 700; }
+  .help { margin-top: var(--s8); }
+  .help h2 { margin-top: 0; }
 </style>

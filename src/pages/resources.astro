@@ -1,0 +1,93 @@
+---
+// Guides and tools. Copy: advisory_based_specs/02_Replacement_Copy.md §9.
+// Product details were checked against the public Gumroad listings on
+// 2026-09-27. The paid files themselves were not inspected.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+import { SHOP_URL } from '../lib/routes';
+
+const title = 'Research guides and tools for founders | PainToBuild';
+const description = 'Choose a free research template, worked examples or a guide with a workbook. You can also ask for help applying the research to your own product.';
+---
+<BaseLayout title={title} description={description} ogImagePath="/open-graph/resources.png">
+  <section class="wrap section prose">
+    <Kicker>Guides and tools</Kicker>
+    <h1>Guides and tools for your own research</h1>
+    <p class="lede">
+      Use these if you want to do the research yourself. If you want help with your own product or
+      decision, you can ask me about a review.
+    </p>
+
+    <div class="table-scroll" role="region" aria-labelledby="compare-caption" tabindex="0">
+      <table class="data-table compare">
+        <caption id="compare-caption" class="visually-hidden">Comparison of the free template, the Brief and the Kit</caption>
+        <thead>
+          <tr><th scope="col">Resource</th><th scope="col">What it helps you do</th><th scope="col">What you receive</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><a href="/tools/evidence-ledger-template/">Free research template</a></th>
+            <td>Keep track of reports and where you found them</td>
+            <td>A template sent by email after you confirm your address</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="/brief/">Builder Validation Brief</a></th>
+            <td>Read four examples of research into founder problems</td>
+            <td>A PDF with 18 pages, priced at $19</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="/challenge-mining-kit/">Challenge Mining Kit</a></th>
+            <td>Follow a process for finding and comparing problems</td>
+            <td>A guide, Starter Pack and workbook, priced at $39</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="link-list">
+      <li><a href="/tools/evidence-ledger-template/">Get the free template</a></li>
+      <li><a href="/brief/">Read about the Brief</a></li>
+      <li><a href="/challenge-mining-kit/">Read about the Kit</a></li>
+    </ul>
+
+    <h2>How the Brief and Kit overlap</h2>
+    <p>
+      The Brief gives you four finished research examples. The Kit uses the same four examples and
+      adds instructions and tools for doing the work yourself.
+    </p>
+    <p>You do not need to buy either product before asking me for help.</p>
+    <p>
+      The paid products are Volume 1, covering July to September 2026. Future volumes are separate
+      purchases. Check each product page for its contents.
+    </p>
+
+    <section class="panel help" aria-labelledby="help-heading">
+      <h2 id="help-heading">Want help with your own decision?</h2>
+      <p>
+        The Founder Decision Review looks at your situation. It includes a written review and a
+        later review of the agreed test results.
+      </p>
+      <p>
+        <a class="btn btn-primary" href="/advisory/"
+           data-event="advisory_cta_click" data-event-page="/resources/" data-event-cta-id="resources-help">
+          See how I can help
+        </a>
+      </p>
+      <p class="shop-line">
+        <a href={SHOP_URL} target="_blank" rel="noopener noreferrer"
+           data-event="shop_link_click" data-event-page="/resources/" data-event-cta-id="resources-shop">
+          Visit the shop<span class="visually-hidden"> (opens Gumroad in a new tab)</span> <span aria-hidden="true">↗</span>
+        </a>
+      </p>
+    </section>
+  </section>
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s7) var(--s8); }
+  .compare { min-width: 560px; }
+  .compare th[scope='row'] { background: transparent; white-space: nowrap; }
+  .help { margin-top: var(--s8); }
+  .help h2 { margin-top: 0; }
+  .shop-line { font-size: var(--t-body-s); }
+</style>

@@ -1,62 +1,111 @@
 ---
+// Terms. Copy: advisory_based_specs/02_Replacement_Copy.md §19, with the
+// bracketed items completed from the owner's decisions on 2026-09-27:
+//   - Operator stays under the PainToBuild name.
+//   - Scope, timing, results deadline, payment and what happens if no test is
+//     run are set in each client's written agreement, not on this page.
+//   - Free cancellation before work starts.
+//   - Guides (Brief and Kit): sales final, apart from legal rights and
+//     Gumroad's buyer protection.
+// This is not legal advice. Update the review date below only when the page
+// is actually reviewed.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Kicker from '../components/content/Kicker.astro';
+import { EMAIL } from '../lib/routes';
 
-const title = 'Terms | PainToBuild';
-const description = 'Sales terms, refund policy, and the limits of what a PainToBuild analysis or Focused Analysis engagement can promise.';
-const lastReviewed = new Date().toISOString().slice(0, 10);
+const title = 'Terms for reviews, guides and tools | PainToBuild';
+const description = 'Read what a PainToBuild review or resource purchase includes, how the work is agreed and which payment, delivery and cancellation terms apply.';
+const lastReviewed = { iso: '2026-09-27', label: 'September 27, 2026' };
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImagePath="/open-graph/terms.png">
   <section class="wrap section prose">
-    <Kicker>Legal</Kicker>
-    <h1>Terms</h1>
-
-    <h2>What's sold here</h2>
+    <Kicker>Terms</Kicker>
+    <h1>Terms for reviews, guides and tools</h1>
+    <p class="lede">
+      These terms cover the reviews, guides and tools provided by PainToBuild, which is run by one
+      person under the PainToBuild name.
+    </p>
     <p>
-      Two things: the $19 Builder Validation Brief, a digital file, and Focused Analysis, a
-      written service engagement. Both are sold and processed through Gumroad, which is the
-      merchant of record for every transaction on this site. PainToBuild does not invoice or
-      process payment directly for anything.
+      For a personal review, your written agreement adds the details of your review. If your
+      agreement and this page differ, your agreement applies.
     </p>
 
-    <h2>Refunds</h2>
+    <h2>Personal reviews</h2>
     <p>
-      The Brief is a digital product delivered instantly on purchase; as with most instant-download
-      files, sales are final and not refundable except where required by law or at Gumroad's own
-      buyer-protection discretion. Focused Analysis follows the same no-refund policy once work has
-      started on your specific material; if you cancel before any work begins, you'll be refunded
-      in full.
+      Before I start, you and I agree in writing on the question, the work, the price and the
+      delivery date. The agreement lists what you receive and what is not included. It also says
+      when the later results review will take place.
+    </p>
+    <p>Sending an inquiry does not start paid work. Any extra work needs a separate agreement.</p>
+    <p>You remain responsible for running your business and carrying out the test unless the agreement says otherwise.</p>
+
+    <h2>Information and timing</h2>
+    <p>I need the agreed information to carry out the review.</p>
+    <p>
+      If information arrives late, is missing or is not suitable, I will tell you, and the delivery
+      date may need to move. Any change to the schedule is agreed with you in writing.
     </p>
 
-    <h2>What an analysis is, and isn't</h2>
+    <h2>Questions and the later review</h2>
     <p>
-      Every page on this site, and every Focused Analysis engagement, is research opinion applied
-      consistently through a published methodology. It is not a guarantee of any outcome. Recurring
-      pain in the evidence is not proof that a product will sell, and a build/change/watch/stop
-      recommendation is a read on the evidence available at the time, not a promise about what
-      will happen if you follow it.
+      The Founder Decision Review includes one round of questions about the written review and one
+      later review of the test results.
+    </p>
+    <p>
+      Your agreement says how long you have to send questions and results, which results to send,
+      and what happens if the test is not run.
     </p>
 
-    <h2>Accuracy</h2>
+    <h2>Payment, cancellation and refunds</h2>
+    <p>Your agreement says how and when you pay, and when work is considered started.</p>
     <p>
-      Sources are verified and dated at the time each page is published. Public conversations get
-      deleted, edited, or go stale; if you spot something that's changed or was mis-cited,
-      <a href="/contact/">tell us</a> and it will be corrected.
+      If you or I cancel before work starts, you pay nothing, and anything you have already
+      paid is refunded. After work starts, cancellation and refunds follow your agreement.
+    </p>
+    <p>This does not affect any rights you have by law.</p>
+
+    <h2>Guides and tools</h2>
+    <p>
+      The Brief and Kit are separate products. Each product page lists the files, edition and
+      price. Future volumes are separate purchases unless the listing says they are included.
+    </p>
+    <p>
+      The guides are digital files delivered through Gumroad, which is the seller of record for
+      these purchases. Sales are final and not refundable, except where the law requires a refund
+      or under Gumroad's own buyer protection.
     </p>
 
-    <h2>Who you're dealing with</h2>
+    <h2>What the advice can promise</h2>
     <p>
-      PainToBuild is operated under a pseudonym, deliberately kept separate from the operator's
-      unrelated professional work. See <a href="/about/">About</a> for why. Because Gumroad is
-      the merchant of record for every purchase on this site, no separate legal identity needs to
-      appear here for you to have a real seller of record, buyer protections, and a receipt.
+      My advice is based on the information available at the time of the review. Sometimes the
+      next step is more research rather than a change to the product.
+    </p>
+    <p>A review cannot guarantee customers, revenue, funding or a successful business.</p>
+
+    <h2>Your information and work</h2>
+    <p>The <a href="/privacy/">privacy page</a> and your agreement explain how your information is handled.</p>
+    <p>
+      You can use your written review for your own business. I do not publish your material or
+      results without your separate permission.
     </p>
 
-    <p class="note">Last reviewed {lastReviewed}.</p>
+    <h2>Questions and corrections</h2>
+    <p>
+      Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a> if you have a concern or notice something that
+      needs correcting. Include the relevant page, product or review.
+    </p>
+
+    <p class="reviewed">Last reviewed <time datetime={lastReviewed.iso}>{lastReviewed.label}</time>.</p>
+
+    <ul class="link-list">
+      <li><a href="/privacy/">Privacy</a></li>
+      <li><a href="/advisory/">What the review includes</a></li>
+      <li><a href="/contact/">Contact me</a></li>
+    </ul>
   </section>
 </BaseLayout>
 
 <style>
   .section { padding-block: var(--s7) var(--s8); }
-  .note { color: var(--muted); font-size: var(--t-caption); }
+  .reviewed { color: var(--muted); font-size: var(--t-caption); margin-top: var(--s7) !important; }
 </style>

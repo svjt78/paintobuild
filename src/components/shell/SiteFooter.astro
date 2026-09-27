@@ -1,46 +1,65 @@
 ---
-const today = new Date().toISOString().slice(0, 10);
+// Site footer. Groups and text from the approved copy
+// (advisory_based_specs/02_Replacement_Copy.md, "Shared navigation").
+// No automatic review date: a build is not a review.
+import { SHOP_URL } from '../../lib/routes';
+
+const groups = [
+  {
+    title: 'Work with me',
+    links: [
+      { href: '/advisory/', label: 'How I can help' },
+      { href: '/methodology/', label: 'How it works' },
+      { href: '/example-review/', label: 'Example review' },
+      { href: '/contact/', label: 'Contact me' },
+    ],
+  },
+  {
+    title: 'Research and resources',
+    links: [
+      { href: '/evidence/', label: 'Research articles' },
+      { href: '/resources/', label: 'Guides and tools' },
+      { href: '/tools/evidence-ledger-template/', label: 'Free research template' },
+      { href: '/brief/', label: 'Builder Validation Brief' },
+      { href: '/challenge-mining-kit/', label: 'Challenge Mining Kit' },
+      { href: SHOP_URL, label: 'Visit the shop', external: true },
+    ],
+  },
+  {
+    title: 'About and policies',
+    links: [
+      { href: '/about/', label: 'About PainToBuild' },
+      { href: '/privacy/', label: 'Privacy' },
+      { href: '/terms/', label: 'Terms' },
+    ],
+  },
+];
 ---
 <footer class="site-footer shell-dark">
   <div class="wrap">
     <div class="cols">
-      <div>
-        <h3 class="col-title">Sections</h3>
-        <ul>
-          <li><a href="/methodology/">Methodology</a></li>
-          <li><a href="/evidence/">Evidence</a></li>
-          <li><a href="/diagnostics/signups-no-core-feature-use/">Diagnostics</a></li>
-        </ul>
+      <div class="intro">
+        <p><strong>Help with your product and business decisions.</strong> From choosing a problem to working out what to try next.</p>
       </div>
-      <div>
-        <h3 class="col-title">Products</h3>
-        <ul>
-          <li><a href="/tools/evidence-ledger-template/">Evidence ledger template</a></li>
-          <li><a href="/brief/">The Validation Brief</a></li>
-          <li><a href="/everyday/">Everyday Default Audits</a></li>
-          <li><a href="/analysis/">Focused Analysis</a></li>
-          <li>
-            <a class="shop-footer" href="https://paintobuild.gumroad.com" target="_blank" rel="noopener noreferrer"
-               data-event="cta_click" data-event-page="footer" data-event-cta-id="footer-shop">
-              Shop on Gumroad ↗
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="col-title">About &amp; contact</h3>
-        <ul>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/contact/">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="col-title">Legal</h3>
-        <ul>
-          <li><a href="/privacy/">Privacy</a></li>
-          <li><a href="/terms/">Terms</a></li>
-        </ul>
-      </div>
+      {groups.map((group) => (
+        <div>
+          <h2 class="col-title">{group.title}</h2>
+          <ul>
+            {group.links.map((link) => (
+              <li>
+                {link.external ? (
+                  <a href={link.href} target="_blank" rel="noopener noreferrer"
+                     data-event="shop_link_click" data-event-page="footer" data-event-cta-id="footer-shop">
+                    {link.label} <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens Gumroad in a new tab)</span>
+                  </a>
+                ) : (
+                  <a href={link.href}>{link.label}</a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
 
     <div class="sign-off">
@@ -60,8 +79,7 @@ const today = new Date().toISOString().slice(0, 10);
         <circle cx="226" cy="220" r="46" fill="#FFFFFF"/>
         <rect x="490" y="174" width="92" height="92" rx="14" fill="#FFFFFF"/>
       </svg>
-      <p>PainToBuild — evidence-based product validation research</p>
-      <p class="reviewed">Site last reviewed {today}</p>
+      <p>PainToBuild</p>
     </div>
   </div>
 </footer>
@@ -74,7 +92,7 @@ const today = new Date().toISOString().slice(0, 10);
     gap: var(--s6);
   }
   @media (min-width: 768px) {
-    .cols { grid-template-columns: repeat(4, 1fr); }
+    .cols { grid-template-columns: 1.4fr repeat(3, 1fr); }
   }
   .col-title {
     font-size: var(--t-caption);
@@ -86,8 +104,8 @@ const today = new Date().toISOString().slice(0, 10);
   .cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); }
   .cols a { color: var(--on-dark-muted); text-decoration: none; font-size: var(--t-body-s); }
   .cols a:hover { color: var(--on-dark); }
-  .shop-footer { color: var(--build-on-dark); font-weight: 700; }
-  .shop-footer:hover { color: #5BD6BB; }
+  .intro p { margin: 0; color: var(--on-dark-muted); font-size: var(--t-body-s); max-width: 32ch; }
+  .intro strong { color: var(--on-dark); }
 
   .sign-off {
     margin-top: var(--s8);
@@ -97,5 +115,4 @@ const today = new Date().toISOString().slice(0, 10);
   }
   .sign-off-mark { opacity: 0.5; margin-bottom: var(--s3); }
   .sign-off p { margin: 0; color: var(--on-dark-quiet); font-size: var(--t-caption); }
-  .reviewed { margin-top: var(--s1) !important; }
 </style>

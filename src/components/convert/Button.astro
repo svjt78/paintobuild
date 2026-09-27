@@ -1,41 +1,37 @@
 ---
+// Pill button link. Event names describe the click only, never a later
+// outcome: a click on a mailto link is not a sent inquiry, and a click on a
+// Gumroad link is not a purchase. No script listens for these yet.
 interface Props {
   href: string;
   variant?: 'primary' | 'secondary';
   dark?: boolean;
+  /** Opens in a new tab with rel="noopener noreferrer". */
+  external?: boolean;
+  /** Visually hidden text read after the label, e.g. "(opens Gumroad)". */
+  srNote?: string;
   dataEvent?: string;
   dataEventPage?: string;
+  dataEventCtaId?: string;
 }
-const { href, variant = 'primary', dark = false, dataEvent, dataEventPage } = Astro.props;
+const {
+  href, variant = 'primary', dark = false, external = false, srNote,
+  dataEvent, dataEventPage, dataEventCtaId,
+} = Astro.props;
 ---
 <a
   href={href}
   class:list={['btn', variant === 'primary' ? 'btn-primary' : 'btn-secondary', dark && 'btn-dark']}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
   data-event={dataEvent}
   data-event-page={dataEventPage}
-><slot /></a>
+  data-event-cta-id={dataEventCtaId}
+><slot />{srNote && <span class="visually-hidden"> {srNote}</span>}</a>
 <style>
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 0 var(--s5);
-    border-radius: var(--r-pill);
-    font-weight: 700;
-    font-size: var(--t-body-s);
-    text-decoration: none;
-    border: 1.5px solid transparent;
-    cursor: pointer;
-    transition: background-color 150ms ease-out, color 150ms ease-out;
-  }
-  .btn-primary { background: var(--build); color: #FFFFFF; }
-  .btn-primary:hover { background: #12735F; color: #FFFFFF; }
+  .btn { transition: background-color 150ms ease-out, color 150ms ease-out; }
   .btn-dark.btn-primary { background: var(--build-on-dark); color: var(--ink); }
   .btn-dark.btn-primary:hover { background: #5BD6BB; color: var(--ink); }
-
-  .btn-secondary { border-color: var(--ink); color: var(--ink); background: transparent; }
-  .btn-secondary:hover { background: rgb(16 24 39 / .08); color: var(--ink); }
   .btn-dark.btn-secondary { border-color: var(--on-dark); color: var(--on-dark); }
   .btn-dark.btn-secondary:hover { background: rgb(247 245 239 / .08); color: var(--on-dark); }
 </style>

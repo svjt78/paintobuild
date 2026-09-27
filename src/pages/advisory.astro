@@ -1,0 +1,167 @@
+---
+// Service page. Copy: advisory_based_specs/02_Replacement_Copy.md §2.
+// Replaces the retired /analysis/ page, which now redirects here
+// (public/_redirects). There is no public price: the fee is agreed before
+// work starts, so the Service record below has no Offer.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+import CtaBand from '../components/convert/CtaBand.astro';
+import { MAIN_CTA } from '../lib/routes';
+
+const title = 'Help for founders with ideas, products and customers | PainToBuild';
+const description = 'Get help choosing a problem, planning a product or understanding why it is struggling. A written review gives you a next step and a later check of the results.';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Founder Decision Review',
+  provider: { '@type': 'Organization', name: 'PainToBuild', url: 'https://paintobuild.com' },
+  description: 'A written review of one product or idea, a suggested test and one later review of the results.',
+  url: 'https://paintobuild.com/advisory/',
+};
+---
+<BaseLayout title={title} description={description} ogImagePath="/open-graph/advisory.png">
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="hero shell-dark">
+    <div class="wrap"><div class="hero-inner">
+      <Kicker>Work with me</Kicker>
+      <h1>Help with the decision in front of you</h1>
+      <p class="lede">
+        Tell me what you are working on and where you are stuck. I look at the information you
+        have, ask questions and help you work out what to do next.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href={MAIN_CTA.href}
+           data-event="advisory_cta_click" data-event-page="/advisory/" data-event-cta-id="advisory-hero">
+          {MAIN_CTA.label}
+        </a>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <div class="wrap section prose">
+    <section aria-labelledby="find-a-problem">
+      <h2 id="find-a-problem">Find a problem to work on</h2>
+      <p>
+        You may have several ideas or have noticed a problem that seems worth solving. I help you
+        look into who has that problem and what they already do about it.
+      </p>
+      <p>
+        The work may include reading public discussions, looking at existing products and planning
+        questions for possible customers. You receive a written view of what is worth looking into
+        and what still needs to be checked.
+      </p>
+      <p>A search across several markets is a larger piece of work. I would agree that with you separately.</p>
+    </section>
+
+    <section aria-labelledby="decide-what-to-build">
+      <h2 id="decide-what-to-build">Decide what to build</h2>
+      <p>
+        You may need help choosing between ideas or deciding which features matter first. I help you
+        compare the options and think about why someone might choose your product.
+      </p>
+      <p>
+        This can include how you explain the product, what you charge and what a small first
+        version should do. I recommend what to test before you spend more time building.
+      </p>
+      <p>
+        If a technical question needs a specialist or a working model to answer it, I will say so.
+        Building the software is separate work.
+      </p>
+    </section>
+
+    <section aria-labelledby="decide-what-to-try-next">
+      <h2 id="decide-what-to-try-next">Decide what to try next</h2>
+      <p>You may be struggling to find customers, turn interest into sales or get people to keep using your product.</p>
+      <p>
+        I review what you have tried and where people stop. I consider the possible reasons and
+        recommend a test that fits the time and money you have.
+      </p>
+      <p>You run the product and carry out the test. Any help doing that work needs a separate agreement.</p>
+    </section>
+
+    <section class="review" aria-labelledby="founder-decision-review">
+      <h2 id="founder-decision-review">The Founder Decision Review</h2>
+      <p>This is a starting service for one product or idea and one decision.</p>
+
+      <h3>What you get</h3>
+      <ul>
+        <li>A written summary of the decision and what matters to you.</li>
+        <li>A review of the material you provide and any research agreed before I start.</li>
+        <li>An explanation of the options, what supports them and what is still unknown.</li>
+        <li>One suggested test or research task, with what to look for in the results.</li>
+        <li>One round of questions about the written review.</li>
+        <li>One later review of the results, with updated advice.</li>
+      </ul>
+      <p>
+        Sometimes the information is too limited to recommend a change. In that case, I explain
+        what you need to find out first.
+      </p>
+
+      <h3>What I need from you</h3>
+      <p>
+        Start with a description of your product or idea, the decision you face and what you have
+        tried. Tell me about any limits on your time or budget.
+      </p>
+      <p>
+        For an existing product, a public demo or screenshots may help. You can also describe what
+        a customer does from first hearing about the product to using it.
+      </p>
+      <p>Start with a summary. I will ask for more detail if needed.</p>
+
+      <h3>Price and timing</h3>
+      <p>
+        Before I start, you and I agree on the work, the fee and the delivery date. The agreement
+        also says when to send your test results for the later review.
+      </p>
+      <p>More products, more research or help carrying out the work would need a separate agreement.</p>
+      <p>
+        The review does not include running marketing campaigns or building your software. It
+        cannot guarantee customers, sales or funding.
+      </p>
+
+      <h3>What happens next</h3>
+      <ol>
+        <li>You send a short message.</li>
+        <li>I ask any questions needed to decide whether I can help.</li>
+        <li>You and I agree on the work and price in writing.</li>
+        <li>I send the review. You run the agreed test.</li>
+        <li>I review your results once, within the time agreed.</li>
+      </ol>
+      <p>Sending a message does not commit you to paying. You do not need to buy the Brief or Kit first.</p>
+
+      <ul class="link-list">
+        <li><a href="/example-review/">Read an example review</a></li>
+        <li><a href="/methodology/">Read about the process</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <CtaBand
+    heading="Tell me where you are stuck"
+    body="Send a short description of your idea or product and the decision you need to make. I will let you know whether I can help."
+    pagePath="/advisory/"
+    ctaId="advisory-end"
+  />
+</BaseLayout>
+
+<style>
+  .hero { padding-block: var(--s8); }
+  /* Lines up with the centered reading column below. */
+  .hero-inner { max-width: var(--w-prose); margin-inline: auto; padding-inline: var(--gutter); }
+  .hero h1 { margin-block: var(--s4); }
+  .hero .lede { margin: 0; }
+  .section { padding-block: var(--s6) var(--s8); }
+  section[aria-labelledby] h2 { scroll-margin-top: var(--s5); }
+  .review {
+    margin-top: var(--s8);
+    background: var(--surface-raised);
+    border-radius: var(--r-panel);
+    box-shadow: var(--shadow-card);
+    padding: var(--s6) var(--s5);
+  }
+  .review h2 { margin-top: 0 !important; }
+  @media (min-width: 768px) { .review { padding: var(--s7); } }
+</style>

@@ -1,0 +1,95 @@
+---
+// Made up example of a review. Copy: advisory_based_specs/02_Replacement_Copy.md §17.
+// This is not a client project and reports no results. Keep the label at the
+// top visible, and do not turn this into a case study.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+import { MAIN_CTA } from '../lib/routes';
+
+const title = 'Example of a Founder Decision Review | PainToBuild';
+const description = 'Read a made up example of a product review. See how I compare possible explanations, suggest a small test and explain what the results could mean.';
+---
+<BaseLayout title={title} description={description} ogImagePath="/open-graph/example-review.png">
+  <article class="wrap section prose">
+    <Kicker>Example review</Kicker>
+    <h1>What a Founder Decision Review looks like</h1>
+    <p class="made-up" role="note">
+      <strong>This example is made up.</strong> It shows the kind of review I would write. It is not
+      a client project, and no results have been observed.
+    </p>
+
+    <h2>The decision</h2>
+    <p>
+      A founder has made an app for sharing expenses. They want to decide whether to add features
+      or improve how they explain the app to possible users.
+    </p>
+
+    <h2>What I am assuming for this example</h2>
+    <p>
+      The person organizing the expenses needs the app. They can share a link that lets everyone
+      else view the breakdown without installing it.
+    </p>
+    <p>
+      The founder has made demos but has not shown this benefit clearly. There is no reliable
+      information about whether people return to the app or would pay for it.
+    </p>
+
+    <h2>Possible reasons for the problem</h2>
+    <p>
+      People may not understand what the app helps them do. The demos may be reaching people who
+      do not organize shared expenses. Entering the information may take too much effort.
+    </p>
+    <p>It is also possible that a spreadsheet or message already does the job well enough.</p>
+
+    <h2>What I would try first</h2>
+    <p>
+      I would ask a small number of willing organizers to use the current app for a real shared
+      expense. I would explain the link sharing feature and watch where they need help or stop.
+    </p>
+    <p>
+      This would help me decide whether the first problem to address is the explanation, the steps
+      in the app or the benefit itself.
+    </p>
+
+    <h2>What I would look for</h2>
+    <p>Can the organizer enter the expense and share it? Can the recipients view the breakdown? What help does anyone need?</p>
+    <p>
+      When another shared expense comes up, does the organizer choose the app again? If no new
+      expense occurs, that does not tell me whether they would return.
+    </p>
+
+    <h2>How the result could change my advice</h2>
+    <p>If people cannot finish the task, I would look into the step that blocks them.</p>
+    <p>If they finish but prefer their old method, I would ask why the app is not worth using again.</p>
+    <p>If they use it again without help, I would check whether more people have the same experience before making a broader claim.</p>
+
+    <h2>The later review</h2>
+    <p>
+      After the test, I would compare what happened with the possible reasons listed above. I would
+      then explain what I recommend checking or changing next.
+    </p>
+    <p>A thank you or a demo view would not show that someone had adopted the app.</p>
+
+    <div class="actions end">
+      <a class="btn btn-primary" href={MAIN_CTA.href}
+         data-event="advisory_cta_click" data-event-page="/example-review/" data-event-cta-id="example-end">
+        {MAIN_CTA.label}
+      </a>
+      <a href="/advisory/#founder-decision-review">See what the review includes</a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s7) var(--s8); }
+  .made-up {
+    background: var(--pain-tint);
+    border-left: 4px solid var(--pain);
+    border-radius: var(--r-card);
+    padding: var(--s4) var(--s5);
+    margin: var(--s5) 0 var(--s6) !important;
+    color: var(--ink);
+  }
+  .end { margin-top: var(--s7); padding-top: var(--s5); border-top: 1px solid var(--hairline); }
+  .end a:not(.btn) { font-weight: 600; }
+</style>

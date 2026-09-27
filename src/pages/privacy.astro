@@ -1,58 +1,113 @@
 ---
+// Privacy. Copy: advisory_based_specs/02_Replacement_Copy.md §18, with the
+// bracketed items completed from the owner's answers on 2026-09-27:
+//   - Inbound email: ImprovMX (forwarding, per the public MX records), stored
+//     in a personal Gmail account (Google).
+//   - No client material in public AI services such as ChatGPT or Claude.
+//   - Cloudflare Web Analytics is enabled (owner confirmed; not visible in
+//     this repo, because it is switched on in the Cloudflare dashboard).
+//   - Operator stays under the PainToBuild name with the email address.
+//   - No fixed retention period was chosen; deletion is on request.
+// Update the review date below only when the page is actually reviewed.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Kicker from '../components/content/Kicker.astro';
+import { EMAIL } from '../lib/routes';
 
-const title = 'Privacy Policy | PainToBuild';
-const description = 'What PainToBuild collects — email via MailerLite, cookie-free analytics via Cloudflare — and how to have your data deleted.';
-const lastReviewed = new Date().toISOString().slice(0, 10);
+const title = 'Privacy and your information | PainToBuild';
+const description = 'Learn how PainToBuild handles messages, client information, email subscriptions and purchases, and how to ask questions about your information.';
+const lastReviewed = { iso: '2026-09-27', label: 'September 27, 2026' };
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImagePath="/open-graph/privacy.png">
   <section class="wrap section prose">
-    <Kicker>Legal</Kicker>
-    <h1>Privacy Policy</h1>
-    <p class="lede">This site collects as little as it can get away with. Here is everything it does collect.</p>
-
-    <h2>Email, if you give it to us</h2>
-    <p>
-      If you request the free evidence ledger template, your email address is stored with
-      MailerLite to deliver the template and, if you don't unsubscribe, occasional emails about
-      new analyses. You can unsubscribe from any email, or write to
-      <a href="mailto:hello@paintobuild.com">hello@paintobuild.com</a> to have your address
-      deleted outright.
+    <Kicker>Privacy</Kicker>
+    <h1>Privacy and your information</h1>
+    <p class="lede">
+      This page explains what happens to your information when you contact me, request a guide or
+      pay for a review.
     </p>
 
-    <h2>Site analytics</h2>
+    <h2>Who is responsible</h2>
     <p>
-      Traffic is measured with Cloudflare Web Analytics, which does not use cookies and does not
-      track you individually across sites. It tells us which pages get read and roughly where
-      traffic comes from. None of it identifies you personally.
+      PainToBuild is run by one person under the PainToBuild name. You can send privacy questions
+      to <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
+    </p>
+
+    <h2>Messages and review material</h2>
+    <p>
+      When you email me, I receive your address, message and anything you attach. I use this
+      information to reply and, if agreed, carry out the review.
+    </p>
+    <p>
+      Email sent to {EMAIL} passes through ImprovMX, a service that forwards it to my inbox. It is
+      then stored in my Gmail account, which Google provides. I do not share your messages or
+      review material with other people unless you agree.
+    </p>
+    <p>You can ask me to delete your messages and review material at any time.</p>
+    <p>Start with a short summary. I will ask for more information only if it is needed for the agreed work.</p>
+
+    <h2>AI tools and other services</h2>
+    <p>
+      I do not put your messages or review material into public AI services, such as ChatGPT or
+      Claude.
+    </p>
+    <p>
+      The outside services that handle your information are the ones named on this page: ImprovMX
+      and Google for email, MailerLite for template emails, Gumroad for guide purchases and
+      Cloudflare for the website.
+    </p>
+
+    <h2>Sharing examples of client work</h2>
+    <p>
+      I ask for separate permission before publishing your material or results. That permission
+      covers what I can share and whether I can identify you.
+    </p>
+
+    <h2>Resource emails</h2>
+    <p>
+      The template request uses MailerLite to confirm your address and send the download. You also
+      receive occasional updates, as explained when you sign up. You can unsubscribe through the
+      link in an email.
+    </p>
+    <p>
+      MailerLite keeps your address while you are subscribed. To have it removed completely, email
+      {" "}<a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
     </p>
 
     <h2>Purchases</h2>
     <p>
-      The $19 Validation Brief and Focused Analysis are both sold through Gumroad, which handles
-      payment and any billing data directly. This site never sees or stores your card details.
+      Gumroad handles payments for the guides and tools. Its checkout has its own terms and privacy
+      information.
     </p>
-
-    <h2>What this site does not do</h2>
-    <ul>
-      <li>No third-party ad trackers.</li>
-      <li>No sale of any data to anyone, ever.</li>
-      <li>No tracking cookies beyond what your browser needs to load the page.</li>
-    </ul>
-
-    <h2>Deletion</h2>
     <p>
-      Email <a href="mailto:hello@paintobuild.com">hello@paintobuild.com</a> and any stored email
-      address or record tied to you is deleted within a reasonable time.
+      As the seller, I can see the purchase details Gumroad shows sellers, such as your email
+      address and what you bought. I never see your card details. For a personal review, how you
+      pay is set out in your written agreement.
     </p>
 
-    <p class="note">Last reviewed {lastReviewed}.</p>
+    <h2>Website visitor information</h2>
+    <p>
+      The website is served by Cloudflare. I use Cloudflare Web Analytics to see which pages are
+      read and roughly where visitors come from. It does not use cookies and does not follow you
+      across other websites.
+    </p>
+
+    <h2>Questions or requests</h2>
+    <p>
+      Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a> if you have a question or want to ask about
+      your information. You can ask what I hold about you, ask me to correct it or ask me to delete
+      it. Depending on where you live, you may have other rights too.
+    </p>
+
+    <p class="reviewed">Last reviewed <time datetime={lastReviewed.iso}>{lastReviewed.label}</time>.</p>
+
+    <ul class="link-list">
+      <li><a href="/contact/">Contact me</a></li>
+      <li><a href="/terms/">Terms</a></li>
+    </ul>
   </section>
 </BaseLayout>
 
 <style>
   .section { padding-block: var(--s7) var(--s8); }
-  .lede { font-size: var(--t-lede); color: var(--ink-soft); }
-  .note { color: var(--muted); font-size: var(--t-caption); }
+  .reviewed { color: var(--muted); font-size: var(--t-caption); margin-top: var(--s7) !important; }
 </style>

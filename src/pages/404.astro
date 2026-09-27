@@ -1,25 +1,28 @@
 ---
+// Not found page. Copy: advisory_based_specs/02_Replacement_Copy.md §16.
+// Built as /404.html. wrangler.jsonc sets not_found_handling to "404-page"
+// so Cloudflare serves this page with a 404 status for unknown paths.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Kicker from '../components/content/Kicker.astro';
 
 const title = 'Page not found | PainToBuild';
-const description = 'This page does not exist. Here is where to go instead.';
+const description = 'This page could not be found. Find help for your business, read the research or browse the guides and tools on PainToBuild.';
 ---
-<BaseLayout title={title} description={description} noindex={true}>
+<BaseLayout title={title} description={description} noindex={true} canonical={false}>
   <section class="wrap section prose">
-    <Kicker>404</Kicker>
-    <h1>That page doesn't exist</h1>
-    <p class="lede">The link may be old, or mistyped. Here's where the real content is:</p>
-    <ul>
-      <li><a href="/methodology/">The methodology</a>: how every analysis on this site is built.</li>
-      <li><a href="/evidence/">The evidence library</a>: every published analysis, with sources.</li>
-      <li><a href="/tools/evidence-ledger-template/">The free evidence ledger template</a>.</li>
-      <li><a href="/">Back to the homepage</a>.</li>
+    <Kicker>Page not found</Kicker>
+    <h1>That page could not be found</h1>
+    <p class="lede">The link may be old or incomplete. Try one of these pages.</p>
+    <ul class="link-list">
+      <li><a href="/advisory/">Work with me</a></li>
+      <li><a href="/evidence/">Research articles</a></li>
+      <li><a href="/resources/">Guides and tools</a></li>
+      <li><a href="/">Homepage</a></li>
     </ul>
+    <p><a href="/contact/">Tell me about a broken link</a></p>
   </section>
 </BaseLayout>
 
 <style>
   .section { padding-block: var(--s8); }
-  .lede { font-size: var(--t-lede); color: var(--ink-soft); }
 </style>

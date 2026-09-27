@@ -1,10 +1,30 @@
 ---
-import ComingSoonLayout from '../layouts/ComingSoonLayout.astro';
+// Legacy notice for an old address. Copy: advisory_based_specs/02_Replacement_Copy.md §15.
+// Not linked from the menus, kept out of search results (noindex) and out of
+// the sitemap. The address is kept so old links still work.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Kicker from '../components/content/Kicker.astro';
+
+const title = 'Everyday Default Audits | PainToBuild';
+const description = 'Everyday Default Audits is a separate research project. This page explains its status and links to the current founder services and resources.';
 ---
-<ComingSoonLayout
-  title="Everyday Default Audits — Coming Soon | PainToBuild"
-  description="A second PainToBuild research track: evidence-based audits of the everyday productivity, communication and consumer defaults that get recommended everywhere but don't hold up. Coming soon."
-  kicker="New track"
-  heading="Everyday Default Audits"
-  note="The same evidence standard PainToBuild uses on founder problems, pointed at everyday life: the productivity systems, communication habits, and consumer 'best practices' that get repeated as default advice but haven't been tested against real evidence. First audits and products are in progress."
-/>
+<BaseLayout title={title} description={description} noindex={true}>
+  <section class="wrap section prose">
+    <Kicker>Separate project</Kicker>
+    <h1>Everyday Default Audits</h1>
+    <p>
+      Everyday Default Audits is a separate research project about common advice for daily life.
+      It is not part of the founder service. I do not have a launch date to share.
+    </p>
+    <p>You can find the current founder services, research and guides through these links.</p>
+    <ul class="link-list">
+      <li><a href="/advisory/">Work with me</a></li>
+      <li><a href="/evidence/">Research</a></li>
+      <li><a href="/resources/">Guides and tools</a></li>
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .section { padding-block: var(--s8); }
+</style>

@@ -1,12 +1,12 @@
 ---
-// Research articles in the "evidence" section. Diagnostic articles use the
-// same layout from src/pages/diagnostics/[...slug].astro. Related links and
+// Research articles in the "diagnostics" section. Evidence articles use the
+// same layout from src/pages/evidence/[...slug].astro. Related links and
 // calls to action come from each entry's frontmatter, not from maps here.
 import { getCollection, render } from 'astro:content';
 import AnalysisLayout from '../../layouts/AnalysisLayout.astro';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('analysis', ({ data }) => data.section === 'evidence');
+  const entries = await getCollection('analysis', ({ data }) => data.section === 'diagnostics');
   return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
 }
 

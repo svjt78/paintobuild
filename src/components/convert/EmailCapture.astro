@@ -15,13 +15,24 @@
 // doc. One thing confirmed by testing the live endpoint directly rather
 // than assumed: a bare POST to it returns plain JSON ({"success":true}),
 // not an HTTP redirect, so there's no server-side way to land visitors on
-// our own /thank-you/ page. This ships a small first-party script (not
+// the /thank-you/ page. This ships a small first-party script (not
 // MailerLite's) that intercepts submit, posts the same fields via fetch,
 // and only then navigates to /thank-you/ -- confirmed working end-to-end
 // (subscriber lands in the group, response reads {"success":true}) against
 // the live endpoint before shipping. With JS disabled the form still
 // submits natively; the visitor lands on MailerLite's raw JSON response
 // in that fallback case.
+//
+// This endpoint is only for template requests. Never reuse it for advisory
+// inquiries or private client messages; those go by email (/contact/).
+//
+// Form states, kept separate on purpose. None of them proves the template
+// was delivered:
+//   invalid   - the address failed the browser check; nothing was sent
+//   failed    - the request failed or MailerLite did not return success
+//   accepted  - MailerLite returned {"success":true}; the visitor still has
+//               to confirm the address before anything is sent
+// The state is written to data-state on the form. Nothing listens yet.
 interface Props {
   action?: string;
   pagePath: string;
@@ -34,45 +45,69 @@ const {
 <form class="email-capture" method="post" action={action} data-ml-redirect="/thank-you/">
   <label for="ec-email">Email address</label>
   <div class="row">
-    <input id="ec-email" name="fields[email]" type="email" required placeholder="you@example.com" autocomplete="email" />
+    <input id="ec-email" name="fields[email]" type="email" required autocomplete="email"
+           aria-describedby="ec-help" />
     <input type="hidden" name="ml-submit" value="1" />
     <input type="hidden" name="anticsrf" value="true" />
-    <button type="submit" data-event="email_submit_success" data-event-page={pagePath} data-event-source="evidence-ledger-template">
+    <button type="submit" data-event="template_form_submit" data-event-page={pagePath} data-event-source="evidence-ledger-template">
       Send me the template
     </button>
   </div>
-  <p class="fine-print">One confirmation email, then the download link. No spam, unsubscribe anytime.</p>
-  <p class="form-error" hidden>
-    Something went wrong submitting the form. Please email
-    <a href="mailto:hello@paintobuild.com">hello@paintobuild.com</a> directly and we'll send the template.
+  <p class="fine-print" id="ec-help">
+    Confirm your email address to receive the download. <a href="/privacy/">Read the privacy policy.</a>
+  </p>
+  <p class="form-message" id="ec-invalid" role="alert" hidden>
+    Enter a full email address, such as name@example.com.
+  </p>
+  <p class="form-message" id="ec-error" role="alert" tabindex="-1" hidden>
+    Your request could not be confirmed. Please try again or email{" "}
+    <a href="mailto:hello@paintobuild.com">hello@paintobuild.com</a> for help.
   </p>
 </form>
 <script>
-  // Progressive enhancement only -- see comment above. With JS disabled,
-  // the form still submits (native POST to MailerLite), it just lands
-  // on MailerLite's raw JSON response instead of /thank-you/.
-  document.querySelectorAll('form.email-capture[data-ml-redirect]').forEach((form) => {
+  // Progressive enhancement only. With JS disabled, the browser checks the
+  // address and the form posts straight to MailerLite, landing on its raw
+  // JSON response instead of /thank-you/.
+  document.querySelectorAll<HTMLFormElement>('form.email-capture[data-ml-redirect]').forEach((form) => {
+    form.noValidate = true;
+    const input = form.querySelector<HTMLInputElement>('input[type="email"]')!;
+    const invalidEl = form.querySelector<HTMLElement>('#ec-invalid')!;
+    const errorEl = form.querySelector<HTMLElement>('#ec-error')!;
+    const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+
+    const showOnly = (el: HTMLElement | null) => {
+      invalidEl.hidden = el !== invalidEl;
+      errorEl.hidden = el !== errorEl;
+      input.setAttribute('aria-describedby', el ? `ec-help ${el.id}` : 'ec-help');
+    };
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      const redirectTo = form.getAttribute('data-ml-redirect');
-      const errorEl = form.querySelector('.form-error');
-      const submitBtn = form.querySelector('button[type="submit"]');
-      if (submitBtn) submitBtn.disabled = true;
+      if (!input.checkValidity()) {
+        form.dataset.state = 'invalid';
+        input.setAttribute('aria-invalid', 'true');
+        showOnly(invalidEl);
+        input.focus();
+        return;
+      }
+      input.removeAttribute('aria-invalid');
+      showOnly(null);
+      form.dataset.state = 'submitting';
+      submitBtn.disabled = true;
       try {
-        const resp = await fetch(form.getAttribute('action'), {
-          method: 'POST',
-          mode: 'cors',
-          body: new FormData(form),
-        });
+        const resp = await fetch(form.action, { method: 'POST', mode: 'cors', body: new FormData(form) });
         const data = await resp.json().catch(() => null);
         if (resp.ok && data && data.success) {
-          window.location.assign(redirectTo);
+          form.dataset.state = 'accepted';
+          window.location.assign(form.getAttribute('data-ml-redirect')!);
           return;
         }
         throw new Error('Unexpected response');
-      } catch (err) {
-        if (errorEl) errorEl.hidden = false;
-        if (submitBtn) submitBtn.disabled = false;
+      } catch {
+        form.dataset.state = 'failed';
+        showOnly(errorEl);
+        errorEl.focus();
+        submitBtn.disabled = false;
       }
     });
   });
@@ -85,13 +120,14 @@ const {
     flex: 1 1 220px;
     min-height: 44px;
     padding: 0 var(--s4);
-    border: 1.5px solid var(--hairline);
+    border: 1.5px solid var(--muted);
     border-radius: var(--r-chip);
     font-size: var(--t-body);
     font-family: var(--font-sans);
     color: var(--ink);
     background: var(--surface-raised);
   }
+  input[aria-invalid='true'] { border-color: var(--danger); }
   input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
   button {
     min-height: 44px;
@@ -102,10 +138,19 @@ const {
     color: #FFFFFF;
     font-weight: 700;
     font-size: var(--t-body-s);
+    font-family: var(--font-sans);
     cursor: pointer;
   }
   button:hover { background: #12735F; }
   button:disabled { opacity: 0.6; cursor: default; }
   .fine-print { margin: var(--s2) 0 0; font-size: var(--t-caption); color: var(--muted); }
-  .form-error { margin: var(--s3) 0 0; font-size: var(--t-body-s); color: var(--ink); background: var(--surface-sunken); border-radius: var(--r-chip); padding: var(--s3) var(--s4); }
+  .form-message {
+    margin: var(--s3) 0 0;
+    font-size: var(--t-body-s);
+    color: var(--ink);
+    background: var(--surface-sunken);
+    border-left: 4px solid var(--danger);
+    border-radius: var(--r-chip);
+    padding: var(--s3) var(--s4);
+  }
 </style>

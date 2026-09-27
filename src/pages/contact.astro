@@ -1,34 +1,67 @@
 ---
+// Contact and main inquiry route. Copy: advisory_based_specs/02_Replacement_Copy.md §14.
+// Inquiries go by email only. The template form's MailerLite endpoint is not
+// used here. Clicking the email button fires "inquiry_email_click", which only
+// means the link was clicked; it does not mean a message was sent.
+// No reply time is promised until one can be met.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Kicker from '../components/content/Kicker.astro';
+import { EMAIL, INQUIRY_MAILTO } from '../lib/routes';
 
-const title = 'Contact | PainToBuild';
-const description = 'How to reach PainToBuild by email for corrections, evidence tips, or questions about the $19 Brief or a Focused Analysis engagement.';
+const title = 'Tell me what you need help with | PainToBuild';
+const description = 'Send a short message about your idea or product, what you have tried and where you need help. I will let you know whether a review could help.';
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImagePath="/open-graph/contact.png">
   <section class="wrap section prose">
     <Kicker>Contact</Kicker>
-    <h1>Contact</h1>
+    <h1>Tell me what you need help with</h1>
     <p class="lede">
-      Email is the only contact route. No social DMs, no chat widget.
+      Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a> with a short description of your idea or
+      product and where you are stuck.
     </p>
-    <p>
-      <a href="mailto:hello@paintobuild.com">hello@paintobuild.com</a>
-    </p>
-    <p class="note">
-      Expect a reply within 2–3 business days. If that stops being true, this line gets updated.
-    </p>
-    <h2>What to write in about</h2>
+
+    <h2>What to include</h2>
     <ul>
-      <li>A correction to something published: sources, dates, or a claim that overstates the evidence.</li>
-      <li>A signal or thread for a future analysis.</li>
-      <li>Questions about the $19 Brief, the free template, or Focused Analysis.</li>
+      <li>What you are building or thinking about.</li>
+      <li>A public link, if you have one.</li>
+      <li>The decision you need to make.</li>
+      <li>What you have tried and what happened.</li>
+      <li>Any limits on your time or budget.</li>
+    </ul>
+    <p class="panel">
+      A summary is enough to start. Do not send passwords or private customer records. If I need
+      more detail, I will explain what to share and how it will be handled.
+    </p>
+
+    <h2>What happens next</h2>
+    <p>
+      I will read your message and ask any questions needed to decide whether I can help. If the
+      work is a good fit, you and I agree on the price, timing and what the review covers.
+    </p>
+    <p>Sending a message does not book a service or commit you to paying.</p>
+    <div class="email-box">
+      <a class="btn btn-primary" href={INQUIRY_MAILTO}
+         data-event="inquiry_email_click" data-event-page="/contact/" data-event-cta-id="contact-email">
+        Email me
+      </a>
+      <p class="address">{EMAIL}</p>
+    </div>
+
+    <h2>Questions about a guide or article</h2>
+    <p>
+      You can use the same address for download problems or corrections to an article. Include the
+      product name or page link and explain what needs attention.
+    </p>
+    <ul class="link-list">
+      <li><a href="/advisory/">What the review includes</a></li>
+      <li><a href="/privacy/">Privacy</a></li>
+      <li><a href="/terms/">Terms</a></li>
     </ul>
   </section>
 </BaseLayout>
 
 <style>
   .section { padding-block: var(--s7) var(--s8); }
-  .lede { font-size: var(--t-lede); color: var(--ink-soft); }
-  .note { background: var(--surface-sunken); border-radius: var(--r-card); padding: var(--s5); color: var(--muted); }
+  .email-box { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3) var(--s5); margin: var(--s5) 0; }
+  .address { margin: 0 !important; font-weight: 700; user-select: all; overflow-wrap: anywhere; }
 </style>

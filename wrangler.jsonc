@@ -1,7 +1,11 @@
 {
   "name": "paintobuild",
   "compatibility_date": "2026-08-24",
-  "assets": { "directory": "./dist" },
+  "assets": {
+    "directory": "./dist",
+    // Serve dist/404.html with a 404 status for unknown paths.
+    "not_found_handling": "404-page"
+  },
   "routes": [
     { "pattern": "paintobuild.com", "custom_domain": true }
   ]

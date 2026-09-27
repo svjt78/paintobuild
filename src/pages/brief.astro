@@ -1,10 +1,16 @@
 ---
+// Builder Validation Brief. Copy: advisory_based_specs/02_Replacement_Copy.md §10.
+// Price, page count and edition were checked against the public Gumroad
+// listing on 2026-09-27 ($19, 18 page PDF, "Vol. 1, 2026 Q3", future volumes
+// not included). The PDF itself was not inspected. The four topics describe
+// the existing chapters in plain language; they do not rename the file.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Kicker from '../components/content/Kicker.astro';
+import Button from '../components/convert/Button.astro';
+import { BRIEF_URL } from '../lib/routes';
 
-const title = 'The Builder Validation Brief — $19 | PainToBuild';
-const description = 'Four worked evidence entries showing how the PainToBuild evidence ledger tests a real founder problem before you build. More entries added quarterly.';
-const gumroadHref = 'https://paintobuild.gumroad.com/l/the-builder-validation-brief';
+const title = 'Builder Validation Brief | Research examples for founders';
+const description = 'Read four examples of research into founder problems, with sources and suggested next steps. The PDF has 18 pages and costs $19.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -12,86 +18,66 @@ const jsonLd = {
   name: 'The Builder Validation Brief',
   description,
   brand: { '@type': 'Brand', name: 'PainToBuild' },
-  offers: {
-    '@type': 'Offer',
-    price: '19',
-    priceCurrency: 'USD',
-    availability: 'https://schema.org/InStock',
-    url: gumroadHref,
-  },
+  offers: { '@type': 'Offer', price: '19', priceCurrency: 'USD', url: BRIEF_URL },
 };
 ---
 <BaseLayout title={title} description={description} ogImagePath="/open-graph/brief.png">
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <section class="wrap section prose">
-    <Kicker>Product · Founder Solutions</Kicker>
+    <Kicker>Guides and tools</Kicker>
     <h1>The Builder Validation Brief</h1>
-    <p class="price">$19 · on Gumroad</p>
-    <p>
-      Four worked evidence entries showing how the PainToBuild evidence ledger tests a real
-      founder problem before you commit to building: is the pain real, are the buyers reachable,
-      and would anything actually get built and used?
+    <p class="facts">$19 <span aria-hidden="true">|</span> PDF with 18 pages <span aria-hidden="true">|</span> Volume 1, July to September 2026</p>
+    <p class="lede">
+      This guide contains four examples of research into problems founders describe in public.
+      Each looks at what the information suggests and what still needs checking.
     </p>
 
-    <h2>What's inside</h2>
+    <h2>What is inside</h2>
     <ul>
-      <li>Four complete evidence-ledger entries, worked end to end</li>
-      <li>The independence rules used to avoid mistaking noise for real demand</li>
-      <li>The build / change / stop decision criteria applied to each case</li>
+      <li>Finding possible customers when few people know about your product.</li>
+      <li>Deciding what to look into after a launch gets little response.</li>
+      <li>Testing an idea when you do not have an audience.</li>
+      <li>Researching what others charge for a particular kind of work.</li>
     </ul>
-
-    <p class="scope-note">
-      Four entries today, with more added quarterly. It's a worked reference, not a course or a
-      community, and not a promise that any idea will sell. The
-      <a href="/methodology/">methodology page</a> covers what the evidence process can and can't
-      show.
+    <p>Each example includes source material, a worksheet for comparing the findings and a suggested first step.</p>
+    <p class="panel">
+      The suggested steps have not been tested for results. The pricing example has less
+      supporting evidence than the other three.
     </p>
 
-    <a
-      class="btn btn-primary"
-      href={gumroadHref}
-      target="_blank"
-      rel="noopener noreferrer"
-      data-event="brief_checkout_click"
-      data-event-page="/brief/"
-      data-event-cta-id="brief-buy"
-    >
-      Buy on Gumroad — $19
-    </a>
-
-    <p class="alt-line">
-      Not ready to buy? <a href="/tools/evidence-ledger-template/">Get the free evidence ledger template</a>
-      or <a href="https://paintobuild.gumroad.com" target="_blank" rel="noopener noreferrer"
-             data-event="cta_click" data-event-page="/brief/" data-event-cta-id="brief-storefront">
-        see everything on the storefront ↗
-      </a>.
+    <h2>What your purchase includes</h2>
+    <p>
+      You receive this edition of the guide. Future volumes are separate purchases. Personal advice
+      about your own product is a separate service.
     </p>
+    <div class="buy">
+      <Button href={BRIEF_URL} external srNote="(opens Gumroad in a new tab)"
+              dataEvent="resource_checkout_click" dataEventPage="/brief/" dataEventCtaId="brief-buy">
+        Buy the Brief for $19
+      </Button>
+      <p class="button-note">Opens Gumroad.</p>
+    </div>
+
+    <h2>Other ways to get help</h2>
+    <p>
+      The Challenge Mining Kit explains how to do the research yourself. It uses the same four
+      examples among its worked cases.
+    </p>
+    <p>For help with your own decision, read about the advisory service.</p>
+    <ul class="link-list">
+      <li><a href="/challenge-mining-kit/">Read about the Kit</a></li>
+      <li><a href="/advisory/">See how I can help</a></li>
+      <li><a href="/tools/evidence-ledger-template/">Get the free template</a></li>
+      <li><a href="/resources/">Compare all guides and tools</a></li>
+    </ul>
   </section>
 </BaseLayout>
 
 <style>
-  .section { padding-block: var(--s8); }
-  .price { font-weight: 700; color: var(--build); margin: 0 0 var(--s4); }
-  .scope-note {
-    background: var(--surface-sunken);
-    border-radius: var(--r-card);
-    padding: var(--s5);
-    color: var(--muted);
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 0 var(--s5);
-    border-radius: var(--r-pill);
-    font-weight: 700;
-    font-size: var(--t-body-s);
-    text-decoration: none;
-    margin: var(--s5) 0;
-  }
-  .btn-primary { background: var(--build); color: #FFFFFF; }
-  .btn-primary:hover { background: #12735F; color: #FFFFFF; }
-  .alt-line { color: var(--muted); font-size: var(--t-body-s); }
+  .section { padding-block: var(--s7) var(--s8); }
+  .facts { font-weight: 700; color: var(--build); margin: var(--s3) 0 var(--s4) !important; }
+  .facts span { color: var(--muted); font-weight: 400; margin-inline: var(--s1); }
+  .buy { margin: var(--s5) 0 var(--s4); }
+  .button-note { font-size: var(--t-caption); color: var(--muted); margin: var(--s2) 0 0 !important; }
 </style>

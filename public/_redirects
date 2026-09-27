@@ -1,0 +1,4 @@
+# Cloudflare Workers Static Assets redirects (served from ./dist).
+# The old Focused Analysis offer was retired; its page now lives at /advisory/.
+/analysis /advisory/ 301
+/analysis/ /advisory/ 301

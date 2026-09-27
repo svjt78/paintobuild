@@ -1,8 +1,17 @@
 ---
+// Source list for research articles. Sources are grouped by role so reports
+// from founders are not mixed with product pages or older background posts.
+//
+// verifiedOn is a date-only value (parsed as UTC midnight). It is formatted
+// in UTC so the calendar date never shifts with the build machine's time
+// zone. "Checked on" means the link was opened on that date; it does not mean
+// the claim in the post was independently confirmed.
 interface Source {
   label: string;
   url: string;
   platform: 'reddit' | 'hn' | 'indiehackers' | 'web';
+  role: 'founder-report' | 'product-reference' | 'background';
+  note?: string;
   verifiedOn: Date;
 }
 interface Props {
@@ -10,36 +19,55 @@ interface Props {
   pagePath: string;
 }
 const { sources, pagePath } = Astro.props;
-const platformLabel: Record<string, string> = {
+
+const platformLabel: Record<Source['platform'], string> = {
   reddit: 'Reddit',
   hn: 'Hacker News',
-  indiehackers: 'IndieHackers',
-  web: 'Web',
+  indiehackers: 'Indie Hackers',
+  web: 'Website',
 };
-const fmt = (d: Date) => new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+const groups: { role: Source['role']; heading: string }[] = [
+  { role: 'founder-report', heading: 'Posts by founders' },
+  { role: 'product-reference', heading: 'Other products mentioned in the original research' },
+  { role: 'background', heading: 'Earlier background post' },
+];
+const fmt = (d: Date) =>
+  new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+const iso = (d: Date) => new Date(d).toISOString().slice(0, 10);
 ---
-<ul class="source-list">
-  {sources.map((s) => (
-    <li>
-      <p class="src-label">{s.label}</p>
-      <p class="src-meta">
-        <span class="platform">{platformLabel[s.platform] ?? s.platform}</span>
-        <span class="dot" aria-hidden="true">·</span>
-        <span>verified {fmt(s.verifiedOn)}</span>
-        <span class="dot" aria-hidden="true">·</span>
-        <a href={s.url} target="_blank" rel="noopener noreferrer nofollow"
-           data-event="source_link_click" data-event-page={pagePath} data-event-platform={s.platform}>
-          View original ↗
-        </a>
-      </p>
-    </li>
-  ))}
-</ul>
+{groups.map(({ role, heading }) => {
+  const items = sources.filter((s) => s.role === role);
+  return items.length > 0 && (
+    <>
+      <h3 class="group-heading">{heading}</h3>
+      <ul class="source-list">
+        {items.map((s) => (
+          <li>
+            <p class="src-label">{s.label}</p>
+            {s.note && <p class="src-note">{s.note}</p>}
+            <p class="src-meta">
+              <span class="platform">{platformLabel[s.platform]}</span>
+              <span class="dot" aria-hidden="true">·</span>
+              <span>Link checked on <time datetime={iso(s.verifiedOn)}>{fmt(s.verifiedOn)}</time></span>
+              <span class="dot" aria-hidden="true">·</span>
+              <a href={s.url} target="_blank" rel="noopener noreferrer nofollow"
+                 data-event="source_link_click" data-event-page={pagePath} data-event-platform={s.platform}>
+                View the original<span class="visually-hidden"> on {platformLabel[s.platform]} (opens in a new tab)</span> <span aria-hidden="true">↗</span>
+              </a>
+            </p>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+})}
 <style>
+  .group-heading { font-size: var(--t-body); margin: var(--s6) 0 var(--s3); }
   .source-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s4); }
   .source-list li { padding-bottom: var(--s4); border-bottom: 1px solid var(--hairline); }
   .source-list li:last-child { border-bottom: none; padding-bottom: 0; }
   .src-label { margin: 0 0 var(--s1); color: var(--ink-soft); }
+  .src-note { margin: 0 0 var(--s1); color: var(--muted); font-size: var(--t-body-s); }
   .src-meta { margin: 0; font-size: var(--t-caption); color: var(--muted); display: flex; gap: var(--s2); flex-wrap: wrap; }
   .platform { font-weight: 700; color: var(--muted); }
   .dot { opacity: 0.6; }

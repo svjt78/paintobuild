@@ -1,83 +1,106 @@
 ---
-title: "Reddit Validation: How Much Evidence Is Enough"
-question: "Are three Reddit posts enough evidence to validate a product idea?"
-shortAnswer: "No. Three posts tell you that people type the words \"validate my idea,\" and nothing more. The real bar is independent first-person accounts, deduplicated across cross-posts and platforms, that also show someone already failing at a workaround or naming a price they would pay. On that bar the pre-build validation problem clears easily: 20 clean signals across five discovery runs and three platforms. The same evidence run also turned up a crowded market of free AI idea-validators, which is why the useful next step is a sourced, inspectable dossier rather than one more opinion tool."
-forYouIf: "This page is for before you build: you have an idea and want to know if the demand is real. If you already shipped something and signups aren't converting to use, the diagnostic on activation is the one to read instead."
-description: "How much forum evidence it actually takes to validate demand for an idea, worked through 20 real signals and a crowded market of AI validators."
+title: "What Reddit posts can tell you about an idea"
+question: "What can Reddit posts tell you about an idea?"
+cardSummary: "Find out what a post can tell you about a problem and what you still need to learn about possible customers."
+description: "Public posts can help you understand a problem. Learn what to check next before assuming people will try your product or pay for it."
 section: "evidence"
-cluster: "validation"
-confidence: "pain-validated"
-signalCount: 20
-weakSignalCount: 9
-evidenceWindow:
-  from: "2026-07-09"
-  to: "2026-09-02"
-candidateIds: ["C-004"]
+stage: "before-build"
 published: 2026-09-07
-updated: 2026-09-07
+updated: 2026-09-27
+related: "signups-no-core-feature-use"
+relatedLabel: "Why people sign up but do not use a product"
+methodHref: "/methodology/#problem-vs-payment"
+cta:
+  primary: { label: "Tell me about your product question", href: "/contact/" }
+  secondary: { label: "Get help deciding what to build", href: "/advisory/#decide-what-to-build" }
 sources:
-  - label: "how do I validate demand if I haven't sold a single offer yet?"
+  - label: "“how do I validate demand if I haven't sold a single offer yet?”"
+    note: "A founder asks how to test demand before selling anything."
     url: "https://www.reddit.com/r/agencynewbies/comments/1uxdp17/c/oxtw5np"
     platform: "reddit"
+    role: "founder-report"
     verifiedOn: 2026-07-16
-  - label: "I don't know how to actually get them and validate my idea — it feels very hard where to start because I am starting from scratch"
+  - label: "“I don't know how to actually get them and validate my idea”"
+    note: "A founder starting from scratch asks how to find first users."
     url: "https://www.reddit.com/r/micro_saas/comments/1vpxpo4/guide_me_to_get_my_early_users_service_for_agency/"
     platform: "reddit"
+    role: "founder-report"
     verifiedOn: 2026-08-16
-  - label: "Would you pay $9.99/month for this? Help me validate my idea before I build it further"
+  - label: "“Would you pay $9.99/month for this?”"
+    note: "A founder asks possible users about a price. This is a question. It does not show that anyone paid."
     url: "https://www.reddit.com/r/apps/comments/1vn500p/help_me_validate_my_idea_before_i_build_it/"
     platform: "reddit"
+    role: "founder-report"
     verifiedOn: 2026-08-13
-  - label: "I have lost my initial steam with finding potential customers to help validate my idea — I am in that challenging validation phase"
+  - label: "“I have lost my initial steam with finding potential customers to help validate my idea”"
+    note: "A founder describes how hard it is to find people to talk to."
     url: "https://www.reddit.com/r/EntrepreneurRideAlong/comments/1vkrw4l/c/p3gr4oz?context=3"
     platform: "reddit"
+    role: "founder-report"
     verifiedOn: 2026-08-13
-  - label: "ValidatorAI — free idea-validation tool, positioning and claimed usage"
+  - label: "ValidatorAI home page"
+    note: "An AI tool that comments on startup ideas."
     url: "https://validatorai.com/"
     platform: "web"
+    role: "product-reference"
     verifiedOn: 2026-09-02
-  - label: "DimeADozen — free score plus $9 one-time validation report, pricing page"
+  - label: "DimeADozen pricing page"
+    note: "An AI tool that sells written reports on ideas."
     url: "https://www.dimeadozen.ai/pricing"
     platform: "web"
+    role: "product-reference"
     verifiedOn: 2026-09-02
-notProven:
-  - "That any of the people quoted here will pay for a validation product. None of these quotes state willingness to pay for outside help, only difficulty doing it themselves."
-  - "That the market for idea-validation products is unmet. It is not: at least three funded AI-validator products (ValidatorAI, DimeADozen, IdeaBuddy) now serve exactly this audience for free or near-free."
-  - "That an evidence-based dossier outperforms an AI opinion for these specific people. No head-to-head comparison has been run."
-nextTest: "Pre-sell five niche-specific evidence dossiers at a fixed price before building anything generic."
-relatedSlugs: ["community-access-is-not-buyer-access"]
-noindex: false
+history:
+  cluster: "validation"
+  confidence: "pain-validated"
+  signalCount: 20
+  weakSignalCount: 9
+  evidenceWindow: { from: "2026-07-09", to: "2026-09-02" }
+  candidateIds: ["C-004"]
 ---
 
-## What this conclusion is based on
+This article is for you if you are looking into an idea before building it.
 
-Five discovery runs between July 9 and September 2, 2026, reading first-person Reddit, IndieHackers and Hacker News posts and comments where someone used their own words to describe wanting to validate an idea before building it. Every quote below is deduplicated across its cross-posts and re-verified against the live thread on the date shown in the sources list.
+## What you can learn
 
-## What the evidence shows
+Posts can show how people describe a problem and what they have tried. They may help you find questions to ask possible customers.
 
-> "how do I validate demand if I haven't sold a single offer yet?"
->
-> — r/agencynewbies, July 2026
+They cannot tell you, on their own, whether people will buy your product.
 
-> "I don't know how to actually get them and validate my idea... it feels very hard where to start because I am starting from scratch."
->
-> — r/micro_saas, August 2026
+## Look at the problem being described
 
-> "Would you pay $9.99/month for this? I'm building an AI study app... help me validate my idea before I build it further."
->
-> — r/apps, cross-posted to five other subreddits, August 2026
+Note who has the problem, when it happens and why it matters. Look for what the person already does about it.
 
-Twenty clean signals like these span agency services, consumer study apps, dating apps for niche communities, and blockchain projects. Different products, the same missing step.
+A founder asking for feedback on an idea is not the same as a customer asking for help with a problem. A founder asking “Would you pay this price?” has asked a question. It does not mean anyone has agreed to pay.
 
-## What it probably means
+## Work out what you still need to know
 
-People building toward a first product consistently lack a concrete, audience-independent way to test demand before spending months on it. The pain recurs across product categories that have nothing else in common, which points to a general go/no-build problem rather than a niche-specific one. General problems attract competition fast.
+<div class="table-scroll" role="region" aria-label="Questions to answer about an idea" tabindex="0">
 
-## Decision criteria
-
-| Signal in your own evidence | What it suggests |
+| Question | What to look for |
 |---|---|
-| 3+ independent first-person accounts, no advisor or meta commentary | Investigate further |
-| People already trying and abandoning a workaround | Stronger case |
-| A named price someone would pay, even a small one | Stronger case still |
-| The same pain recurring across unrelated product categories | General pain, so expect crowded competition |
+| Who has this problem? | Recent examples from the people you want to help |
+| What do they already use? | What works, what does not and why |
+| Can you reach the person who buys? | A way to speak with someone who needs it and can approve the purchase |
+| Will they try your approach? | A small test that asks them to do something relevant |
+| Will they pay? | A clear offer and their response, followed by an actual purchase where appropriate |
+
+</div>
+
+## Choose a next step
+
+If the problem is unclear, ask possible customers about recent examples. If you understand the problem but not the solution, try a simple model or do part of the work by hand.
+
+If you need to learn whether people will pay, explain exactly what you are offering before asking them to buy. Make the price and terms clear.
+
+Decide what result would change your mind. No fixed number of posts or interviews proves that an idea is ready to become a business.
+
+## Keep the limits in mind
+
+Someone who complains online may not be reachable or willing to buy. A person who tries something once may not use it again. A paid product in the market does not show that people will switch to yours.
+
+These are separate questions to investigate.
+
+## About the source material
+
+The original source material for this article concerned founders who were struggling to test their ideas. Those reports do not show that the writers wanted to pay someone for that help.

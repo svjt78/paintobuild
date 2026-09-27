@@ -17,6 +17,7 @@
   --build-bright:       #31C7A5;
   --danger:             #9B1C1C;
   --tint-pale:          #E4E2D8;
+  --pain-tint:          #FBEADD;
 
   /* --- Dark surface (shell), §5.1 --- */
   --surface-dark:        #101827;

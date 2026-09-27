@@ -1,76 +1,90 @@
 ---
-title: "Signups Without Core Feature Use: What It Means"
-question: "Seventy people signed up, but only one used the core feature. What should I investigate?"
-shortAnswer: "Signups without activation almost always point to marketing that oversold or mismatched what the product does, not to a worthless product. You have to find out which before you change anything. Across ten confirmed signals plus one closely related case, the pattern is consistent: months of building, a brief marketing push at the end, then zero or near-zero real usage despite real signups. This page is for after you've launched; if you haven't shipped yet, read the pre-build validation page instead."
-forYouIf: "This diagnostic is for after launch, when signups exist but usage doesn't. If you're still deciding whether to build at all, the pre-build validation page is the counterpart to this one."
-description: "Why activation stalls after launch when signups look fine, worked through ten first-person cases, plus the one test that tells you the cause."
+title: "Why people sign up but do not use your product"
+question: "Why do people sign up but not use your product?"
+cardSummary: "Look at where people stop and compare possible reasons before choosing a fix."
+description: "Look at where people stop after signing up. Check what they expected, what they tried and whether the product helped before choosing a change."
 section: "diagnostics"
-cluster: "activation"
-confidence: "pain-validated"
-signalCount: 10
-weakSignalCount: 1
-evidenceWindow:
-  from: "2026-07-09"
-  to: "2026-09-02"
-candidateIds: ["C-005"]
+stage: "after-launch"
 published: 2026-09-07
-updated: 2026-09-07
+updated: 2026-09-27
+related: "community-access-is-not-buyer-access"
+cta:
+  primary: { label: "Tell me where people stop", href: "/contact/" }
+  secondary: { label: "See what the review includes", href: "/advisory/#founder-decision-review" }
 sources:
-  - label: "SaaS after SaaS that nobody asked for, nobody bought — first actual money after a year and a half"
-    url: "https://www.reddit.com/r/buildinpublic/comments/1uweu25/"
-    platform: "reddit"
-    verifiedOn: 2026-07-14
-  - label: "Users: zero. Revenue: zero — months of building against about a week of marketing"
-    url: "https://www.indiehackers.com/post/i-have-a-working-ai-health-appand-zero-users-day-1-of-fixing-that-2b245971fe"
-    platform: "indiehackers"
-    verifiedOn: 2026-07-19
-  - label: "An idea-validation tool's own 83% form-abandonment case — 26 users, six countries, zero paying customers"
-    url: "https://www.indiehackers.com/post/ive-posted-everywhere-and-gotten-zero-sales-here-s-what-i-m-learning-about-why-818b90462f"
-    platform: "indiehackers"
-    verifiedOn: 2026-08-21
-  - label: "Twenty-six Gumroad products, 367 cold emails, total revenue: $0.00"
-    url: "https://www.indiehackers.com/post/79-notifications-in-one-morning-and-zero-of-them-are-sales-184c46af2f"
-    platform: "indiehackers"
-    verifiedOn: 2026-09-02
-  - label: "70 users tried my product. Not one stuck around. What am I missing?"
+  - label: "“70 users tried my product. Not one stuck around.”"
+    note: "About repeat use: people tried a product and did not come back. The figures are the founder's own report."
     url: "https://www.reddit.com/r/startups/comments/1v36bb6/"
     platform: "reddit"
+    role: "founder-report"
     verifiedOn: 2026-07-22
-notProven:
-  - "That your specific product doesn't work. An activation failure and a bad-product failure look identical from the signup numbers alone, and this evidence can't tell them apart for you."
-  - "That more marketing volume fixes it. One signal here (26 products, 367 cold emails, zero sales) shows volume alone did not work for at least one builder."
-  - "That every builder in this evidence deserved more users. A few later fixed it; most of these accounts end at the failure, with no reported outcome afterward."
-nextTest: "Interview five people who signed up and never used the core feature, asking only what they expected to happen next after signing up."
-relatedSlugs: ["community-access-is-not-buyer-access"]
-noindex: false
+  - label: "A founder's account of people leaving a setup form before finishing it"
+    note: "About product use: people stopping during setup. The figures in the post are the founder's own."
+    url: "https://www.indiehackers.com/post/ive-posted-everywhere-and-gotten-zero-sales-here-s-what-i-m-learning-about-why-818b90462f"
+    platform: "indiehackers"
+    role: "founder-report"
+    verifiedOn: 2026-08-21
+  - label: "“Users: zero. Revenue: zero”"
+    note: "About finding users: a founder with a working app has no users yet. This concerns visitors and registrations, not use after signing up."
+    url: "https://www.indiehackers.com/post/i-have-a-working-ai-health-appand-zero-users-day-1-of-fixing-that-2b245971fe"
+    platform: "indiehackers"
+    role: "founder-report"
+    verifiedOn: 2026-07-19
+  - label: "“SaaS after SaaS that nobody asked for, nobody bought”"
+    note: "About sales: a founder describes products nobody bought. It does not describe how people used them."
+    url: "https://www.reddit.com/r/buildinpublic/comments/1uweu25/"
+    platform: "reddit"
+    role: "founder-report"
+    verifiedOn: 2026-07-14
+  - label: "“79 notifications in one morning and zero of them are sales”"
+    note: "About sales: a founder describes plenty of activity but no purchases."
+    url: "https://www.indiehackers.com/post/79-notifications-in-one-morning-and-zero-of-them-are-sales-184c46af2f"
+    platform: "indiehackers"
+    role: "founder-report"
+    verifiedOn: 2026-09-02
+history:
+  cluster: "activation"
+  confidence: "pain-validated"
+  signalCount: 10
+  weakSignalCount: 1
+  evidenceWindow: { from: "2026-07-09", to: "2026-09-02" }
+  candidateIds: ["C-005"]
 ---
 
-## What this conclusion is based on
+People have registered, but few seem to get much further. Before changing the product or doing more marketing, look at what is happening.
 
-Ten confirmed independent signals plus one closely related weak signal, across five discovery runs between July and September 2026, drawn from Reddit and IndieHackers. Every one is a first-person builder describing a completed, shipped product that had signups but no meaningful usage or revenue.
+## Check what the numbers show
 
-## What the evidence shows
+First, make sure your records capture the action you care about. Have people had a real chance to use the product? Are you measuring the step that gives them its main benefit?
 
-> "SaaS after SaaS that nobody asked for, nobody bought... first actual money after a year and a half."
->
-> — r/buildinpublic, July 2026
+For an expense sharing app, creating an account is different from recording an expense and sharing it with someone.
 
-> "Users: zero. Revenue: zero."
->
-> — IndieHackers, July 2026 (a fully built AI health app, months of building against roughly a week of marketing)
+## Look at each step separately
 
-> People are finding it, landing on it, and leaving without paying — or worse, without even starting the form.
->
-> — IndieHackers, August 2026 (a builder's own idea-validation tool: 26 users across six countries, zero paying customers, 83% form abandonment)
+Finding the product, trying it, getting a useful result, returning and paying are different steps. A problem at one step does not explain every other step.
 
-## What it probably means
+<div class="table-scroll" role="region" aria-label="What to check at each step" tabindex="0">
 
-In nearly every signal the sequence is the same: months of building, a brief marketing push at the very end, then signups that don't convert to real use. The same ordering shows up across very different products, and even among people building validation tools themselves. The consistent factor is the timing of the marketing, which starts well after the product is largely built.
-
-## Decision criteria
-
-| If you see this | It points toward |
+| What you notice | What to check |
 |---|---|
-| Signups happen, first-session usage is near zero | An onboarding or expectation mismatch. Check what the signup page promised against what the product actually does |
-| A handful of users go deep, most vanish after step one | The product may be fine for a narrow segment; marketing is bringing the wrong people |
-| No structured interviews were run before or after launch | The next work is talking to the people who left, before writing any more code |
+| No useful actions are recorded | Whether the records work and whether people had a reason to use the product |
+| People stop during setup | A confusing step, a technical problem or too much information to enter |
+| People expected something else | What they understood from the page or message that brought them there |
+| Some people use it while others leave | Differences in their needs and in how they found the product |
+| People try it but do not return | Whether the need came up again and whether they chose another solution |
+
+</div>
+
+## Speak with people who stopped
+
+Ask what they wanted to do, what happened and what they did next. Find out whether they still needed help with the task.
+
+When possible, watch someone try the task. What they do may reveal something they did not mention in an interview.
+
+Use what you learn to choose one change to test. Decide how long to watch and what result would make the change worth keeping.
+
+## Avoid drawing a conclusion too soon
+
+A few conversations can suggest an explanation. They do not prove it caused the problem.
+
+Simpler setup will not fix a product people do not need. More visitors may lead to more accounts without more use. Someone trying it once does not show they will return.
