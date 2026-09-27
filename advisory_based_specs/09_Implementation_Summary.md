@@ -27,7 +27,8 @@ The full handoff, with detailed tables and check output, is at `/Users/suvojitdu
   - The sitemap has no fake `lastmod`.
   - The stale `/thanks/` rule is gone from robots.txt.
   - Unknown pages return 404 with the custom page (`not_found_handling` in `wrangler.jsonc`).
-  - Event names describe clicks only. The template form reports errors accessibly.
+  - Event names describe clicks only.
+- **Free template, later change (27 September 2026):** the email signup was replaced with a direct download (`public/downloads/evidence-ledger-template.xlsx`). The old form and confirmation page are kept in `retired/`, outside the site. `/thank-you/` now redirects (301) to the template page. MailerLite is paused and is no longer used by the site.
 - **Shared code:** routes and outside links are in `src/lib/routes.ts`. Shared styles are in `src/styles/base.css`.
 - **Docs:** `README.md` is rewritten. `CLAUDE.md` is updated too, but it's gitignored, so git won't show the change.
 - **Dependencies:** `node_modules` was incomplete, so I reinstalled it with `npm ci`. `package.json` and the lockfile are unchanged.
@@ -41,7 +42,7 @@ The full handoff, with detailed tables and check output, is at `/Users/suvojitdu
 - `/tools/evidence-ledger-template/`, `/example-review/`, `/contact/`
 - `/privacy/`, `/terms/`
 
-**Not indexed:** `/thank-you/`, `/everyday/`, `404.html`, and the `/analysis/` redirect.
+**Not indexed:** `/everyday/`, `404.html`, and the `/analysis/` and `/thank-you/` redirects.
 
 ## Checks run (all passing at the last run)
 
@@ -53,7 +54,7 @@ The full handoff, with detailed tables and check output, is at `/Users/suvojitdu
 - **Browser checks (110, in Chrome):**
   - 19 pages at 360, 768, 1024 and 1440px with no sideways scrolling
   - keyboard focus through the header and the mobile menu
-  - six template-form cases with MailerLite mocked
+  - six template-form cases with MailerLite mocked (before the form was retired)
 
 ## Gumroad findings (read only, 27 September 2026)
 

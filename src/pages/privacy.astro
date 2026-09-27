@@ -8,6 +8,8 @@
 //     this repo, because it is switched on in the Cloudflare dashboard).
 //   - Operator stays under the PainToBuild name with the email address.
 //   - No fixed retention period was chosen; deletion is on request.
+//   - 2026-09-27: template moved from a MailerLite signup to a direct download.
+//     MailerLite is paused and only holds addresses from earlier signups.
 // Update the review date below only when the page is actually reviewed.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Kicker from '../components/content/Kicker.astro';
@@ -52,7 +54,7 @@ const lastReviewed = { iso: '2026-09-27', label: 'September 27, 2026' };
     </p>
     <p>
       The outside services that handle your information are the ones named on this page: ImprovMX
-      and Google for email, MailerLite for template emails, Gumroad for guide purchases and
+      and Google for email, MailerLite for past template emails, Gumroad for guide purchases and
       Cloudflare for the website.
     </p>
 
@@ -62,15 +64,14 @@ const lastReviewed = { iso: '2026-09-27', label: 'September 27, 2026' };
       covers what I can share and whether I can identify you.
     </p>
 
-    <h2>Resource emails</h2>
+    <h2>Template downloads</h2>
     <p>
-      The template request uses MailerLite to confirm your address and send the download. You also
-      receive occasional updates, as explained when you sign up. You can unsubscribe through the
-      link in an email.
+      The free template is a direct download. I do not ask for your email address to get it.
     </p>
     <p>
-      MailerLite keeps your address while you are subscribed. To have it removed completely, email
-      {" "}<a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
+      If you asked for the template by email before 27 September 2026, MailerLite still keeps your
+      address. To have it removed, email{" "}<a href={`mailto:${EMAIL}`}>{EMAIL}</a> or use the
+      unsubscribe link in any email you received.
     </p>
 
     <h2>Purchases</h2>

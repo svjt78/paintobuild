@@ -26,7 +26,7 @@ Planning documents for the advisory version are in `advisory_based_specs/`
 | Fonts | Self hosted (`@fontsource-variable/figtree`, `@fontsource-variable/source-serif-4`) |
 | Social images | [`astro-og-canvas`](https://github.com/delucis/astro-og-canvas), generated at build |
 | Sitemap | `@astrojs/sitemap` with a hand maintained indexable path allowlist |
-| Template requests | Native HTML form posting to a MailerLite endpoint |
+| Free template | Direct download: `public/downloads/evidence-ledger-template.xlsx` (no email signup) |
 | Advisory inquiries | Email only (`hello@paintobuild.com`), no form |
 
 ## Getting started
@@ -62,7 +62,7 @@ npm run dev        # local dev server at http://localhost:4321
 | `/brief/`, `/challenge-mining-kit/` | pages | Link to the Gumroad listings |
 | `/tools/evidence-ledger-template/` | page | Template request form |
 | `/example-review/` | page | A made up example review, labeled as such |
-| `/thank-you/`, `/everyday/`, `/404.html` | pages | `noindex`, not in the sitemap. `/everyday/` is a legacy notice. |
+| `/everyday/`, `/404.html` | pages | `noindex`, not in the sitemap. `/everyday/` is a legacy notice. |
 | `/privacy/`, `/terms/` | pages | Completed 2026-09-27 from the owner's answers. Review details live in each client's written agreement. |
 
 ## Content model
@@ -121,17 +121,16 @@ Cloudflare is configured outside this code and has not been verified here.
 | `resource_checkout_click` | A Gumroad product link was clicked. It is not a purchase. |
 | `shop_link_click` | The Gumroad store link was clicked |
 | `source_link_click` | A cited source was opened |
-| `template_form_submit` | The template form's submit button was clicked |
-
-The template form also writes `data-state` (`invalid`, `submitting`, `failed`,
-`accepted`) on the form. `accepted` means MailerLite returned
-`{"success":true}`. The visitor still has to confirm their address before the
-template is sent, so it is not a confirmed subscriber or a delivered template.
+| `template_download_click` | The template download button was clicked |
 
 ## Email
 
-The MailerLite endpoint in `EmailCapture.astro` is only for template requests.
-Do not reuse it for advisory inquiries or client material.
+MailerLite is no longer used by the site. The template became a direct
+download on 2026-09-27, and the old signup form and confirmation page are kept
+in `retired/` for reference only. `/thank-you/` redirects to the template page.
+The MailerLite account is paused and only holds addresses from earlier signups.
+Client email goes to hello@paintobuild.com (ImprovMX to Gmail). Guide
+purchases are delivered by Gumroad.
 
 ## Deployment
 

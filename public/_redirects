@@ -2,3 +2,6 @@
 # The old Focused Analysis offer was retired; its page now lives at /advisory/.
 /analysis /advisory/ 301
 /analysis/ /advisory/ 301
+# The template became a direct download; the signup confirmation page was retired.
+/thank-you /tools/evidence-ledger-template/ 301
+/thank-you/ /tools/evidence-ledger-template/ 301

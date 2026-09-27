@@ -16,7 +16,8 @@ Recorded 27 September 2026. These are the facts and choices behind the website c
 | Topic | Answer | Where it appears |
 |---|---|---|
 | AI tools | Client material is never put into public AI services such as ChatGPT or Claude | Privacy page |
-| Email | Mail to hello@paintobuild.com goes through **ImprovMX** (a forwarding service) to your **personal Gmail**. MailerLite only sends template emails and updates. | Privacy page |
+| Email | Mail to hello@paintobuild.com goes through **ImprovMX** (a forwarding service) to your **personal Gmail**. | Privacy page |
+| Free template | Since 27 September 2026 it's a direct download with no email signup. MailerLite is paused and only holds addresses from earlier signups. | Template and privacy pages |
 | Analytics | Cloudflare Web Analytics is on. It's set in the Cloudflare dashboard, not in the code. | Privacy page |
 | Identity | You stay under the PainToBuild name, showing only the email address | Privacy and terms pages |
 | Location | You're based in the US and open to clients anywhere | See `08_Legal_and_Identity_Notes.md` |

@@ -1,13 +1,15 @@
 ---
-// Free template. Copy: advisory_based_specs/02_Replacement_Copy.md §12.
-// The table explains the seven fields in the existing download in simpler
-// words. It does not promise extra fields. The example row is made up.
+// Free template. Copy: advisory_based_specs/02_Replacement_Copy.md §12,
+// changed on 2026-09-27 from an email signup (MailerLite, double opt-in) to a
+// direct download with no email address. The file is
+// public/downloads/evidence-ledger-template.xlsx. The table explains its seven
+// Ledger columns. The example row is made up.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Kicker from '../../components/content/Kicker.astro';
-import EmailCapture from '../../components/convert/EmailCapture.astro';
+import Button from '../../components/convert/Button.astro';
 
 const title = 'Free template for your problem research | PainToBuild';
-const description = 'Keep track of problem reports, their sources and repeated accounts with a free research template. Confirm your email address to receive the download.';
+const description = 'Keep track of problem reports, their sources and repeated accounts with a free research template. Download it as a spreadsheet. No email address needed.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -59,11 +61,19 @@ const jsonLd = {
 
     <h2 id="get-the-template">Get the template</h2>
     <p>
-      Enter your email address. You will receive an email asking you to confirm it. After you
-      confirm, the download will be sent to you.
+      The template is an Excel file. It also opens in Google Sheets, Numbers and LibreOffice. You
+      do not need to give me your email address.
     </p>
-    <p>You will also receive occasional PainToBuild updates. You can unsubscribe at any time.</p>
-    <EmailCapture pagePath="/tools/evidence-ledger-template/" />
+    <p>
+      <Button href="/downloads/evidence-ledger-template.xlsx" dataEvent="template_download_click"
+        dataEventPage="/tools/evidence-ledger-template/" dataEventCtaId="template-download">
+        Download the template
+      </Button>
+    </p>
+    <p>
+      It has three tabs: how to use it, the ledger itself with one made up example row, and a few
+      totals that update as you add rows.
+    </p>
 
     <ul class="link-list end-links">
       <li><a href="/privacy/">Privacy</a></li>

@@ -6,7 +6,6 @@ Recorded 27 September 2026 for the first publish of the advisory site. Deploying
 
 - [ ] Open the Brief and Kit files and confirm they match their listings: 18 page Brief; 30 page guide, 11 page Starter Pack and 10 tab workbook in the Kit; Volume 1, July to September 2026.
 - [ ] Read `/privacy/` and `/terms/` once. Both say "Last reviewed September 27, 2026". If you review them on a later date, change `lastReviewed` in `src/pages/privacy.astro` and `src/pages/terms.astro`.
-- [ ] Check the mailing address in the MailerLite email footer (see `08_Legal_and_Identity_Notes.md`).
 - [ ] Look through the site locally:
   ```bash
   cd /Users/suvojitdutta/Documents/Rest/apps/apps/paintobuild-website/paintobuild-site
@@ -31,7 +30,8 @@ Recorded 27 September 2026 for the first publish of the advisory site. Deploying
 - [ ] Social images load, e.g. `https://paintobuild.com/open-graph/advisory.png`. Optionally paste a page link into a social post preview.
 - [ ] The Brief and Kit buy buttons open the right Gumroad products. Don't buy anything.
 - [ ] Send a test email to hello@paintobuild.com from another account and confirm it reaches your Gmail.
-- [ ] Do one template signup with your own address. Confirm that the confirmation email arrives, and that the template arrives after you confirm. This is the first real test of the form since the changes.
+- [ ] Click the download button on `/tools/evidence-ledger-template/` and confirm the Excel template downloads and opens.
+- [ ] `https://paintobuild.com/thank-you/` redirects once (301) to the template page.
 - [ ] After a day, check that Cloudflare Web Analytics is recording visits.
 - [ ] If you use Google Search Console, resubmit the sitemap.
 

@@ -11,8 +11,8 @@ Situation: you're based in the US, operate under the PainToBuild name, show only
 
 ## Where your identity does matter
 
-1. **Marketing emails (CAN-SPAM).** The template signup sends occasional updates. US law requires commercial emails to include a valid physical mailing address. MailerLite requires one in the footer, so one is probably already set.
-   - **Action:** check which address MailerLite uses. If it's your home, consider a PO box or virtual mailbox.
+1. **Marketing emails (CAN-SPAM).** Since 27 September 2026 the template is a direct download and MailerLite is paused, so the site sends no marketing email. If you email updates again, US law requires each commercial email to include a valid physical mailing address.
+   - **Action (only if you restart email updates):** check which address MailerLite puts in its footer. If it's your home, consider a PO box or virtual mailbox.
 2. **Client agreements and invoices.** A paying client should know who they're contracting with.
    - **Action:** put your legal name, or a registered business name, on the agreement template and invoices, even though the website stays under PainToBuild.
 3. **Trading under "PainToBuild" (DBA).** Most states expect you to register a "doing business as" name when you trade under a name that isn't your legal name. Banks and payment services often ask for it.
@@ -28,7 +28,7 @@ Situation: you're based in the US, operate under the PainToBuild name, show only
 
 ## Before the first paid review
 
-- [ ] Check the mailing address in the MailerLite email footer.
+- [ ] Only if you restart email updates: check the mailing address in the MailerLite email footer.
 - [ ] Decide whether to register a DBA for "PainToBuild".
 - [ ] Add your legal or business name to the agreement and invoice templates.
 - [ ] Decide how reviews will be paid for, and make sure it matches the privacy page ("how you pay is set out in your written agreement").
