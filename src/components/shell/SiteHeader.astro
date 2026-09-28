@@ -71,14 +71,20 @@ const isCurrent = (href: string) => pagePath === href || (href !== '/' && pagePa
 </header>
 
 <style>
-  .site-header { position: relative; z-index: 10; }
+  /* Stays at the top while the page scrolls. Anchor links land below it
+     because base.css sets scroll-padding-top from --header-h. */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--hairline-dark);
+  }
   .bar {
     display: flex;
     align-items: center;
     gap: var(--s5);
-    height: 64px;
+    height: var(--header-h);
   }
-  @media (min-width: 768px) { .bar { height: 72px; } }
 
   .wordmark { display: block; line-height: 0; flex-shrink: 0; }
   .wordmark-img { height: 24px; width: auto; }
@@ -132,6 +138,9 @@ const isCurrent = (href: string) => pagePath === href || (href !== '/' && pagePa
     padding: var(--s3);
     min-width: 240px;
     max-width: calc(100vw - 2 * var(--gutter));
+    /* Opened partway down a short screen, the panel scrolls inside itself. */
+    max-height: calc(100vh - var(--header-h) - var(--s4));
+    overflow-y: auto;
   }
   .nav-mobile a {
     display: block;

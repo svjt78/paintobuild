@@ -2,8 +2,14 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+/* Height of the sticky site header (SiteHeader.astro). */
+:root { --header-h: 64px; }
+@media (min-width: 768px) { :root { --header-h: 72px; } }
+
 html {
   color-scheme: light;
+  /* Anchor links and the skip link land below the sticky header. */
+  scroll-padding-top: calc(var(--header-h) + var(--s4));
 }
 
 body {
