@@ -874,11 +874,11 @@ People may not understand what the app helps them do. The demos may be reaching 
 
 It is also possible that a spreadsheet or message already does the job well enough.
 
-## What I would try first
+## What I would suggest trying first
 
-I would ask a small number of willing organizers to use the current app for a real shared expense. I would explain the link sharing feature and watch where they need help or stop.
+I would suggest the founder ask a small number of willing organizers to use the current app for a real shared expense. The founder would explain the link sharing feature and note where people need help or stop.
 
-This would help me decide whether the first problem to address is the explanation, the steps in the app or the benefit itself.
+When the founder shares what happened, it would help me decide whether the first problem to address is the explanation, the steps in the app or the benefit itself.
 
 ## What I would look for
 
@@ -890,9 +890,9 @@ When another shared expense comes up, does the organizer choose the app again? I
 
 If people cannot finish the task, I would look into the step that blocks them.
 
-If they finish but prefer their old method, I would ask why the app is not worth using again.
+If they finish but prefer their old method, I would suggest the founder ask them why the app is not worth using again.
 
-If they use it again without help, I would check whether more people have the same experience before making a broader claim.
+If they use it again without help, I would suggest testing with more people before making a broader claim.
 
 ## The later review
 
