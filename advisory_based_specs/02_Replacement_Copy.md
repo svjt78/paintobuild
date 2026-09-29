@@ -262,7 +262,7 @@ The service includes one later review of your test results. I look at what happe
 
 If the results are unclear, I explain what we still do not know. We agree in advance on when you will send results and what happens if you do not run the test.
 
-## Where research helps
+## Where research helps {#how-i-use-research}
 
 Research can help answer part of your question. I may look at other products or public accounts of a problem when that is part of our agreed work. I consider what I find alongside the information about your own business.
 
@@ -416,7 +416,7 @@ These are separate questions to investigate.
 
 The original source material for this article concerned founders who were struggling to test their ideas. Those reports do not show that the writers wanted to pay someone for that help.
 
-Link: How I use research → `/methodology/#problem-vs-payment`
+Link: How I use research → `/methodology/#how-i-use-research`
 
 Related article: Why people sign up but do not use a product → `/diagnostics/signups-no-core-feature-use/`
 

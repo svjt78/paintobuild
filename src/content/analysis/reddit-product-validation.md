@@ -9,7 +9,7 @@ published: 2026-09-07
 updated: 2026-09-27
 related: "signups-no-core-feature-use"
 relatedLabel: "Why people sign up but do not use a product"
-methodHref: "/methodology/#problem-vs-payment"
+methodHref: "/methodology/#how-i-use-research"
 cta:
   primary: { label: "Tell me about your product question", href: "/contact/" }
   secondary: { label: "Get help deciding what to build", href: "/advisory/#decide-what-to-build" }
