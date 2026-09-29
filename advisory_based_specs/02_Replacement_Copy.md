@@ -224,97 +224,101 @@ Button: Tell me what you need help with → `/contact/`
 
 Title: How I work with founders | PainToBuild
 
-Description: I start with your decision, review what you know and compare the options. I suggest a test, then review what happened and what you might do next.
+Description: See how I review your question, compare your options and give you a written recommendation, followed by one review of your test results.
 
 # How I work with you
 
-I start by understanding the decision you need to make. The research and review then focus on what would help you make that decision.
+You may be deciding which problem to work on, what to build or what to try next. I help you compare your options and decide what to do. We start with one question about your product or idea.
 
-## Understand the question
+## Tell me what you are deciding
 
-I ask what you are deciding, why it matters now and what you have tried. I also ask about your time and budget. Each review covers one decision so the work stays manageable.
+I ask what you need to decide, why it matters now and what you have tried. We also discuss your time and budget.
 
-## Review the information {#evidence-categories}
+Before work starts, we agree in writing on the question, the work I will do, the fee and when you will receive the review.
 
-I may review your product, customer comments, usage numbers or past efforts to find customers. The agreed work may also include looking at other products and public discussions.
+## Review what you know {#evidence-categories}
 
-I make clear which details you supplied, which I checked and which are my interpretation.
+Depending on your question, I may look at your idea or product, customer comments, usage numbers or what you have tried to find customers. We agree on what I will review and whether any new research is needed.
 
-## Consider other explanations
+I explain which details came from you, which I checked and which are my own interpretation. If something important is missing, I tell you.
 
-There may be several reasons something is not working. I look for information that supports each explanation and information that goes against it. I also consider whether the product solves a problem people care enough about.
+## Compare your options
 
-## Choose a test {#decision-criteria}
+I look at the choices available to you and what supports each one. That might mean comparing customer groups, choosing between features or working out why people stop using your product.
 
-I recommend a test that fits your time and budget. The review explains what to do, what to watch for and how the result could change the advice.
+I also consider what people already use and whether changing your product would help. Sometimes the advice may be to keep what you have, learn more or stop work on an idea.
 
-If more research is needed first, I explain what to find out.
+## Get a written recommendation {#decision-criteria}
 
-## Review the results
+Your Founder Decision Review sets out the options I considered, what I recommend and why. It also explains what is still uncertain.
 
-After you run the test, I look at what happened. I check whether the result answers the original question and explain what I would do next.
+If I recommend a test, I describe what to try, what to watch for and how the result could change my advice. The test should fit your time and budget. If you need more information first, I explain what to find out.
 
-A test that was not run tells you something different from a test that people rejected. Missing or unreliable numbers may mean the result is still unclear.
+The review includes one round of questions so you can ask about the advice.
 
-## How I use public research {#independence}
+## Review what happened
 
-Public posts can point to problems worth looking into. I avoid counting the same person's story several times. Different accounts may belong to one person, and people may repeat something they read elsewhere. When that is unclear, I note it.
+The service includes one later review of your test results. I look at what happened, whether it answers your original question and what I would suggest next.
 
-Several people describing a problem can be a reason to investigate. It does not prove that your product will sell.
+If the results are unclear, I explain what we still do not know. We agree in advance on when you will send results and what happens if you do not run the test.
 
-### Which reports are useful? {#strength-levels}
+## Where research helps
 
-A detailed account can tell you what happened, what the person tried and why it mattered. A short expression of interest usually tells you less.
+Research can help answer part of your question. I may look at other products or public accounts of a problem when that is part of our agreed work. I consider what I find alongside the information about your own business.
 
-The important question is whether the report helps answer the question you are researching.
+Public posts can suggest questions worth checking with possible customers. They cannot establish whether people will buy your product.
 
-### What the research shows {#confidence-tiers}
+[Start expandable section: How I check public research]
 
-I separate what people reported from possible explanations and unanswered questions. I use counts only when I can explain what was counted and show the records behind them.
+### Check for repeated accounts {#independence}
 
-### What people already use {#contradictions}
+I avoid counting the same person's story several times. Different accounts may belong to one person, and people may repeat something they read elsewhere. When that is unclear, I note it.
 
-People may already solve the problem with another product, a spreadsheet or help from someone else. They may also choose to live with it.
+### Look for useful detail {#strength-levels}
 
-I look at these options before suggesting that a new product is needed. That includes checking whether an ordinary AI tool can do the job well enough.
+A useful account explains what happened, what the person tried and why it mattered. I look for details that help answer the question being researched.
 
-### What payment claims mean {#external-validation}
+### Separate reports from interpretation {#confidence-tiers}
 
-A price on a website shows that something is for sale. It does not show that anyone bought it.
+I distinguish what people reported from my interpretation and unanswered questions. I use counts only when I can explain what was counted and show the records behind them.
 
-Someone saying they might pay shows interest. A report of a purchase tells you more, but it is still a report unless checked.
+### Check what people already use {#contradictions}
 
-A confirmed payment shows that one purchase happened. It does not prove that other people will buy your offer.
+People may use another product, a spreadsheet, an ordinary AI tool or help from someone else. They may also choose to live with the problem. I consider these options before suggesting that a new product is needed.
 
-### What I leave out of the count {#exclusions}
+### Check claims about payment {#external-validation}
 
-I do not count repeated posts, general advice or sales claims as separate reports of customer need.
+A listed price does not show that anyone bought the product. Saying "I would pay" is different from making a purchase. I make clear whether a purchase was reported or checked.
 
-A comment can still be useful if the writer describes their own problem. It does not have to be the first post in a discussion.
+### Leave out misleading counts {#exclusions}
 
-### A problem is not proof of a sale {#problem-vs-payment}
+I do not count repeated posts, general advice or sales claims as separate reports of customer need. A comment can still be useful if the writer describes their own problem.
 
-You still need to find out who can buy, how to reach them and why they would choose your product. You also need to understand the cost of finding and serving those customers.
+### Look beyond the problem {#problem-vs-payment}
 
-### What the research cannot tell you {#limitations}
+You still need to find out who can buy, how to reach them and why they would choose your product. You also need to understand the cost of finding and serving those customers. One confirmed purchase does not show how many other people will buy.
 
-People who post online do not represent everyone. Their accounts may leave out important details. Information about competing products can go out of date. Small tests can also give misleading results.
+### Explain the limits {#limitations}
 
-Some older guides use a worksheet that scores ideas in twelve areas. It helps organize the research. The score does not decide whether a business will work or what advice I give a client.
+People who post online do not represent everyone. Their accounts may leave out important details, and information about other products can go out of date. Small tests can also give misleading results.
 
-### Sources and private information {#privacy}
+Some older guides score ideas in twelve areas. Those scores help organize research. They do not establish whether a business will work or decide the advice I give a client.
+
+### Handle sources and private information carefully {#privacy}
 
 Research articles include relevant links and dates. A source link may reveal the writer's name even if it is not shown on my page.
 
-Before you share private business information, I explain how it will be handled. The privacy page describes those arrangements.
+Before you share private business information, I explain how it will be handled. You can read the arrangements on the [privacy page](/privacy/).
 
-Links: Privacy → `/privacy/`
+[End expandable section]
+
+Links: Example review → `/example-review/`
 
 Research articles → `/evidence/`
 
-Example review → `/example-review/`
-
 Button: See how I can help → `/advisory/`
+
+Implementation note: Keep the research details in a native expandable section, closed by default. Keep every existing section ID. If a link points to a section inside it, open the details and bring that section into view on arrival and when the fragment changes. The section must also open with a keyboard. The markers above are instructions, not visible copy.
 
 ## 4 Research library `/evidence/`
 

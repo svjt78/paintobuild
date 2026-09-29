@@ -9,7 +9,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Kicker from '../components/content/Kicker.astro';
 
 const title = 'How I work with founders | PainToBuild';
-const description = 'I start with your decision, review what you know and compare the options. I suggest a test, then review what happened and what you might do next.';
+const description = 'See how I review your question, compare your options and give you a written recommendation, followed by one review of your test results.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -21,129 +21,100 @@ const jsonLd = {
 ---
 <BaseLayout title={title} description={description} ogImagePath="/open-graph/methodology.png">
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
   <article class="wrap section prose">
     <Kicker>How it works</Kicker>
     <h1>How I work with you</h1>
-    <p class="lede">
-      I start by understanding the decision you need to make. The research and review then focus
-      on what would help you make that decision.
-    </p>
 
-    <h2>Understand the question</h2>
-    <p>
-      I ask what you are deciding, why it matters now and what you have tried. I also ask about
-      your time and budget. Each review covers one decision so the work stays manageable.
-    </p>
+    <p class="lede">You may be deciding which problem to work on, what to build or what to try next. I help you compare your options and decide what to do. We start with one question about your product or idea.</p>
 
-    <h2 id="evidence-categories">Review the information</h2>
-    <p>
-      I may review your product, customer comments, usage numbers or past efforts to find
-      customers. The agreed work may also include looking at other products and public discussions.
-    </p>
-    <p>I make clear which details you supplied, which I checked and which are my interpretation.</p>
+    <h2>Tell me what you are deciding</h2>
 
-    <h2>Consider other explanations</h2>
-    <p>
-      There may be several reasons something is not working. I look for information that supports
-      each explanation and information that goes against it. I also consider whether the product
-      solves a problem people care enough about.
-    </p>
+    <p>I ask what you need to decide, why it matters now and what you have tried. We also discuss your time and budget.</p>
 
-    <h2 id="decision-criteria">Choose a test</h2>
-    <p>
-      I recommend a test that fits your time and budget. The review explains what to do, what to
-      watch for and how the result could change the advice.
-    </p>
-    <p>If more research is needed first, I explain what to find out.</p>
+    <p>Before work starts, we agree in writing on the question, the work I will do, the fee and when you will receive the review.</p>
 
-    <h2>Review the results</h2>
-    <p>
-      After you run the test, I look at what happened. I check whether the result answers the
-      original question and explain what I would do next.
-    </p>
-    <p>
-      A test that was not run tells you something different from a test that people rejected.
-      Missing or unreliable numbers may mean the result is still unclear.
-    </p>
+    <h2 id="evidence-categories">Review what you know</h2>
 
-    <h2 id="independence">How I use public research</h2>
-    <p>
-      Public posts can point to problems worth looking into. I avoid counting the same person's
-      story several times. Different accounts may belong to one person, and people may repeat
-      something they read elsewhere. When that is unclear, I note it.
-    </p>
-    <p>Several people describing a problem can be a reason to investigate. It does not prove that your product will sell.</p>
+    <p>Depending on your question, I may look at your idea or product, customer comments, usage numbers or what you have tried to find customers. We agree on what I will review and whether any new research is needed.</p>
 
-    <h3 id="strength-levels">Which reports are useful?</h3>
-    <p>
-      A detailed account can tell you what happened, what the person tried and why it mattered. A
-      short expression of interest usually tells you less.
-    </p>
-    <p>The important question is whether the report helps answer the question you are researching.</p>
+    <p>I explain which details came from you, which I checked and which are my own interpretation. If something important is missing, I tell you.</p>
 
-    <h3 id="confidence-tiers">What the research shows</h3>
-    <p>
-      I separate what people reported from possible explanations and unanswered questions. I use
-      counts only when I can explain what was counted and show the records behind them.
-    </p>
+    <h2>Compare your options</h2>
 
-    <h3 id="contradictions">What people already use</h3>
-    <p>
-      People may already solve the problem with another product, a spreadsheet or help from
-      someone else. They may also choose to live with it.
-    </p>
-    <p>
-      I look at these options before suggesting that a new product is needed. That includes
-      checking whether an ordinary AI tool can do the job well enough.
-    </p>
+    <p>I look at the choices available to you and what supports each one. That might mean comparing customer groups, choosing between features or working out why people stop using your product.</p>
 
-    <h3 id="external-validation">What payment claims mean</h3>
-    <p>A price on a website shows that something is for sale. It does not show that anyone bought it.</p>
-    <p>
-      Someone saying they might pay shows interest. A report of a purchase tells you more, but it
-      is still a report unless checked.
-    </p>
-    <p>A confirmed payment shows that one purchase happened. It does not prove that other people will buy your offer.</p>
+    <p>I also consider what people already use and whether changing your product would help. Sometimes the advice may be to keep what you have, learn more or stop work on an idea.</p>
 
-    <h3 id="exclusions">What I leave out of the count</h3>
-    <p>I do not count repeated posts, general advice or sales claims as separate reports of customer need.</p>
-    <p>
-      A comment can still be useful if the writer describes their own problem. It does not have to
-      be the first post in a discussion.
-    </p>
+    <h2 id="decision-criteria">Get a written recommendation</h2>
 
-    <h3 id="problem-vs-payment">A problem is not proof of a sale</h3>
-    <p>
-      You still need to find out who can buy, how to reach them and why they would choose your
-      product. You also need to understand the cost of finding and serving those customers.
-    </p>
+    <p>Your Founder Decision Review sets out the options I considered, what I recommend and why. It also explains what is still uncertain.</p>
 
-    <h3 id="limitations">What the research cannot tell you</h3>
-    <p>
-      People who post online do not represent everyone. Their accounts may leave out important
-      details. Information about competing products can go out of date. Small tests can also give
-      misleading results.
-    </p>
-    <p>
-      Some older guides use a worksheet that scores ideas in twelve areas. It helps organize the
-      research. The score does not decide whether a business will work or what advice I give a client.
-    </p>
+    <p>If I recommend a test, I describe what to try, what to watch for and how the result could change my advice. The test should fit your time and budget. If you need more information first, I explain what to find out.</p>
 
-    <h3 id="privacy">Sources and private information</h3>
-    <p>
-      Research articles include relevant links and dates. A source link may reveal the writer's
-      name even if it is not shown on my page.
-    </p>
-    <p>
-      Before you share private business information, I explain how it will be handled. The
-      privacy page describes those arrangements.
-    </p>
+    <p>The review includes one round of questions so you can ask about the advice.</p>
+
+    <h2>Review what happened</h2>
+
+    <p>The service includes one later review of your test results. I look at what happened, whether it answers your original question and what I would suggest next.</p>
+
+    <p>If the results are unclear, I explain what we still do not know. We agree in advance on when you will send results and what happens if you do not run the test.</p>
+
+    <h2>Where research helps</h2>
+
+    <p>Research can help answer part of your question. I may look at other products or public accounts of a problem when that is part of our agreed work. I consider what I find alongside the information about your own business.</p>
+
+    <p>Public posts can suggest questions worth checking with possible customers. They cannot establish whether people will buy your product.</p>
+
+    <details class="research-details" id="research-details">
+      <summary>How I check public research</summary>
+      <div class="research-content">
+
+    <h3 id="independence">Check for repeated accounts</h3>
+
+    <p>I avoid counting the same person's story several times. Different accounts may belong to one person, and people may repeat something they read elsewhere. When that is unclear, I note it.</p>
+
+    <h3 id="strength-levels">Look for useful detail</h3>
+
+    <p>A useful account explains what happened, what the person tried and why it mattered. I look for details that help answer the question being researched.</p>
+
+    <h3 id="confidence-tiers">Separate reports from interpretation</h3>
+
+    <p>I distinguish what people reported from my interpretation and unanswered questions. I use counts only when I can explain what was counted and show the records behind them.</p>
+
+    <h3 id="contradictions">Check what people already use</h3>
+
+    <p>People may use another product, a spreadsheet, an ordinary AI tool or help from someone else. They may also choose to live with the problem. I consider these options before suggesting that a new product is needed.</p>
+
+    <h3 id="external-validation">Check claims about payment</h3>
+
+    <p>A listed price does not show that anyone bought the product. Saying "I would pay" is different from making a purchase. I make clear whether a purchase was reported or checked.</p>
+
+    <h3 id="exclusions">Leave out misleading counts</h3>
+
+    <p>I do not count repeated posts, general advice or sales claims as separate reports of customer need. A comment can still be useful if the writer describes their own problem.</p>
+
+    <h3 id="problem-vs-payment">Look beyond the problem</h3>
+
+    <p>You still need to find out who can buy, how to reach them and why they would choose your product. You also need to understand the cost of finding and serving those customers. One confirmed purchase does not show how many other people will buy.</p>
+
+    <h3 id="limitations">Explain the limits</h3>
+
+    <p>People who post online do not represent everyone. Their accounts may leave out important details, and information about other products can go out of date. Small tests can also give misleading results.</p>
+
+    <p>Some older guides score ideas in twelve areas. Those scores help organize research. They do not establish whether a business will work or decide the advice I give a client.</p>
+
+    <h3 id="privacy">Handle sources and private information carefully</h3>
+
+    <p>Research articles include relevant links and dates. A source link may reveal the writer's name even if it is not shown on my page.</p>
+
+    <p>Before you share private business information, I explain how it will be handled. You can read the arrangements on the <a href="/privacy/">privacy page</a>.</p>
+
+      </div>
+    </details>
 
     <ul class="link-list end-links">
-      <li><a href="/privacy/">Privacy</a></li>
-      <li><a href="/evidence/">Research articles</a></li>
       <li><a href="/example-review/">Example review</a></li>
+      <li><a href="/evidence/">Research articles</a></li>
     </ul>
     <p>
       <a class="btn btn-primary" href="/advisory/"
@@ -154,7 +125,31 @@ const jsonLd = {
   </article>
 </BaseLayout>
 
+<script>
+  // Existing article links must reveal their target even when the details are closed.
+  function revealResearchTarget() {
+    let id: string;
+    try {
+      id = decodeURIComponent(window.location.hash.slice(1));
+    } catch {
+      return;
+    }
+    const target = document.getElementById(id);
+    const details = document.getElementById('research-details');
+    if (target && details instanceof HTMLDetailsElement && details.contains(target)) {
+      details.open = true;
+      requestAnimationFrame(() => target.scrollIntoView());
+    }
+  }
+  revealResearchTarget();
+  window.addEventListener('hashchange', revealResearchTarget);
+</script>
+
 <style>
   .section { padding-block: var(--s7) var(--s8); }
+  .research-details { margin-top: var(--s6); border-block: 1px solid var(--hairline); }
+  .research-details summary { padding-block: var(--s4); font-weight: 600; cursor: pointer; }
+  .research-details summary:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+  .research-content { padding-bottom: var(--s4); }
   .end-links { margin-top: var(--s7); padding-top: var(--s5); border-top: 1px solid var(--hairline); }
 </style>
